@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g-atlas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#100f0e"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="g-atlas-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="g-atlas-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g-atlas)"></rect>
+  <rect width="1200" height="800" fill="url(#g-atlas-grid)"></rect>
+  <rect width="1200" height="800" fill="url(#g-atlas-glow)"></rect>
+  
+  <g transform="translate(600 400)">
+    <circle r="100" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><circle r="200" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><circle r="300" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><circle r="400" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle>
+    <line x1="-500" y1="0" x2="500" y2="0" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></line>
+    <line x1="0" y1="-380" x2="0" y2="380" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></line>
+    <path d="M0 0 L300 -200 A360 360 0 0 1 360 60 Z" fill="rgba(219,140,78,0.10)" stroke="rgba(219,140,78,0.35)" stroke-width="1"></path>
+    <circle cx="120" cy="-80" r="5" fill="#db8c4e"></circle>
+      <circle cx="120" cy="-80" r="12.5" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="-180" cy="60" r="4" fill="#db8c4e"></circle>
+      <circle cx="-180" cy="60" r="10" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="200" cy="180" r="6" fill="#db8c4e"></circle>
+      <circle cx="200" cy="180" r="15" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="-250" cy="-220" r="4" fill="#db8c4e"></circle>
+      <circle cx="-250" cy="-220" r="10" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="80" cy="250" r="5" fill="#db8c4e"></circle>
+      <circle cx="80" cy="250" r="12.5" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="-90" cy="-110" r="3" fill="#db8c4e"></circle>
+      <circle cx="-90" cy="-110" r="7.5" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="300" cy="-50" r="4" fill="#db8c4e"></circle>
+      <circle cx="300" cy="-50" r="10" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle><circle cx="-330" cy="180" r="5" fill="#db8c4e"></circle>
+      <circle cx="-330" cy="180" r="12.5" fill="none" stroke="rgba(219,140,78,0.35)" stroke-width="0.5"></circle>
+  </g>
+  <text x="120" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="22" font-weight="600">fleet · 2,047 nodes online</text>
+  <text x="120" y="730" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="14">▸ operator console · unified state · audited</text>
+
+</svg>

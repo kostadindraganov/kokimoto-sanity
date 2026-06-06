@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p2-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#160f0a"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p2-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p2-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p2-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p2-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p2-glow)"></rect>
+  
+  <line x1="80" y1="130" x2="720" y2="130" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="140" cy="130" r="8" fill="#db8c4e"></circle><line x1="80" y1="195" x2="720" y2="195" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="253" cy="195" r="8" fill="#db8c4e"></circle><line x1="80" y1="260" x2="720" y2="260" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="366" cy="260" r="8" fill="#db8c4e"></circle><line x1="80" y1="325" x2="720" y2="325" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="479" cy="325" r="8" fill="#db8c4e"></circle><line x1="80" y1="390" x2="720" y2="390" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="592" cy="390" r="8" fill="#db8c4e"></circle><line x1="80" y1="455" x2="720" y2="455" stroke="rgba(236,230,215,0.10)" stroke-dasharray="3 7" stroke-width="1"></line>
+            <circle cx="205" cy="455" r="8" fill="#db8c4e"></circle>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">event_sourcing.append</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ pragmatic complexity</text>
+
+</svg>

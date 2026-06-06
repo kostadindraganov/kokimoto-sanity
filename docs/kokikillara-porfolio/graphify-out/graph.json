@@ -1,0 +1,4764 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "blog_publication_workflow",
+        "nodes": [
+          "kostadin_draganov",
+          "blog_section",
+          "blog_categories",
+          "blog_tags"
+        ],
+        "label": "blog_publication_system",
+        "type": "system_workflow"
+      },
+      {
+        "id": "portfolio_showcase_system",
+        "nodes": [
+          "kokimoto_portfolio",
+          "portfolio_section",
+          "portfolio_projects",
+          "sidebar_ui"
+        ],
+        "label": "project_showcase_workflow",
+        "type": "system_workflow"
+      },
+      {
+        "id": "responsive_design_system",
+        "nodes": [
+          "kokimoto_portfolio",
+          "mobile_layout",
+          "sidebar_ui",
+          "hover_interactions"
+        ],
+        "label": "responsive_design_implementation",
+        "type": "design_system"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "ask-console.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "community": 5,
+      "norm_label": "ask-console.jsx"
+    },
+    {
+      "label": "AskPlaceholder()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L12",
+      "id": "ask_console_askplaceholder",
+      "community": 5,
+      "norm_label": "askplaceholder()"
+    },
+    {
+      "label": "AnswerStream()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L49",
+      "id": "ask_console_answerstream",
+      "community": 5,
+      "norm_label": "answerstream()"
+    },
+    {
+      "label": "AskConsole()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L75",
+      "id": "ask_console_askconsole",
+      "community": 5,
+      "norm_label": "askconsole()"
+    },
+    {
+      "label": "portfolio.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "community": 9,
+      "norm_label": "portfolio.jsx"
+    },
+    {
+      "label": "shortHash()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L6",
+      "id": "portfolio_shorthash",
+      "community": 9,
+      "norm_label": "shorthash()"
+    },
+    {
+      "label": "useScrollReveal()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L16",
+      "id": "portfolio_usescrollreveal",
+      "community": 9,
+      "norm_label": "usescrollreveal()"
+    },
+    {
+      "label": "BentoCard()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L39",
+      "id": "portfolio_bentocard",
+      "community": 9,
+      "norm_label": "bentocard()"
+    },
+    {
+      "label": "BentoGrid()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L98",
+      "id": "portfolio_bentogrid",
+      "community": 9,
+      "norm_label": "bentogrid()"
+    },
+    {
+      "label": "PortfolioBoard()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L112",
+      "id": "portfolio_portfolioboard",
+      "community": 9,
+      "norm_label": "portfolioboard()"
+    },
+    {
+      "label": "PortfolioPage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L191",
+      "id": "portfolio_portfoliopage",
+      "community": 9,
+      "norm_label": "portfoliopage()"
+    },
+    {
+      "label": "qa.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "community": 16,
+      "norm_label": "qa.jsx"
+    },
+    {
+      "label": "kwMatch()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L24",
+      "id": "qa_kwmatch",
+      "community": 16,
+      "norm_label": "kwmatch()"
+    },
+    {
+      "label": "matchQA()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L32",
+      "id": "qa_matchqa",
+      "community": 16,
+      "norm_label": "matchqa()"
+    },
+    {
+      "label": "qaTools()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L54",
+      "id": "qa_qatools",
+      "community": 16,
+      "norm_label": "qatools()"
+    },
+    {
+      "label": "project.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "community": 14,
+      "norm_label": "project.jsx"
+    },
+    {
+      "label": "buildLog()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L5",
+      "id": "project_buildlog",
+      "community": 14,
+      "norm_label": "buildlog()"
+    },
+    {
+      "label": "LogPanel()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L18",
+      "id": "project_logpanel",
+      "community": 14,
+      "norm_label": "logpanel()"
+    },
+    {
+      "label": "Field()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L35",
+      "id": "project_field",
+      "community": 14,
+      "norm_label": "field()"
+    },
+    {
+      "label": "ProjectPage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L44",
+      "id": "project_projectpage",
+      "community": 14,
+      "norm_label": "projectpage()"
+    },
+    {
+      "label": "hero-ascii.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/hero-ascii.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_hero_ascii_jsx",
+      "community": 19,
+      "norm_label": "hero-ascii.jsx"
+    },
+    {
+      "label": "HeroAscii()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/hero-ascii.jsx",
+      "source_location": "L9",
+      "id": "hero_ascii_heroascii",
+      "community": 19,
+      "norm_label": "heroascii()"
+    },
+    {
+      "label": "blog.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "community": 10,
+      "norm_label": "blog.jsx"
+    },
+    {
+      "label": "fmtDate()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L5",
+      "id": "blog_fmtdate",
+      "community": 10,
+      "norm_label": "fmtdate()"
+    },
+    {
+      "label": "FeaturedPost()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L10",
+      "id": "blog_featuredpost",
+      "community": 10,
+      "norm_label": "featuredpost()"
+    },
+    {
+      "label": "BlogBoard()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L50",
+      "id": "blog_blogboard",
+      "community": 10,
+      "norm_label": "blogboard()"
+    },
+    {
+      "label": "PostHoverPreview()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L189",
+      "id": "blog_posthoverpreview",
+      "community": 10,
+      "norm_label": "posthoverpreview()"
+    },
+    {
+      "label": "BlogPage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L211",
+      "id": "blog_blogpage",
+      "community": 10,
+      "norm_label": "blogpage()"
+    },
+    {
+      "label": "data.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/data.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_data_jsx",
+      "community": 26,
+      "norm_label": "data.jsx"
+    },
+    {
+      "label": "ui.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "community": 11,
+      "norm_label": "ui.jsx"
+    },
+    {
+      "label": "SecHead()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L5",
+      "id": "ui_sechead",
+      "community": 11,
+      "norm_label": "sechead()"
+    },
+    {
+      "label": "Metric()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L15",
+      "id": "ui_metric",
+      "community": 11,
+      "norm_label": "metric()"
+    },
+    {
+      "label": "StatLine()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L24",
+      "id": "ui_statline",
+      "community": 11,
+      "norm_label": "statline()"
+    },
+    {
+      "label": "Pill()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L34",
+      "id": "ui_pill",
+      "community": 11,
+      "norm_label": "pill()"
+    },
+    {
+      "label": "CmdBtn()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L40",
+      "id": "ui_cmdbtn",
+      "community": 11,
+      "norm_label": "cmdbtn()"
+    },
+    {
+      "label": "about.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/about.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_about_jsx",
+      "community": 18,
+      "norm_label": "about.jsx"
+    },
+    {
+      "label": "ValuesJson()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/about.jsx",
+      "source_location": "L13",
+      "id": "about_valuesjson",
+      "community": 18,
+      "norm_label": "valuesjson()"
+    },
+    {
+      "label": "AboutPage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/about.jsx",
+      "source_location": "L38",
+      "id": "about_aboutpage",
+      "community": 18,
+      "norm_label": "aboutpage()"
+    },
+    {
+      "label": "bootloader.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/bootloader.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_bootloader_jsx",
+      "community": 20,
+      "norm_label": "bootloader.jsx"
+    },
+    {
+      "label": "BootLoader()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/bootloader.jsx",
+      "source_location": "L5",
+      "id": "bootloader_bootloader",
+      "community": 20,
+      "norm_label": "bootloader()"
+    },
+    {
+      "label": "article.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "community": 12,
+      "norm_label": "article.jsx"
+    },
+    {
+      "label": "slugify()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L5",
+      "id": "article_slugify",
+      "community": 12,
+      "norm_label": "slugify()"
+    },
+    {
+      "label": "useBlogFacets()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L10",
+      "id": "article_useblogfacets",
+      "community": 12,
+      "norm_label": "useblogfacets()"
+    },
+    {
+      "label": "ArticleSidebar()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L37",
+      "id": "article_articlesidebar",
+      "community": 12,
+      "norm_label": "articlesidebar()"
+    },
+    {
+      "label": "ArticleBody()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L169",
+      "id": "article_articlebody",
+      "community": 12,
+      "norm_label": "articlebody()"
+    },
+    {
+      "label": "ArticlePage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L249",
+      "id": "article_articlepage",
+      "community": 12,
+      "norm_label": "articlepage()"
+    },
+    {
+      "label": "shell.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "community": 15,
+      "norm_label": "shell.jsx"
+    },
+    {
+      "label": "TopBar()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L6",
+      "id": "shell_topbar",
+      "community": 15,
+      "norm_label": "topbar()"
+    },
+    {
+      "label": "StatusBar()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L45",
+      "id": "shell_statusbar",
+      "community": 15,
+      "norm_label": "statusbar()"
+    },
+    {
+      "label": "CommandPalette()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L91",
+      "id": "shell_commandpalette",
+      "community": 15,
+      "norm_label": "commandpalette()"
+    },
+    {
+      "label": "MobileConsole()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L174",
+      "id": "shell_mobileconsole",
+      "community": 15,
+      "norm_label": "mobileconsole()"
+    },
+    {
+      "label": "app.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_app_jsx",
+      "community": 5,
+      "norm_label": "app.jsx"
+    },
+    {
+      "label": "parseHash()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L20",
+      "id": "app_parsehash",
+      "community": 5,
+      "norm_label": "parsehash()"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L27",
+      "id": "app_app",
+      "community": 5,
+      "norm_label": "app()"
+    },
+    {
+      "label": "ascii-reveal.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "community": 13,
+      "norm_label": "ascii-reveal.jsx"
+    },
+    {
+      "label": "_palette()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L19",
+      "id": "ascii_reveal_palette",
+      "community": 13,
+      "norm_label": "_palette()"
+    },
+    {
+      "label": "_toAsciiGrid()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L29",
+      "id": "ascii_reveal_toasciigrid",
+      "community": 13,
+      "norm_label": "_toasciigrid()"
+    },
+    {
+      "label": "_shuffle()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L62",
+      "id": "ascii_reveal_shuffle",
+      "community": 13,
+      "norm_label": "_shuffle()"
+    },
+    {
+      "label": "runAsciiReveal()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L72",
+      "id": "ascii_reveal_runasciireveal",
+      "community": 13,
+      "norm_label": "runasciireveal()"
+    },
+    {
+      "label": "AsciiReveal()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L159",
+      "id": "ascii_reveal_asciireveal",
+      "community": 13,
+      "norm_label": "asciireveal()"
+    },
+    {
+      "label": "streaming.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "community": 2,
+      "norm_label": "streaming.jsx"
+    },
+    {
+      "label": "prefersReduced()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L10",
+      "id": "streaming_prefersreduced",
+      "community": 5,
+      "norm_label": "prefersreduced()"
+    },
+    {
+      "label": "bootSeen()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L22",
+      "id": "streaming_bootseen",
+      "community": 2,
+      "norm_label": "bootseen()"
+    },
+    {
+      "label": "markBoot()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L23",
+      "id": "streaming_markboot",
+      "community": 2,
+      "norm_label": "markboot()"
+    },
+    {
+      "label": "clearAllBoots()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L24",
+      "id": "streaming_clearallboots",
+      "community": 2,
+      "norm_label": "clearallboots()"
+    },
+    {
+      "label": "Cursor()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L27",
+      "id": "streaming_cursor",
+      "community": 2,
+      "norm_label": "cursor()"
+    },
+    {
+      "label": "Spinner()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L32",
+      "id": "streaming_spinner",
+      "community": 2,
+      "norm_label": "spinner()"
+    },
+    {
+      "label": "Typewriter()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L42",
+      "id": "streaming_typewriter",
+      "community": 2,
+      "norm_label": "typewriter()"
+    },
+    {
+      "label": "StaticPrompt()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L77",
+      "id": "streaming_staticprompt",
+      "community": 2,
+      "norm_label": "staticprompt()"
+    },
+    {
+      "label": "PromptView()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L82",
+      "id": "streaming_promptview",
+      "community": 2,
+      "norm_label": "promptview()"
+    },
+    {
+      "label": "ToolUseBlock()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L93",
+      "id": "streaming_tooluseblock",
+      "community": 2,
+      "norm_label": "tooluseblock()"
+    },
+    {
+      "label": "LinesView()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L148",
+      "id": "streaming_linesview",
+      "community": 2,
+      "norm_label": "linesview()"
+    },
+    {
+      "label": "NodeView()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L177",
+      "id": "streaming_nodeview",
+      "community": 2,
+      "norm_label": "nodeview()"
+    },
+    {
+      "label": "ThinkingView()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L191",
+      "id": "streaming_thinkingview",
+      "community": 2,
+      "norm_label": "thinkingview()"
+    },
+    {
+      "label": "Stream()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L219",
+      "id": "streaming_stream",
+      "community": 2,
+      "norm_label": "stream()"
+    },
+    {
+      "label": "shellPrompt()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L298",
+      "id": "streaming_shellprompt",
+      "community": 2,
+      "norm_label": "shellprompt()"
+    },
+    {
+      "label": "tweaks-panel.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "community": 4,
+      "norm_label": "tweaks-panel.jsx"
+    },
+    {
+      "label": "useTweaks()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L172",
+      "id": "tweaks_panel_usetweaks",
+      "community": 5,
+      "norm_label": "usetweaks()"
+    },
+    {
+      "label": "TweaksPanel()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L196",
+      "id": "tweaks_panel_tweakspanel",
+      "community": 4,
+      "norm_label": "tweakspanel()"
+    },
+    {
+      "label": "TweakSection()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L288",
+      "id": "tweaks_panel_tweaksection",
+      "community": 4,
+      "norm_label": "tweaksection()"
+    },
+    {
+      "label": "TweakRow()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L297",
+      "id": "tweaks_panel_tweakrow",
+      "community": 4,
+      "norm_label": "tweakrow()"
+    },
+    {
+      "label": "TweakSlider()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L311",
+      "id": "tweaks_panel_tweakslider",
+      "community": 4,
+      "norm_label": "tweakslider()"
+    },
+    {
+      "label": "TweakToggle()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L320",
+      "id": "tweaks_panel_tweaktoggle",
+      "community": 4,
+      "norm_label": "tweaktoggle()"
+    },
+    {
+      "label": "TweakRadio()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L331",
+      "id": "tweaks_panel_tweakradio",
+      "community": 4,
+      "norm_label": "tweakradio()"
+    },
+    {
+      "label": "TweakSelect()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L403",
+      "id": "tweaks_panel_tweakselect",
+      "community": 4,
+      "norm_label": "tweakselect()"
+    },
+    {
+      "label": "TweakText()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L417",
+      "id": "tweaks_panel_tweaktext",
+      "community": 4,
+      "norm_label": "tweaktext()"
+    },
+    {
+      "label": "TweakNumber()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L426",
+      "id": "tweaks_panel_tweaknumber",
+      "community": 4,
+      "norm_label": "tweaknumber()"
+    },
+    {
+      "label": "__twkIsLight()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L463",
+      "id": "tweaks_panel_twkislight",
+      "community": 4,
+      "norm_label": "__twkislight()"
+    },
+    {
+      "label": "__TwkCheck()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L472",
+      "id": "tweaks_panel_twkcheck",
+      "community": 4,
+      "norm_label": "__twkcheck()"
+    },
+    {
+      "label": "TweakColor()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L486",
+      "id": "tweaks_panel_tweakcolor",
+      "community": 4,
+      "norm_label": "tweakcolor()"
+    },
+    {
+      "label": "TweakButton()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L529",
+      "id": "tweaks_panel_tweakbutton",
+      "community": 4,
+      "norm_label": "tweakbutton()"
+    },
+    {
+      "label": "contact.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "community": 2,
+      "norm_label": "contact.jsx"
+    },
+    {
+      "label": "ContactForm()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L5",
+      "id": "contact_contactform",
+      "community": 2,
+      "norm_label": "contactform()"
+    },
+    {
+      "label": "ContactSidebar()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L89",
+      "id": "contact_contactsidebar",
+      "community": 2,
+      "norm_label": "contactsidebar()"
+    },
+    {
+      "label": "ContactPage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L128",
+      "id": "contact_contactpage",
+      "community": 2,
+      "norm_label": "contactpage()"
+    },
+    {
+      "label": "home.jsx",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "community": 17,
+      "norm_label": "home.jsx"
+    },
+    {
+      "label": "SystemCard()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L6",
+      "id": "home_systemcard",
+      "community": 17,
+      "norm_label": "systemcard()"
+    },
+    {
+      "label": "MiniWork()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L36",
+      "id": "home_miniwork",
+      "community": 17,
+      "norm_label": "miniwork()"
+    },
+    {
+      "label": "HomePage()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L56",
+      "id": "home_homepage",
+      "community": 17,
+      "norm_label": "homepage()"
+    },
+    {
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "community": 6,
+      "norm_label": "script.js"
+    },
+    {
+      "label": "onLoaded()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L26",
+      "id": "script_onloaded",
+      "community": 6,
+      "norm_label": "onloaded()"
+    },
+    {
+      "label": "startEffect()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L34",
+      "id": "script_starteffect",
+      "community": 6,
+      "norm_label": "starteffect()"
+    },
+    {
+      "label": "imageToAsciiGrid()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L40",
+      "id": "script_imagetoasciigrid",
+      "community": 6,
+      "norm_label": "imagetoasciigrid()"
+    },
+    {
+      "label": "prepareCanvas()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L107",
+      "id": "script_preparecanvas",
+      "community": 6,
+      "norm_label": "preparecanvas()"
+    },
+    {
+      "label": "drawCharacter()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L117",
+      "id": "script_drawcharacter",
+      "community": 6,
+      "norm_label": "drawcharacter()"
+    },
+    {
+      "label": "shuffleArray()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L124",
+      "id": "script_shufflearray",
+      "community": 6,
+      "norm_label": "shufflearray()"
+    },
+    {
+      "label": "animateCells()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L132",
+      "id": "script_animatecells",
+      "community": 6,
+      "norm_label": "animatecells()"
+    },
+    {
+      "label": "scheduleImageReveal()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L205",
+      "id": "script_scheduleimagereveal",
+      "community": 6,
+      "norm_label": "scheduleimagereveal()"
+    },
+    {
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L1",
+      "id": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "community": 7,
+      "norm_label": "script.js"
+    },
+    {
+      "label": "setupCanvas()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L22",
+      "id": "script_setupcanvas",
+      "community": 7,
+      "norm_label": "setupcanvas()"
+    },
+    {
+      "label": "drawGrid()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L33",
+      "id": "script_drawgrid",
+      "community": 7,
+      "norm_label": "drawgrid()"
+    },
+    {
+      "label": "sampleLogoIntoCells()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L44",
+      "id": "script_samplelogointocells",
+      "community": 7,
+      "norm_label": "samplelogointocells()"
+    },
+    {
+      "label": "renderFrame()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L99",
+      "id": "script_renderframe",
+      "community": 7,
+      "norm_label": "renderframe()"
+    },
+    {
+      "label": "init()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L118",
+      "id": "script_init",
+      "community": 7,
+      "norm_label": "init()"
+    },
+    {
+      "label": "updatePhysics()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L137",
+      "id": "script_updatephysics",
+      "community": 7,
+      "norm_label": "updatephysics()"
+    },
+    {
+      "label": "animationLoop()",
+      "file_type": "code",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L165",
+      "id": "script_animationloop",
+      "community": 7,
+      "norm_label": "animationloop()"
+    },
+    {
+      "label": "DESIGN.md",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Kostadin Draganov",
+      "contributor": null,
+      "id": "design_doc",
+      "community": 27,
+      "norm_label": "design.md"
+    },
+    {
+      "label": "Kostadin Draganov Portfolio",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "portfolio_site",
+      "community": 1,
+      "norm_label": "kostadin draganov portfolio"
+    },
+    {
+      "label": "Terminal + AI Coding Console Metaphor",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "terminal_metaphor",
+      "community": 1,
+      "norm_label": "terminal + ai coding console metaphor"
+    },
+    {
+      "label": "Color System",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "color_system",
+      "community": 1,
+      "norm_label": "color system"
+    },
+    {
+      "label": "Typography System",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "typography_system",
+      "community": 1,
+      "norm_label": "typography system"
+    },
+    {
+      "label": "JetBrains Mono Font",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "jetbrains_mono",
+      "community": 1,
+      "norm_label": "jetbrains mono font"
+    },
+    {
+      "label": "Space Grotesk Font",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "space_grotesk",
+      "community": 1,
+      "norm_label": "space grotesk font"
+    },
+    {
+      "label": "Spacing, Radius, and Motion",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spacing_radius_motion",
+      "community": 28,
+      "norm_label": "spacing, radius, and motion"
+    },
+    {
+      "label": "Shell Layout Architecture",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shell_layout",
+      "community": 1,
+      "norm_label": "shell layout architecture"
+    },
+    {
+      "label": "TopBar Component",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "topbar",
+      "community": 1,
+      "norm_label": "topbar component"
+    },
+    {
+      "label": "StatusBar Component",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "statusbar",
+      "community": 1,
+      "norm_label": "statusbar component"
+    },
+    {
+      "label": "Token Meter",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "token_meter",
+      "community": 1,
+      "norm_label": "token meter"
+    },
+    {
+      "label": "Component Vocabulary",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_vocabulary",
+      "community": 1,
+      "norm_label": "component vocabulary"
+    },
+    {
+      "label": ".panel Component",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "panel_component",
+      "community": 1,
+      "norm_label": ".panel component"
+    },
+    {
+      "label": ".prompt Component",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "prompt_component",
+      "community": 1,
+      "norm_label": ".prompt component"
+    },
+    {
+      "label": ".tool Component",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tool_component",
+      "community": 1,
+      "norm_label": ".tool component"
+    },
+    {
+      "label": "Signature Interactions",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "signature_interactions",
+      "community": 3,
+      "norm_label": "signature interactions"
+    },
+    {
+      "label": "Bootloader Animation",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "bootloader",
+      "community": 3,
+      "norm_label": "bootloader animation"
+    },
+    {
+      "label": "Streaming Pages Animation",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "streaming_pages",
+      "community": 8,
+      "norm_label": "streaming pages animation"
+    },
+    {
+      "label": "ASCII Reveal Effect",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ascii_reveal",
+      "community": 3,
+      "norm_label": "ascii reveal effect"
+    },
+    {
+      "label": "Hero ASCII Canvas",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_ascii_canvas",
+      "community": 3,
+      "norm_label": "hero ascii canvas"
+    },
+    {
+      "label": "Ask Console REPL",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ask_console",
+      "community": 1,
+      "norm_label": "ask console repl"
+    },
+    {
+      "label": "Command Palette",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "command_palette",
+      "community": 3,
+      "norm_label": "command palette"
+    },
+    {
+      "label": "Bento Portfolio Grid",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "bento_portfolio",
+      "community": 3,
+      "norm_label": "bento portfolio grid"
+    },
+    {
+      "label": "Blog Post Preview",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "blog_post_preview",
+      "community": 3,
+      "norm_label": "blog post preview"
+    },
+    {
+      "label": "Mobile Console Drawer",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mobile_console",
+      "community": 3,
+      "norm_label": "mobile console drawer"
+    },
+    {
+      "label": "Tweaks Panel Controls",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tweaks_panel",
+      "community": 29,
+      "norm_label": "tweaks panel controls"
+    },
+    {
+      "label": "Single Page App Architecture",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "single_page_app",
+      "community": 8,
+      "norm_label": "single page app architecture"
+    },
+    {
+      "label": "React 18 + Babel Standalone",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "react_18",
+      "community": 8,
+      "norm_label": "react 18 + babel standalone"
+    },
+    {
+      "label": "Content Model",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "content_model",
+      "community": 8,
+      "norm_label": "content model"
+    },
+    {
+      "label": "Hover Test Interaction",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-hover-test.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_01_hover_test",
+      "community": 3,
+      "norm_label": "hover test interaction"
+    },
+    {
+      "label": "Generation Sequence Timeline",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/02-gen-seq.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_02_gen_seq",
+      "community": 8,
+      "norm_label": "generation sequence timeline"
+    },
+    {
+      "label": "Hero Section - Final State",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/hero-final.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_hero_final",
+      "community": 3,
+      "norm_label": "hero section - final state"
+    },
+    {
+      "label": "Article Sidebar Layout",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/article-sidebar.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_article_sidebar",
+      "community": 3,
+      "norm_label": "article sidebar layout"
+    },
+    {
+      "label": "Blog Post with Sidebar",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/hero-verify.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_hero_verify",
+      "community": 3,
+      "norm_label": "blog post with sidebar"
+    },
+    {
+      "label": "About Page Timeline and Values",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-about-square.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_about_square",
+      "community": 8,
+      "norm_label": "about page timeline and values"
+    },
+    {
+      "label": "Sidebar with Tag Categories",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-sidebar-cats.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_sidebar_cats",
+      "community": 1,
+      "norm_label": "sidebar with tag categories"
+    },
+    {
+      "label": "Contact Page Form",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/contact-state.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_contact_state",
+      "community": 1,
+      "norm_label": "contact page form"
+    },
+    {
+      "label": "Blog Index with Recent Posts",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/verify1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_verify1",
+      "community": 8,
+      "norm_label": "blog index with recent posts"
+    },
+    {
+      "label": "Portfolio Grid - ASCII Loading State",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-pf2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_portfolio_01",
+      "community": 3,
+      "norm_label": "portfolio grid - ascii loading state"
+    },
+    {
+      "label": "About/Home Section with Metrics and Ask Console",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/footer-zoom.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_footer_zoom",
+      "community": 1,
+      "norm_label": "about/home section with metrics and ask console"
+    },
+    {
+      "label": "Ask Console Interface",
+      "file_type": "image",
+      "source_file": "docs/kokikillara-porfolio/screenshots/ask-ph.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "screen_ask_prompt",
+      "community": 1,
+      "norm_label": "ask console interface"
+    },
+    {
+      "label": "Minimal Color Rationale",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_minimal_color",
+      "community": 1,
+      "norm_label": "minimal color rationale"
+    },
+    {
+      "label": "CLI Metaphor Rationale",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_cli_metaphor",
+      "community": 1,
+      "norm_label": "cli metaphor rationale"
+    },
+    {
+      "label": "Monospace-First Rationale",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_monospace_first",
+      "community": 1,
+      "norm_label": "monospace-first rationale"
+    },
+    {
+      "label": "Streaming Animation Rationale",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_streaming_animation",
+      "community": 8,
+      "norm_label": "streaming animation rationale"
+    },
+    {
+      "label": "ASCII Interactive Effect Rationale",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_ascii_interactive",
+      "community": 3,
+      "norm_label": "ascii interactive effect rationale"
+    },
+    {
+      "label": "Deployment/Git Metaphor for Projects",
+      "file_type": "document",
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rationale_deployment_metaphor",
+      "community": 3,
+      "norm_label": "deployment/git metaphor for projects"
+    },
+    {
+      "label": "Kostadin Draganov",
+      "type": "person",
+      "attributes": {
+        "title": "Senior Software Developer \u00b7 AI-Native Engineer",
+        "experience_years": 15,
+        "focus_areas": [
+          "production software",
+          "full-stack systems",
+          "architecture",
+          "automation",
+          "AI workflows"
+        ],
+        "email": "nikomsecuritysystems@gmail.com"
+      },
+      "id": "kostadin_draganov",
+      "community": 0,
+      "norm_label": "kostadin draganov"
+    },
+    {
+      "label": "Kokimoto Portfolio",
+      "type": "website",
+      "attributes": {
+        "domain": "kokimoto.dev",
+        "design_style": "terminal_aesthetic",
+        "framework": "Next.js",
+        "color_scheme": "dark_theme",
+        "ascii_art": true
+      },
+      "id": "kokimoto_portfolio",
+      "community": 0,
+      "norm_label": "kokimoto portfolio"
+    },
+    {
+      "label": "Portfolio Navigation",
+      "type": "ui_component",
+      "attributes": {
+        "routes": [
+          "/home",
+          "/portfolio",
+          "/about",
+          "/blog",
+          "/contact"
+        ],
+        "has_sidebar": true,
+        "responsive": true
+      },
+      "id": "portfolio_navigation",
+      "community": 0,
+      "norm_label": "portfolio navigation"
+    },
+    {
+      "label": "Hero Section",
+      "type": "ui_section",
+      "attributes": {
+        "content": "ASCII art rendered with command output",
+        "render_command": "render --hero kokimoto.ascii",
+        "displays_name": true,
+        "displays_title": true,
+        "displays_bio": true
+      },
+      "id": "hero_section",
+      "community": 0,
+      "norm_label": "hero section"
+    },
+    {
+      "label": "Portfolio Section",
+      "type": "ui_section",
+      "attributes": {
+        "title": "Selected work",
+        "description": "Each project is a deployment record (problem, solution, stack, impact)",
+        "has_filters": true,
+        "filter_tags": [
+          "all",
+          "frontend",
+          "backend",
+          "ai",
+          "fullstack",
+          "architecture"
+        ],
+        "display_format": "grid"
+      },
+      "id": "portfolio_section",
+      "community": 0,
+      "norm_label": "portfolio section"
+    },
+    {
+      "label": "Blog Section",
+      "type": "ui_section",
+      "attributes": {
+        "url": "/blog",
+        "log_stream": true,
+        "filterable": true,
+        "has_search": true,
+        "has_categories": true,
+        "has_tags": true
+      },
+      "id": "blog_section",
+      "community": 0,
+      "norm_label": "blog section"
+    },
+    {
+      "label": "Vue 3 at console scale",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-04-21",
+        "category": "Vue.js",
+        "reading_time_min": 7,
+        "tags": [
+          "vue",
+          "pinia",
+          "ux"
+        ]
+      },
+      "id": "blog_post_vue3_console",
+      "community": 0,
+      "norm_label": "vue 3 at console scale"
+    },
+    {
+      "label": "Event sourcing without the cult",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-05-04",
+        "category": "Architecture",
+        "reading_time_min": 11,
+        "tags": [
+          "event-sourcing",
+          "postgres"
+        ]
+      },
+      "id": "blog_post_event_sourcing",
+      "community": 0,
+      "norm_label": "event sourcing without the cult"
+    },
+    {
+      "label": "The eval harness is the product",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-04-21",
+        "category": "AI Native",
+        "reading_time_min": 7,
+        "content_focus": "LLM evaluation infrastructure",
+        "visualization": "coverage chart"
+      },
+      "id": "blog_post_eval_harness",
+      "community": 0,
+      "norm_label": "the eval harness is the product"
+    },
+    {
+      "label": "RSC streaming, measured",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-04-09",
+        "category": "Next.js",
+        "reading_time_min": 9,
+        "tags": [
+          "rsc",
+          "edge",
+          "perf"
+        ],
+        "focus": "retail storefront to edge performance"
+      },
+      "id": "blog_post_rsc_streaming",
+      "community": 0,
+      "norm_label": "rsc streaming, measured"
+    },
+    {
+      "label": "Refactoring is a delivery skill",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-03-12",
+        "category": "Engineering",
+        "reading_time_min": 10,
+        "tags": [
+          "refactoring",
+          "delivery"
+        ],
+        "content": "taxonomy of safe refactors"
+      },
+      "id": "blog_post_refactoring_delivery",
+      "community": 0,
+      "norm_label": "refactoring is a delivery skill"
+    },
+    {
+      "label": "Node.js worker pools, revisited",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-02-28",
+        "category": "Node.js",
+        "reading_time_min": 6,
+        "tags": [
+          "node",
+          "perf"
+        ]
+      },
+      "id": "blog_post_node_workers",
+      "community": 0,
+      "norm_label": "node.js worker pools, revisited"
+    },
+    {
+      "label": "Reading the room: 2026 framework notes",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-02-10",
+        "category": "News",
+        "reading_time_min": 4,
+        "tags": [
+          "frameworks"
+        ]
+      },
+      "id": "blog_post_framework_notes",
+      "community": 0,
+      "norm_label": "reading the room: 2026 framework notes"
+    },
+    {
+      "label": "Field note: AI-native code review",
+      "type": "blog_post",
+      "attributes": {
+        "date": "2026-03-27",
+        "category": "AI Native",
+        "reading_time_min": 5,
+        "tags": [
+          "workflow",
+          "agents"
+        ]
+      },
+      "id": "blog_post_ai_code_review",
+      "community": 0,
+      "norm_label": "field note: ai-native code review"
+    },
+    {
+      "label": "Blog Categories",
+      "type": "taxonomy",
+      "attributes": {
+        "categories": [
+          "AI Native",
+          "Architecture",
+          "Vue.js",
+          "Next.js",
+          "Engineering",
+          "Node.js",
+          "News"
+        ],
+        "post_count_by_category": {
+          "AI Native": 2,
+          "Architecture": 1,
+          "Vue.js": 1,
+          "Next.js": 1,
+          "Engineering": 1,
+          "Node.js": 1,
+          "News": 1
+        }
+      },
+      "id": "blog_categories",
+      "community": 0,
+      "norm_label": "blog categories"
+    },
+    {
+      "label": "Blog Tags",
+      "type": "taxonomy",
+      "attributes": {
+        "tags": [
+          "agents",
+          "ci",
+          "delivery",
+          "edge",
+          "evals",
+          "event-sourcing",
+          "frameworks",
+          "llm",
+          "node",
+          "perf",
+          "pinia",
+          "postgres",
+          "refactoring",
+          "rsc",
+          "ux",
+          "vue",
+          "workflow"
+        ]
+      },
+      "id": "blog_tags",
+      "community": 0,
+      "norm_label": "blog tags"
+    },
+    {
+      "label": "About Section",
+      "type": "ui_section",
+      "attributes": {
+        "url": "/about",
+        "contains_photo": true,
+        "photo_style": "professional_headshot"
+      },
+      "id": "about_section",
+      "community": 0,
+      "norm_label": "about section"
+    },
+    {
+      "label": "Portfolio Projects",
+      "type": "collection",
+      "attributes": {
+        "count": 4,
+        "filterable": true,
+        "searchable": true,
+        "each_shows": [
+          "problem",
+          "solution",
+          "stack",
+          "measured_impact"
+        ]
+      },
+      "id": "portfolio_projects",
+      "community": 0,
+      "norm_label": "portfolio projects"
+    },
+    {
+      "label": "Ledger Core",
+      "type": "project",
+      "attributes": {
+        "type": "featured",
+        "status": "live",
+        "category": "fullstack",
+        "focus": "real-time double-entry engine"
+      },
+      "id": "project_ledger_core",
+      "community": 0,
+      "norm_label": "ledger core"
+    },
+    {
+      "label": "Sidebar Navigation",
+      "type": "ui_component",
+      "attributes": {
+        "expandable": true,
+        "contains_categories": true,
+        "sticky": true,
+        "responsive_behavior": "mobile_collapsible"
+      },
+      "id": "sidebar_ui",
+      "community": 0,
+      "norm_label": "sidebar navigation"
+    },
+    {
+      "label": "Mobile Layout",
+      "type": "responsive_design",
+      "attributes": {
+        "viewport": "mobile",
+        "layout_adjustment": "simplified_sidebar",
+        "navigation": "hamburger_menu"
+      },
+      "id": "mobile_layout",
+      "community": 0,
+      "norm_label": "mobile layout"
+    },
+    {
+      "label": "Hover Interactions",
+      "type": "ui_behavior",
+      "attributes": {
+        "description": "interactive elements with visual feedback"
+      },
+      "id": "hover_interactions",
+      "community": 0,
+      "norm_label": "hover interactions"
+    },
+    {
+      "label": "Footer",
+      "type": "ui_section",
+      "attributes": {
+        "contains": "metadata"
+      },
+      "id": "footer_section",
+      "community": 0,
+      "norm_label": "footer"
+    },
+    {
+      "label": "ASCII Art Hero",
+      "type": "visual_element",
+      "attributes": {
+        "generated_via": "kokimoto.ascii",
+        "display_method": "terminal_output",
+        "animated": false,
+        "responsive": false
+      },
+      "id": "ascii_art_hero",
+      "community": 0,
+      "norm_label": "ascii art hero"
+    },
+    {
+      "label": "Portfolio Design Philosophy",
+      "type": "concept",
+      "attributes": {
+        "aesthetic": "terminal_command_output",
+        "approach": "developer_centric",
+        "reduces_cognitive_load": true,
+        "favors_substance_over_form": true
+      },
+      "id": "design_philosophy",
+      "community": 0,
+      "norm_label": "portfolio design philosophy"
+    },
+    {
+      "label": "Tech Stack",
+      "type": "technical_collection",
+      "attributes": {
+        "frontend_frameworks": [
+          "Next.js",
+          "Vue.js",
+          "React"
+        ],
+        "languages": [
+          "JavaScript",
+          "TypeScript"
+        ],
+        "deployment": "production_systems"
+      },
+      "id": "tech_stack",
+      "community": 0,
+      "norm_label": "tech stack"
+    },
+    {
+      "label": "Professional Presence",
+      "type": "metadata",
+      "attributes": {
+        "email": "nikomsecuritysystems@gmail.com",
+        "open_to": "selected_collaborations"
+      },
+      "id": "professional_presence",
+      "community": 30,
+      "norm_label": "professional presence"
+    },
+    {
+      "type": "image",
+      "label": "Portrait photograph",
+      "description": "Professional headshot portrait of a male subject in formal business attire (navy double-breasted blazer, striped tie, white pocket square) photographed in an office setting with bookshelves in background",
+      "category": "photo",
+      "confidence_score": 1.0,
+      "id": "img7_portrait_photo",
+      "community": 31,
+      "norm_label": "portrait photograph"
+    },
+    {
+      "type": "image",
+      "label": "Glass cosmetic container",
+      "description": "Product photography of clear glass cosmetic jar with metal lid, minimalist styling on neutral background",
+      "category": "product_photo",
+      "confidence_score": 1.0,
+      "id": "img3_glass_lid",
+      "community": 32,
+      "norm_label": "glass cosmetic container"
+    },
+    {
+      "type": "image",
+      "label": "Human eye close-up",
+      "description": "Detailed black and white macro photography of a human eye with visible eyelashes and eyelid",
+      "category": "photo",
+      "confidence_score": 1.0,
+      "id": "img2_eye_closeup",
+      "community": 33,
+      "norm_label": "human eye close-up"
+    },
+    {
+      "type": "image",
+      "label": "Hair texture back view",
+      "description": "Black and white photograph of back of head showing hair texture, tied in ponytail",
+      "category": "photo",
+      "confidence_score": 1.0,
+      "id": "img1_hair_back",
+      "community": 34,
+      "norm_label": "hair texture back view"
+    },
+    {
+      "type": "project_logo",
+      "label": "Ledger Core",
+      "description": "SVG diagram depicting a terminal-style interface showing a ledger event stream visualization with hexadecimal addresses (0018, 001c, 0020, etc) and data points plotted on horizontal lines",
+      "tags": [
+        "double-entry accounting",
+        "streaming events",
+        "financial ledger"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 1.0,
+      "id": "ledger_core_project",
+      "community": 21,
+      "norm_label": "ledger core"
+    },
+    {
+      "type": "project_logo",
+      "label": "FieldNotes CMS",
+      "description": "SVG illustration of stacked rotated note cards/documents in a knowledge management interface style, suggesting a document management or note-taking system",
+      "tags": [
+        "typed schemas",
+        "git-backed",
+        "queryable",
+        "content management"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 1.0,
+      "id": "fieldnotes_cms_project",
+      "community": 35,
+      "norm_label": "fieldnotes cms"
+    },
+    {
+      "type": "project_logo",
+      "label": "PromptForge",
+      "description": "SVG grid visualization showing multiple evaluation files (eval_1.json through eval_4.json) with highlighted scores and metrics, suggesting a prompt engineering evaluation platform",
+      "tags": [
+        "scored",
+        "gated",
+        "versioned",
+        "LLM evaluation"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 0.9,
+      "id": "promptforge_project",
+      "community": 22,
+      "norm_label": "promptforge"
+    },
+    {
+      "type": "project_logo",
+      "label": "Atlas Console",
+      "description": "SVG diagram showing a fleet console visualization with concentric circles, radial nodes, and network connections representing distributed system topology",
+      "tags": [
+        "operator console",
+        "unified state",
+        "audited",
+        "2047 nodes online"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 1.0,
+      "id": "atlas_console_project",
+      "community": 24,
+      "norm_label": "atlas console"
+    },
+    {
+      "type": "project_logo",
+      "label": "Northwind Edge",
+      "description": "SVG showing a central node with radiating connections to peripheral nodes arranged in concentric circles, representing edge computing network architecture",
+      "tags": [
+        "36 PoPs",
+        "180ms TTFB",
+        "streaming RSC",
+        "cache mesh"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 1.0,
+      "id": "northwind_edge_project",
+      "community": 23,
+      "norm_label": "northwind edge"
+    },
+    {
+      "type": "project_logo",
+      "label": "Relay Automation",
+      "description": "SVG DAG (directed acyclic graph) visualization showing workflow with multiple nodes connected by bezier curves, representing task orchestration and automation routing",
+      "tags": [
+        "typed runtime",
+        "observed",
+        "retried",
+        "200 to 1 workflow"
+      ],
+      "accent_color": "#db8c4e",
+      "confidence_score": 1.0,
+      "id": "relay_automation_project",
+      "community": 25,
+      "norm_label": "relay automation"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Eval Coverage - 92%",
+      "description": "SVG bar chart showing evaluation coverage metrics with 10 data points (10-100), with peak at 40 and another at 80, highlighted with accent color",
+      "tags": [
+        "scored",
+        "gated",
+        "versioned"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p1_eval_coverage",
+      "community": 22,
+      "norm_label": "eval coverage - 92%"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Event Sourcing Append",
+      "description": "SVG timeline visualization showing 6 horizontal dashed lines with circular markers representing sequential event appends",
+      "tags": [
+        "pragmatic complexity",
+        "event stream"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p2_event_sourcing",
+      "community": 21,
+      "norm_label": "event sourcing append"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Operator Console v3",
+      "description": "SVG showing command interface mockup with deployment command '\u203a deploy --service atlas' and multiple status/log panels arranged in columns",
+      "tags": [
+        "commands",
+        "state",
+        "audited"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p3_operator_console",
+      "community": 24,
+      "norm_label": "operator console v3"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Streaming 180ms TTFB",
+      "description": "SVG visualization of streaming performance with multiple parallel paths, highlighted with golden accent color indicating optimal path",
+      "tags": [
+        "edge",
+        "RSC",
+        "cache mesh"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p4_streaming",
+      "community": 23,
+      "norm_label": "streaming 180ms ttfb"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Agent Drafts - AI-Native Review",
+      "description": "SVG side-by-side diff visualization showing before (left, red) and after (right, golden) states, representing AI-assisted code review workflow",
+      "tags": [
+        "AI-native review loop",
+        "before/after comparison"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p5_agent_drafts",
+      "community": 36,
+      "norm_label": "agent drafts - ai-native review"
+    },
+    {
+      "type": "blog_post_visual",
+      "label": "Make Change Cheap - Taxonomy",
+      "description": "SVG tree/hierarchy diagram with branching structure, showing parent node at top (golden) with cascading child nodes below, representing safe refactoring patterns",
+      "tags": [
+        "safe refactors",
+        "taxonomy",
+        "refactoring"
+      ],
+      "confidence_score": 1.0,
+      "id": "post_p6_taxonomy",
+      "community": 25,
+      "norm_label": "make change cheap - taxonomy"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "_tgt": "ask_console_askplaceholder",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "target": "ask_console_askplaceholder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "_tgt": "ask_console_answerstream",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "target": "ask_console_answerstream",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "_tgt": "ask_console_askconsole",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ask_console_jsx",
+      "target": "ask_console_askconsole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ask-console.jsx",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "ask_console_askconsole",
+      "_tgt": "streaming_prefersreduced",
+      "source": "ask_console_askconsole",
+      "target": "streaming_prefersreduced"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_shorthash",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_shorthash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_usescrollreveal",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_usescrollreveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_bentocard",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_bentocard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_bentogrid",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_bentogrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_portfolioboard",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_portfolioboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "_tgt": "portfolio_portfoliopage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_portfolio_jsx",
+      "target": "portfolio_portfoliopage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "portfolio_bentocard",
+      "_tgt": "portfolio_shorthash",
+      "source": "portfolio_shorthash",
+      "target": "portfolio_bentocard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/portfolio.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "portfolio_bentocard",
+      "_tgt": "portfolio_usescrollreveal",
+      "source": "portfolio_usescrollreveal",
+      "target": "portfolio_bentocard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "_tgt": "qa_kwmatch",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "target": "qa_kwmatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "_tgt": "qa_matchqa",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "target": "qa_matchqa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/qa.jsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "_tgt": "qa_qatools",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_qa_jsx",
+      "target": "qa_qatools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "_tgt": "project_buildlog",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "target": "project_buildlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "_tgt": "project_logpanel",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "target": "project_logpanel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "_tgt": "project_field",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "target": "project_field",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/project.jsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "_tgt": "project_projectpage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_project_jsx",
+      "target": "project_projectpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/hero-ascii.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_hero_ascii_jsx",
+      "_tgt": "hero_ascii_heroascii",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_hero_ascii_jsx",
+      "target": "hero_ascii_heroascii",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "_tgt": "blog_fmtdate",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "target": "blog_fmtdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "_tgt": "blog_featuredpost",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "target": "blog_featuredpost",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "_tgt": "blog_blogboard",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "target": "blog_blogboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "_tgt": "blog_posthoverpreview",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "target": "blog_posthoverpreview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "_tgt": "blog_blogpage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_blog_jsx",
+      "target": "blog_blogpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/blog.jsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "blog_featuredpost",
+      "_tgt": "blog_fmtdate",
+      "source": "blog_fmtdate",
+      "target": "blog_featuredpost",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "_tgt": "ui_sechead",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "target": "ui_sechead",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "_tgt": "ui_metric",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "target": "ui_metric",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "_tgt": "ui_statline",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "target": "ui_statline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "_tgt": "ui_pill",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "target": "ui_pill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ui.jsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "_tgt": "ui_cmdbtn",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ui_jsx",
+      "target": "ui_cmdbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/about.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_about_jsx",
+      "_tgt": "about_valuesjson",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_about_jsx",
+      "target": "about_valuesjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/about.jsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_about_jsx",
+      "_tgt": "about_aboutpage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_about_jsx",
+      "target": "about_aboutpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/bootloader.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_bootloader_jsx",
+      "_tgt": "bootloader_bootloader",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_bootloader_jsx",
+      "target": "bootloader_bootloader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "_tgt": "article_slugify",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "target": "article_slugify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "_tgt": "article_useblogfacets",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "target": "article_useblogfacets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "_tgt": "article_articlesidebar",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "target": "article_articlesidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "_tgt": "article_articlebody",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "target": "article_articlebody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "_tgt": "article_articlepage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_article_jsx",
+      "target": "article_articlepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L210",
+      "weight": 1.0,
+      "_src": "article_articlebody",
+      "_tgt": "article_slugify",
+      "source": "article_slugify",
+      "target": "article_articlebody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/article.jsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "article_articlesidebar",
+      "_tgt": "article_useblogfacets",
+      "source": "article_useblogfacets",
+      "target": "article_articlesidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "_tgt": "shell_topbar",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "target": "shell_topbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "_tgt": "shell_statusbar",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "target": "shell_statusbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "_tgt": "shell_commandpalette",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "target": "shell_commandpalette",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/shell.jsx",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "_tgt": "shell_mobileconsole",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_shell_jsx",
+      "target": "shell_mobileconsole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_app_jsx",
+      "_tgt": "app_parsehash",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_app_jsx",
+      "target": "app_parsehash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_app_jsx",
+      "_tgt": "app_app",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_app_jsx",
+      "target": "app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "app_app",
+      "_tgt": "tweaks_panel_usetweaks",
+      "source": "app_app",
+      "target": "tweaks_panel_usetweaks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/app.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "app_app",
+      "_tgt": "streaming_prefersreduced",
+      "source": "app_app",
+      "target": "streaming_prefersreduced"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "_tgt": "ascii_reveal_palette",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "target": "ascii_reveal_palette",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "_tgt": "ascii_reveal_toasciigrid",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "target": "ascii_reveal_toasciigrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "_tgt": "ascii_reveal_shuffle",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "target": "ascii_reveal_shuffle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "_tgt": "ascii_reveal_runasciireveal",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "target": "ascii_reveal_runasciireveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "_tgt": "ascii_reveal_asciireveal",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_ascii_reveal_jsx",
+      "target": "ascii_reveal_asciireveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_src": "ascii_reveal_runasciireveal",
+      "_tgt": "ascii_reveal_palette",
+      "source": "ascii_reveal_palette",
+      "target": "ascii_reveal_runasciireveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "ascii_reveal_runasciireveal",
+      "_tgt": "ascii_reveal_toasciigrid",
+      "source": "ascii_reveal_toasciigrid",
+      "target": "ascii_reveal_runasciireveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/ascii-reveal.jsx",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "ascii_reveal_runasciireveal",
+      "_tgt": "ascii_reveal_shuffle",
+      "source": "ascii_reveal_shuffle",
+      "target": "ascii_reveal_runasciireveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_prefersreduced",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_prefersreduced",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_bootseen",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_bootseen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_markboot",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_markboot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_clearallboots",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_clearallboots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_cursor",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_cursor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_spinner",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_spinner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_typewriter",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_typewriter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_staticprompt",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_staticprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_promptview",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_promptview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_tooluseblock",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_tooluseblock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_linesview",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_linesview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_nodeview",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_nodeview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_thinkingview",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_thinkingview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L219",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_stream",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_stream",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/streaming.jsx",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "_tgt": "streaming_shellprompt",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_streaming_jsx",
+      "target": "streaming_shellprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "contact_contactform",
+      "_tgt": "streaming_shellprompt",
+      "source": "streaming_shellprompt",
+      "target": "contact_contactform"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_usetweaks",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_usetweaks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L196",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakspanel",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakspanel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L288",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweaksection",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweaksection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L297",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakrow",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L311",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakslider",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L320",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweaktoggle",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweaktoggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L331",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakradio",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakradio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L403",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakselect",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakselect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L417",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweaktext",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweaktext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L426",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweaknumber",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweaknumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L463",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_twkislight",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_twkislight",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L472",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_twkcheck",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_twkcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L486",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakcolor",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakcolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/tweaks-panel.jsx",
+      "source_location": "L529",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "_tgt": "tweaks_panel_tweakbutton",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_tweaks_panel_jsx",
+      "target": "tweaks_panel_tweakbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "_tgt": "contact_contactform",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "target": "contact_contactform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "_tgt": "contact_contactsidebar",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "target": "contact_contactsidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/contact.jsx",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "_tgt": "contact_contactpage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_contact_jsx",
+      "target": "contact_contactpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "_tgt": "home_systemcard",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "target": "home_systemcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "_tgt": "home_miniwork",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "target": "home_miniwork",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/js/home.jsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "_tgt": "home_homepage",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_js_home_jsx",
+      "target": "home_homepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_onloaded",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_onloaded",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_starteffect",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_starteffect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_imagetoasciigrid",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_imagetoasciigrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_preparecanvas",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_preparecanvas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_drawcharacter",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_drawcharacter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_shufflearray",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_shufflearray",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_animatecells",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_animatecells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L205",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "_tgt": "script_scheduleimagereveal",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_1_script_js",
+      "target": "script_scheduleimagereveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "script_onloaded",
+      "_tgt": "script_starteffect",
+      "source": "script_onloaded",
+      "target": "script_starteffect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "script_starteffect",
+      "_tgt": "script_imagetoasciigrid",
+      "source": "script_starteffect",
+      "target": "script_imagetoasciigrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "script_starteffect",
+      "_tgt": "script_preparecanvas",
+      "source": "script_starteffect",
+      "target": "script_preparecanvas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "script_starteffect",
+      "_tgt": "script_animatecells",
+      "source": "script_starteffect",
+      "target": "script_animatecells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/script.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_src": "script_animatecells",
+      "_tgt": "script_shufflearray",
+      "source": "script_shufflearray",
+      "target": "script_animatecells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_setupcanvas",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_setupcanvas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_drawgrid",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_drawgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_samplelogointocells",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_samplelogointocells",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_renderframe",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_renderframe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_init",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L137",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_updatephysics",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_updatephysics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_src": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "_tgt": "script_animationloop",
+      "source": "users_cyberkoko_desktop_dev_kokimoto_sanity_cms_docs_kokikillara_porfolio_uploads_code_script_js",
+      "target": "script_animationloop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "script_init",
+      "_tgt": "script_setupcanvas",
+      "source": "script_setupcanvas",
+      "target": "script_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_src": "script_init",
+      "_tgt": "script_samplelogointocells",
+      "source": "script_samplelogointocells",
+      "target": "script_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "script_init",
+      "_tgt": "script_renderframe",
+      "source": "script_renderframe",
+      "target": "script_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_src": "script_animationloop",
+      "_tgt": "script_renderframe",
+      "source": "script_renderframe",
+      "target": "script_animationloop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/script.js",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_src": "script_animationloop",
+      "_tgt": "script_updatephysics",
+      "source": "script_updatephysics",
+      "target": "script_animationloop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "terminal_metaphor",
+      "source": "portfolio_site",
+      "target": "terminal_metaphor"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 2",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "color_system",
+      "source": "portfolio_site",
+      "target": "color_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "typography_system",
+      "source": "portfolio_site",
+      "target": "typography_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "shell_layout",
+      "source": "portfolio_site",
+      "target": "shell_layout"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "component_vocabulary",
+      "source": "portfolio_site",
+      "target": "component_vocabulary"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "signature_interactions",
+      "source": "portfolio_site",
+      "target": "signature_interactions"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "weight": 1.0,
+      "_src": "portfolio_site",
+      "_tgt": "single_page_app",
+      "source": "portfolio_site",
+      "target": "single_page_app"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1",
+      "weight": 1.0,
+      "_src": "terminal_metaphor",
+      "_tgt": "rationale_cli_metaphor",
+      "source": "terminal_metaphor",
+      "target": "rationale_cli_metaphor"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 1-2",
+      "weight": 1.0,
+      "_src": "color_system",
+      "_tgt": "rationale_minimal_color",
+      "source": "color_system",
+      "target": "rationale_minimal_color"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "weight": 1.0,
+      "_src": "typography_system",
+      "_tgt": "jetbrains_mono",
+      "source": "typography_system",
+      "target": "jetbrains_mono"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "weight": 1.0,
+      "_src": "typography_system",
+      "_tgt": "space_grotesk",
+      "source": "typography_system",
+      "target": "space_grotesk"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 3",
+      "weight": 1.0,
+      "_src": "typography_system",
+      "_tgt": "rationale_monospace_first",
+      "source": "typography_system",
+      "target": "rationale_monospace_first"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "weight": 1.0,
+      "_src": "shell_layout",
+      "_tgt": "topbar",
+      "source": "shell_layout",
+      "target": "topbar"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "weight": 1.0,
+      "_src": "shell_layout",
+      "_tgt": "statusbar",
+      "source": "shell_layout",
+      "target": "statusbar"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/kokikillara-porfolio/screenshots/footer-zoom.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_footer_zoom",
+      "_tgt": "topbar",
+      "source": "topbar",
+      "target": "screen_footer_zoom"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 5",
+      "weight": 1.0,
+      "_src": "statusbar",
+      "_tgt": "token_meter",
+      "source": "statusbar",
+      "target": "token_meter"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "weight": 1.0,
+      "_src": "component_vocabulary",
+      "_tgt": "panel_component",
+      "source": "component_vocabulary",
+      "target": "panel_component"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "weight": 1.0,
+      "_src": "component_vocabulary",
+      "_tgt": "prompt_component",
+      "source": "component_vocabulary",
+      "target": "prompt_component"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 6",
+      "weight": 1.0,
+      "_src": "component_vocabulary",
+      "_tgt": "tool_component",
+      "source": "component_vocabulary",
+      "target": "tool_component"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-sidebar-cats.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_sidebar_cats",
+      "_tgt": "component_vocabulary",
+      "source": "component_vocabulary",
+      "target": "screen_sidebar_cats"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/kokikillara-porfolio/screenshots/contact-state.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_contact_state",
+      "_tgt": "panel_component",
+      "source": "panel_component",
+      "target": "screen_contact_state"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/kokikillara-porfolio/screenshots/ask-ph.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_ask_prompt",
+      "_tgt": "prompt_component",
+      "source": "prompt_component",
+      "target": "screen_ask_prompt"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.1",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "bootloader",
+      "source": "signature_interactions",
+      "target": "bootloader"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.2",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "streaming_pages",
+      "source": "signature_interactions",
+      "target": "streaming_pages"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.3",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "ascii_reveal",
+      "source": "signature_interactions",
+      "target": "ascii_reveal"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.4",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "hero_ascii_canvas",
+      "source": "signature_interactions",
+      "target": "hero_ascii_canvas"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.5",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "ask_console",
+      "source": "signature_interactions",
+      "target": "ask_console"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.6",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "command_palette",
+      "source": "signature_interactions",
+      "target": "command_palette"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.7",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "bento_portfolio",
+      "source": "signature_interactions",
+      "target": "bento_portfolio"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.8",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "blog_post_preview",
+      "source": "signature_interactions",
+      "target": "blog_post_preview"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.9",
+      "weight": 1.0,
+      "_src": "signature_interactions",
+      "_tgt": "mobile_console",
+      "source": "signature_interactions",
+      "target": "mobile_console"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-hover-test.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_01_hover_test",
+      "_tgt": "signature_interactions",
+      "source": "signature_interactions",
+      "target": "screen_01_hover_test"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.2",
+      "weight": 1.0,
+      "_src": "streaming_pages",
+      "_tgt": "rationale_streaming_animation",
+      "source": "streaming_pages",
+      "target": "rationale_streaming_animation"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-about-square.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_about_square",
+      "_tgt": "streaming_pages",
+      "source": "streaming_pages",
+      "target": "screen_about_square"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/kokikillara-porfolio/screenshots/verify1.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_verify1",
+      "_tgt": "streaming_pages",
+      "source": "streaming_pages",
+      "target": "screen_verify1"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/kokikillara-porfolio/screenshots/02-gen-seq.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_02_gen_seq",
+      "_tgt": "streaming_pages",
+      "source": "streaming_pages",
+      "target": "screen_02_gen_seq"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.3-7.4",
+      "weight": 1.0,
+      "_src": "ascii_reveal",
+      "_tgt": "rationale_ascii_interactive",
+      "source": "ascii_reveal",
+      "target": "rationale_ascii_interactive"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-pf2.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_portfolio_01",
+      "_tgt": "ascii_reveal",
+      "source": "ascii_reveal",
+      "target": "screen_portfolio_01"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/kokikillara-porfolio/screenshots/hero-final.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_hero_final",
+      "_tgt": "hero_ascii_canvas",
+      "source": "hero_ascii_canvas",
+      "target": "screen_hero_final"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/kokikillara-porfolio/screenshots/footer-zoom.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_footer_zoom",
+      "_tgt": "ask_console",
+      "source": "ask_console",
+      "target": "screen_footer_zoom"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docs/kokikillara-porfolio/screenshots/ask-ph.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_ask_prompt",
+      "_tgt": "ask_console",
+      "source": "ask_console",
+      "target": "screen_ask_prompt"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 7.7",
+      "weight": 1.0,
+      "_src": "bento_portfolio",
+      "_tgt": "rationale_deployment_metaphor",
+      "source": "bento_portfolio",
+      "target": "rationale_deployment_metaphor"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-pf2.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_portfolio_01",
+      "_tgt": "bento_portfolio",
+      "source": "bento_portfolio",
+      "target": "screen_portfolio_01"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/kokikillara-porfolio/screenshots/article-sidebar.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_article_sidebar",
+      "_tgt": "blog_post_preview",
+      "source": "blog_post_preview",
+      "target": "screen_article_sidebar"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/kokikillara-porfolio/screenshots/hero-verify.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_hero_verify",
+      "_tgt": "blog_post_preview",
+      "source": "blog_post_preview",
+      "target": "screen_hero_verify"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "weight": 1.0,
+      "_src": "single_page_app",
+      "_tgt": "react_18",
+      "source": "single_page_app",
+      "target": "react_18"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/kokikillara-porfolio/DESIGN.md",
+      "source_location": "Section 9",
+      "weight": 1.0,
+      "_src": "single_page_app",
+      "_tgt": "content_model",
+      "source": "single_page_app",
+      "target": "content_model"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/kokikillara-porfolio/screenshots/01-about-square.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "screen_about_square",
+      "_tgt": "content_model",
+      "source": "content_model",
+      "target": "screen_about_square"
+    },
+    {
+      "label": "owns",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kostadin_draganov",
+      "_tgt": "kokimoto_portfolio",
+      "source": "kostadin_draganov",
+      "target": "kokimoto_portfolio"
+    },
+    {
+      "label": "showcases",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "hero_section",
+      "_tgt": "kostadin_draganov",
+      "source": "kostadin_draganov",
+      "target": "hero_section"
+    },
+    {
+      "label": "specializes_in",
+      "type": "INFERRED",
+      "confidence_score": 0.8,
+      "_src": "kostadin_draganov",
+      "_tgt": "tech_stack",
+      "source": "kostadin_draganov",
+      "target": "tech_stack"
+    },
+    {
+      "label": "author_of",
+      "type": "INFERRED",
+      "confidence_score": 0.9,
+      "_src": "kostadin_draganov",
+      "_tgt": "blog_post_vue3_console",
+      "source": "kostadin_draganov",
+      "target": "blog_post_vue3_console"
+    },
+    {
+      "label": "author_of",
+      "type": "INFERRED",
+      "confidence_score": 0.9,
+      "_src": "kostadin_draganov",
+      "_tgt": "blog_post_event_sourcing",
+      "source": "kostadin_draganov",
+      "target": "blog_post_event_sourcing"
+    },
+    {
+      "label": "author_of",
+      "type": "INFERRED",
+      "confidence_score": 0.9,
+      "_src": "kostadin_draganov",
+      "_tgt": "blog_post_eval_harness",
+      "source": "kostadin_draganov",
+      "target": "blog_post_eval_harness"
+    },
+    {
+      "label": "developed",
+      "type": "INFERRED",
+      "confidence_score": 0.85,
+      "_src": "kostadin_draganov",
+      "_tgt": "portfolio_projects",
+      "source": "kostadin_draganov",
+      "target": "portfolio_projects"
+    },
+    {
+      "label": "describes",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "about_section",
+      "_tgt": "kostadin_draganov",
+      "source": "kostadin_draganov",
+      "target": "about_section"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "portfolio_navigation",
+      "source": "kokimoto_portfolio",
+      "target": "portfolio_navigation"
+    },
+    {
+      "label": "has_section",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "hero_section",
+      "source": "kokimoto_portfolio",
+      "target": "hero_section"
+    },
+    {
+      "label": "has_section",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "portfolio_section",
+      "source": "kokimoto_portfolio",
+      "target": "portfolio_section"
+    },
+    {
+      "label": "has_section",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "blog_section",
+      "source": "kokimoto_portfolio",
+      "target": "blog_section"
+    },
+    {
+      "label": "has_section",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "about_section",
+      "source": "kokimoto_portfolio",
+      "target": "about_section"
+    },
+    {
+      "label": "has_section",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "footer_section",
+      "source": "kokimoto_portfolio",
+      "target": "footer_section"
+    },
+    {
+      "label": "has_component",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "sidebar_ui",
+      "source": "kokimoto_portfolio",
+      "target": "sidebar_ui"
+    },
+    {
+      "label": "implements",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "mobile_layout",
+      "source": "kokimoto_portfolio",
+      "target": "mobile_layout"
+    },
+    {
+      "label": "has_behavior",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "hover_interactions",
+      "source": "kokimoto_portfolio",
+      "target": "hover_interactions"
+    },
+    {
+      "label": "embodies",
+      "type": "INFERRED",
+      "confidence_score": 0.85,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "design_philosophy",
+      "source": "kokimoto_portfolio",
+      "target": "design_philosophy"
+    },
+    {
+      "label": "built_with",
+      "type": "INFERRED",
+      "confidence_score": 0.75,
+      "_src": "kokimoto_portfolio",
+      "_tgt": "tech_stack",
+      "source": "kokimoto_portfolio",
+      "target": "tech_stack"
+    },
+    {
+      "label": "links_to",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "portfolio_navigation",
+      "_tgt": "portfolio_section",
+      "source": "portfolio_navigation",
+      "target": "portfolio_section"
+    },
+    {
+      "label": "links_to",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "portfolio_navigation",
+      "_tgt": "blog_section",
+      "source": "portfolio_navigation",
+      "target": "blog_section"
+    },
+    {
+      "label": "links_to",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "portfolio_navigation",
+      "_tgt": "about_section",
+      "source": "portfolio_navigation",
+      "target": "about_section"
+    },
+    {
+      "label": "displays",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "hero_section",
+      "_tgt": "ascii_art_hero",
+      "source": "hero_section",
+      "target": "ascii_art_hero"
+    },
+    {
+      "label": "displays",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "portfolio_section",
+      "_tgt": "portfolio_projects",
+      "source": "portfolio_section",
+      "target": "portfolio_projects"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_vue3_console",
+      "source": "blog_section",
+      "target": "blog_post_vue3_console"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_event_sourcing",
+      "source": "blog_section",
+      "target": "blog_post_event_sourcing"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_eval_harness",
+      "source": "blog_section",
+      "target": "blog_post_eval_harness"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_rsc_streaming",
+      "source": "blog_section",
+      "target": "blog_post_rsc_streaming"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_refactoring_delivery",
+      "source": "blog_section",
+      "target": "blog_post_refactoring_delivery"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_node_workers",
+      "source": "blog_section",
+      "target": "blog_post_node_workers"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_framework_notes",
+      "source": "blog_section",
+      "target": "blog_post_framework_notes"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_post_ai_code_review",
+      "source": "blog_section",
+      "target": "blog_post_ai_code_review"
+    },
+    {
+      "label": "uses_taxonomy",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_categories",
+      "source": "blog_section",
+      "target": "blog_categories"
+    },
+    {
+      "label": "uses_taxonomy",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_section",
+      "_tgt": "blog_tags",
+      "source": "blog_section",
+      "target": "blog_tags"
+    },
+    {
+      "label": "tagged_with",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_post_vue3_console",
+      "_tgt": "blog_categories",
+      "source": "blog_post_vue3_console",
+      "target": "blog_categories"
+    },
+    {
+      "label": "tagged_with",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "blog_post_event_sourcing",
+      "_tgt": "blog_categories",
+      "source": "blog_post_event_sourcing",
+      "target": "blog_categories"
+    },
+    {
+      "label": "contains",
+      "type": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "portfolio_projects",
+      "_tgt": "project_ledger_core",
+      "source": "portfolio_projects",
+      "target": "project_ledger_core"
+    },
+    {
+      "relationship": "related_topic",
+      "label": "shares event streaming theme",
+      "confidence_score": 0.8,
+      "_src": "ledger_core_project",
+      "_tgt": "post_p2_event_sourcing",
+      "source": "ledger_core_project",
+      "target": "post_p2_event_sourcing"
+    },
+    {
+      "relationship": "related_concept",
+      "label": "evaluation metrics",
+      "confidence_score": 0.9,
+      "_src": "promptforge_project",
+      "_tgt": "post_p1_eval_coverage",
+      "source": "promptforge_project",
+      "target": "post_p1_eval_coverage"
+    },
+    {
+      "relationship": "related_concept",
+      "label": "console management tool",
+      "confidence_score": 0.85,
+      "_src": "atlas_console_project",
+      "_tgt": "post_p3_operator_console",
+      "source": "atlas_console_project",
+      "target": "post_p3_operator_console"
+    },
+    {
+      "relationship": "related_concept",
+      "label": "edge streaming optimization",
+      "confidence_score": 0.85,
+      "_src": "northwind_edge_project",
+      "_tgt": "post_p4_streaming",
+      "source": "northwind_edge_project",
+      "target": "post_p4_streaming"
+    },
+    {
+      "relationship": "inferred",
+      "label": "workflow organization",
+      "confidence_score": 0.7,
+      "_src": "relay_automation_project",
+      "_tgt": "post_p6_taxonomy",
+      "source": "relay_automation_project",
+      "target": "post_p6_taxonomy"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "blog_publication_workflow",
+      "nodes": [
+        "kostadin_draganov",
+        "blog_section",
+        "blog_categories",
+        "blog_tags"
+      ],
+      "label": "blog_publication_system",
+      "type": "system_workflow"
+    },
+    {
+      "id": "portfolio_showcase_system",
+      "nodes": [
+        "kokimoto_portfolio",
+        "portfolio_section",
+        "portfolio_projects",
+        "sidebar_ui"
+      ],
+      "label": "project_showcase_workflow",
+      "type": "system_workflow"
+    },
+    {
+      "id": "responsive_design_system",
+      "nodes": [
+        "kokimoto_portfolio",
+        "mobile_layout",
+        "sidebar_ui",
+        "hover_interactions"
+      ],
+      "label": "responsive_design_implementation",
+      "type": "design_system"
+    }
+  ]
+}

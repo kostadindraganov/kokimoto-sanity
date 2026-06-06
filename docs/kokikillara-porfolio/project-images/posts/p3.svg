@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p3-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f120f"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p3-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p3-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p3-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p3-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p3-glow)"></rect>
+  
+  <rect x="80" y="120" width="640" height="40" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+  <text x="100" y="146" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="14">› deploy --service atlas</text>
+  <rect x="80" y="200" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="100" y="218" width="120" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="100" y="232" width="80" height="4" rx="2" fill="#db8c4e" opacity="0.7"></rect><rect x="80" y="280" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="100" y="298" width="120" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="100" y="312" width="80" height="4" rx="2" fill="#db8c4e" opacity="0.7"></rect><rect x="80" y="360" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="100" y="378" width="120" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="100" y="392" width="80" height="4" rx="2" fill="#db8c4e" opacity="0.7"></rect>
+  <rect x="300" y="200" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="320" y="218" width="160" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="320" y="232" width="100" height="4" rx="2" fill="#db8c4e" opacity="0.4"></rect><rect x="300" y="280" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="320" y="298" width="160" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="320" y="312" width="100" height="4" rx="2" fill="#db8c4e" opacity="0.6000000000000001"></rect><rect x="300" y="360" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+    <rect x="320" y="378" width="160" height="6" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+    <rect x="320" y="392" width="100" height="4" rx="2" fill="#db8c4e" opacity="0.8"></rect>
+  <rect x="520" y="200" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect><rect x="520" y="280" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect><rect x="520" y="360" width="200" height="60" rx="4" fill="#1a140e" stroke="rgba(236,230,215,0.10)"></rect>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">operator console · v3</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ commands · state · audited</text>
+
+</svg>

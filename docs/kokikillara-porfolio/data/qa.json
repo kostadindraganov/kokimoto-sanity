@@ -1,0 +1,246 @@
+{
+  "suggestions": [
+    "What's your experience?",
+    "What's your stack?",
+    "Are you available?",
+    "Tell me about Ledger Core",
+    "How do you work with AI?",
+    "How can I reach you?"
+  ],
+  "entries": [
+    {
+      "id": "greeting",
+      "k": ["hi", "hey", "hello", "yo", "good morning", "good evening", "sup"],
+      "a": ["Hey — Kostadin's console here.", "Ask me about his experience, stack, projects, writing, or availability. Type `help` for the menu."]
+    },
+    {
+      "id": "help",
+      "k": ["help", "menu", "what can i ask", "commands", "options", "?"],
+      "a": [
+        "You can ask about, or type:",
+        "  experience · stack · projects · ai · blog · availability · contact",
+        "  ledger · atlas · promptforge · relay · northwind",
+        "commands: /home /portfolio /about /blog /contact · ls · whoami · clear"
+      ]
+    },
+    {
+      "id": "experience",
+      "k": ["experience", "years", "how long", "background", "senior", "career", "history"],
+      "a": [
+        "15+ years building and leading production software — almost all of it in the JavaScript ecosystem.",
+        "Roughly the last 9 of those as a tech lead / architect: owning architecture, delivery, and team direction.",
+        "The throughline is judgment — knowing when to add complexity and, more often, when to remove it."
+      ]
+    },
+    {
+      "id": "stack",
+      "k": ["stack", "tech", "technologies", "tools", "languages", "what do you use", "skills"],
+      "a": [
+        "Languages: TypeScript, JavaScript, SQL, some Python and Go.",
+        "Backend: Node.js, gRPC, Kafka, Temporal, PostgreSQL, Redis.",
+        "Frontend: Vue 3, React, Next.js, Astro, Vite, Pinia.",
+        "AI-native: LLM pipelines, evals, agent workflows, RAG, prompt infrastructure."
+      ],
+      "action": { "cmd": "read", "flag": "./about", "route": "about" }
+    },
+    {
+      "id": "node",
+      "k": ["node", "nodejs", "node.js", "backend", "server", "api"],
+      "a": [
+        "Node.js is home turf — services, APIs, workers, and the architecture around them.",
+        "Recent: an event-sourced ledger doing 30M tx/day of headroom, and a typed workflow runtime replacing 200+ cron scripts.",
+        "I care about idempotency, observability, and making the hot path boring."
+      ]
+    },
+    {
+      "id": "vue",
+      "k": ["vue", "vue 3", "pinia", "vuejs"],
+      "a": [
+        "Vue 3 is my default for operator-grade UIs — dense consoles people use eight hours a day.",
+        "Atlas Console is the flagship: five disconnected dashboards unified into one command-driven Vue app with a replayable action log."
+      ]
+    },
+    {
+      "id": "react",
+      "k": ["react", "next", "next.js", "nextjs", "rsc", "edge", "frontend"],
+      "a": [
+        "React + Next.js for product surfaces and anything that benefits from server components.",
+        "Northwind Edge moved a retail storefront to edge-rendered RSC — TTFB went 2.4s → 180ms and peak RPS ×6."
+      ]
+    },
+    {
+      "id": "architecture",
+      "k": ["architecture", "architect", "design", "scale", "system", "scalability", "patterns"],
+      "a": [
+        "Architecture is most of what I do now: drawing the lines that let teams change systems without fear.",
+        "Event sourcing when it earns its keep, boring CRUD when it doesn't. The skill is telling the difference.",
+        "I optimise for the cost of the *next* change, not the elegance of the current one."
+      ]
+    },
+    {
+      "id": "ai",
+      "k": ["ai", "ai-native", "llm", "agent", "agents", "evals", "eval", "machine learning", "ml", "claude", "gpt", "rag"],
+      "a": [
+        "AI-native means agents draft and engineers arbitrate — the loop, not the magic.",
+        "I treat LLM evaluation as a first-class system: versioned prompts, golden datasets, LLM-as-judge scoring, and a cost/latency gate in CI.",
+        "PromptForge is that idea shipped — eval coverage 0 → 92%, token spend −31%."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/promptforge", "route": "portfolio/promptforge" }
+    },
+    {
+      "id": "ledger",
+      "k": ["ledger", "ledger core", "fintech", "double entry", "double-entry", "reconciliation"],
+      "a": [
+        "Ledger Core — re-architected a fintech monolith into an event-sourced double-entry engine.",
+        "Reconciliation drift → 0, p99 write latency −68%, and headroom from 8M to 30M tx/day.",
+        "Role: principal engineer, owning architecture and delivery."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/ledger-core", "route": "portfolio/ledger-core" }
+    },
+    {
+      "id": "atlas",
+      "k": ["atlas", "atlas console", "operator", "fleet", "dashboard", "console"],
+      "a": [
+        "Atlas Console — unified five operator dashboards (2,000+ edge devices) into one Vue 3 command console.",
+        "Task time −54%, full audit replay, optimistic mutations over a typed API."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/atlas-console", "route": "portfolio/atlas-console" }
+    },
+    {
+      "id": "promptforge",
+      "k": ["promptforge", "prompt forge", "evaluation harness", "harness"],
+      "a": [
+        "PromptForge — an evaluation harness for LLM pipelines, wired into CI.",
+        "Versioned prompt sets, golden datasets, LLM-as-judge scoring, and a cost/latency budget gate.",
+        "Eval coverage 0 → 92%, prompt regressions caught pre-merge, −31% token spend."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/promptforge", "route": "portfolio/promptforge" }
+    },
+    {
+      "id": "relay",
+      "k": ["relay", "automation", "cron", "workflow", "platform", "scheduler"],
+      "a": [
+        "Relay — replaced 200+ brittle cron scripts with a typed workflow runtime.",
+        "DAG scheduler, retry/backoff, an AI-assisted incident summarizer, one observability plane. MTTR −73%, on-call pages −60%."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/relay-automation", "route": "portfolio/relay-automation" }
+    },
+    {
+      "id": "northwind",
+      "k": ["northwind", "edge", "storefront", "retail", "performance", "ttfb", "black friday"],
+      "a": [
+        "Northwind Edge — moved a retail storefront to edge-rendered streaming RSC with a stale-while-revalidate cache mesh.",
+        "TTFB 2.4s → 180ms, peak RPS ×6, conversion +11%."
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio/northwind-edge", "route": "portfolio/northwind-edge" }
+    },
+    {
+      "id": "projects",
+      "k": ["projects", "work", "portfolio", "what have you built", "case studies", "examples", "show me"],
+      "a": [
+        "Selected work, each a deployment record with measured impact:",
+        "  ledger-core   · event-sourced double-entry engine",
+        "  atlas-console · operator console for device fleets",
+        "  promptforge   · evaluation harness for LLM pipelines",
+        "  relay         · typed automation platform",
+        "  northwind-edge· edge-rendered storefront"
+      ],
+      "action": { "cmd": "open", "flag": "./portfolio", "route": "portfolio" }
+    },
+    {
+      "id": "blog",
+      "k": ["blog", "writing", "notes", "field notes", "articles", "posts", "read"],
+      "a": [
+        "Field Notes — an engineering feed: AI-native notes, architecture takes, framework observations.",
+        "Recent: \"The eval harness is the product\" and \"Event sourcing without the cult\"."
+      ],
+      "action": { "cmd": "tail", "flag": "./blog", "route": "blog" }
+    },
+    {
+      "id": "availability",
+      "k": ["available", "availability", "hire", "hiring", "freelance", "contract", "work together", "open to", "consulting", "engagement"],
+      "a": [
+        "Status: available for selected collaborations.",
+        "Best fit: architecture, full-stack delivery, and AI-native platform work.",
+        "I take on a small number of engagements at a time so each one gets real attention."
+      ],
+      "action": { "cmd": "connect", "flag": "--with Kostadin", "route": "contact" }
+    },
+    {
+      "id": "rates",
+      "k": ["rate", "rates", "cost", "price", "pricing", "budget", "how much", "fee"],
+      "a": [
+        "Rates depend on scope and engagement shape — let's talk about the problem first.",
+        "Run `connect` and tell me what you're building; I'll come back with a clear proposal."
+      ],
+      "action": { "cmd": "connect", "flag": "--with Kostadin", "route": "contact" }
+    },
+    {
+      "id": "contact",
+      "k": ["contact", "email", "reach", "get in touch", "message", "talk", "connect", "mail"],
+      "a": [
+        "Reach me at kostadin@draganov.dev — or run the connect command and I'll reply within a day or two.",
+        "Also on github.com/kdraganov and linkedin.com/in/kdraganov."
+      ],
+      "action": { "cmd": "connect", "flag": "--with Kostadin", "route": "contact" }
+    },
+    {
+      "id": "location",
+      "k": ["where", "location", "based", "remote", "timezone", "country", "city"],
+      "a": ["Based in Sofia, Bulgaria — work remote across European and US-overlapping hours."]
+    },
+    {
+      "id": "who",
+      "k": ["who are you", "whoami", "about you", "tell me about yourself", "introduce"],
+      "a": [
+        "Kostadin Draganov — Senior Software Developer & AI-Native Engineer.",
+        "15+ years shipping production software; the last stretch focused on architecture and AI-native platforms."
+      ],
+      "action": { "cmd": "read", "flag": "./about", "route": "about" }
+    },
+    {
+      "id": "process",
+      "k": ["how do you work", "process", "approach", "method", "ways of working", "delivery"],
+      "a": [
+        "Make the system legible first — named, typed, observable. Then change becomes cheap and incidents become boring.",
+        "Agents draft, I arbitrate. I delete more than I add. I write the test that would have caught the last incident."
+      ]
+    },
+    {
+      "id": "team",
+      "k": ["team", "lead", "leadership", "mentor", "mentoring", "manage", "people"],
+      "a": [
+        "9+ years leading: front-end architecture, design systems, performance budgets, and mentoring.",
+        "I lead by making the right thing the easy thing — good defaults, clear seams, fast feedback."
+      ]
+    },
+    {
+      "id": "strengths",
+      "k": ["why hire", "why you", "strengths", "good at", "best at", "superpower"],
+      "a": [
+        "Range with depth: I can own an architecture call, untangle a legacy module, or pair with an agent — and pick the right one.",
+        "Senior teams hire me to make change cheap and delivery calm."
+      ]
+    },
+    {
+      "id": "resume",
+      "k": ["resume", "cv", "curriculum", "download"],
+      "a": ["CV is available — grab cv.pdf from the contact page, or ask me anything here directly."],
+      "action": { "cmd": "connect", "flag": "--with Kostadin", "route": "contact" }
+    },
+    {
+      "id": "links",
+      "k": ["github", "linkedin", "social", "profile", "links", "repo"],
+      "a": ["github.com/kdraganov · linkedin.com/in/kdraganov"]
+    },
+    {
+      "id": "thanks",
+      "k": ["thanks", "thank you", "ty", "cheers", "appreciate"],
+      "a": ["Anytime. Run `connect` whenever you want to take it further."]
+    }
+  ],
+  "fallback": [
+    "I don't have a note on that yet.",
+    "Try asking about experience, stack, a specific project, AI workflows, or availability — or type `help`."
+  ]
+}

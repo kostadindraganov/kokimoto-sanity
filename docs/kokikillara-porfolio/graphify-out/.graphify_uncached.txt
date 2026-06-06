@@ -1,0 +1,76 @@
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/DESIGN.md
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-hover-test.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-gen-seq.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/hero-final.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/article-sidebar.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/hero-verify.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-about-square.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-sidebar-cats.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/contact-state.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/verify1.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-pf2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-ascii2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-hero-bigger.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-ascii3.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/03-pf2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-portfolio-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-hover-test.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/footer-zoom.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/pf-revealed.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-portfolio-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-sidebar-full.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/03-portfolio-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/ask-ph.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/03-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/03-hover-test.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-pf2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-footer.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-gen-seq.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-sidebar-full.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-hero-bigger.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-footer.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/mobile.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/ask-ph2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-ascii3.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-ascii2.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/hero-constrained.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/article-figs.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/article-check.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/hero-fixed.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-about-square.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/02-sidebar-cats.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/ascii-revealed.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/screenshots/01-ascii.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/547763770_10238329730443249_5796863400031996675_n.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img9.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img8.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img5.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img4.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img6.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img7.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img3.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img2.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img1.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img14.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img15.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img11.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img10.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img12.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE (1)/public/img13.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/uploads/CODE/public/logo.png
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/ledger-core.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/portrait.jpg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/fieldnotes-cms.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/promptforge.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/atlas-console.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/northwind-edge.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/relay-automation.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p8.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p7.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p6.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p4.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p5.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p1.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p2.svg
+/Users/cyberkoko/Desktop/DEV/kokimoto-sanity-cms/docs/kokikillara-porfolio/project-images/posts/p3.svg
