@@ -4,7 +4,7 @@
  *   2. "inbox"    — dataset: inbox        — contactSubmission only, read-only
  */
 
-import {defineConfig} from 'sanity'
+import {createAuthStore, defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {presentationTool, defineDocuments, defineLocations} from 'sanity/presentation'
@@ -24,6 +24,10 @@ import {structure, inboxStructure, filterHiddenTemplates} from './src/structure'
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
 const previewUrl = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+
+// Auth is project-scoped — both workspaces must share a single auth store
+// instance, otherwise the studio warns about divergent `auth` configurations.
+const sharedAuth = createAuthStore({projectId, dataset: 'production'})
 
 // ---------------------------------------------------------------------------
 // Custom Vercel Deploy widget
@@ -124,7 +128,6 @@ function vercelDeployWidget(options?: VercelDeployWidgetOptions) {
 // union names — the 1A agent will add contactSubmission to the schema index.
 type AnySchemaType = (typeof schemaTypes)[number]
 const allSchemaTypes = schemaTypes as AnySchemaType[]
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const contactSubmissionType = (allSchemaTypes as any[]).find(
   (t: {name: string}) => t.name === 'contactSubmission',
 ) as AnySchemaType | undefined
@@ -132,7 +135,6 @@ const inboxSchemaTypes: AnySchemaType[] = contactSubmissionType ? [contactSubmis
 
 // Schema types for the default workspace — all types except contactSubmission
 // (contact submissions are written only to the private inbox dataset).
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultSchemaTypes = (allSchemaTypes as any[]).filter(
   (t: {name: string}) => t.name !== 'contactSubmission',
 ) as AnySchemaType[]
@@ -144,10 +146,11 @@ const defaultSchemaTypes = (allSchemaTypes as any[]).filter(
 const defaultWorkspace = defineConfig({
   name: 'default',
   title: 'Kokimoto Studio',
-  basePath: '/',
+  basePath: '/studio',
 
   projectId,
   dataset: 'production',
+  auth: sharedAuth,
 
   plugins: [
     structureTool({structure}),
@@ -331,6 +334,7 @@ const inboxWorkspace = defineConfig({
 
   projectId,
   dataset: 'inbox',
+  auth: sharedAuth,
 
   plugins: [
     structureTool({structure: inboxStructure}),

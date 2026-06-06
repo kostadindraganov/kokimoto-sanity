@@ -15,78 +15,12 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: ../sanity.schema.json
-export type PageReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'page'
-}
-
-export type PostReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'post'
-}
-
-export type Link = {
-  _type: 'link'
-  linkType?: 'href' | 'page' | 'post'
-  href?: string
-  page?: PageReference
-  post?: PostReference
-  openInNewTab?: boolean
-}
-
 export type SanityImageAssetReference = {
   _ref: string
   _type: 'reference'
   _weak?: boolean
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
-
-export type CallToAction = {
-  _type: 'callToAction'
-  eyebrow?: string
-  heading: string
-  body?: BlockContentTextOnly
-  button?: Button
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  theme?: 'light' | 'dark'
-  contentAlignment?: 'textFirst' | 'imageFirst'
-}
-
-export type InfoSection = {
-  _type: 'infoSection'
-  heading?: string
-  subheading?: string
-  content?: BlockContent
-}
-
-export type BlockContentTextOnly = Array<{
-  children?: Array<{
-    marks?: Array<string>
-    text?: string
-    _type: 'span'
-    _key: string
-  }>
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-  listItem?: 'bullet' | 'number'
-  markDefs?: Array<{
-    href?: string
-    _type: 'link'
-    _key: string
-  }>
-  level?: number
-  _type: 'block'
-  _key: string
-}>
 
 export type BlockContent = Array<
   | {
@@ -96,14 +30,13 @@ export type BlockContent = Array<
         _type: 'span'
         _key: string
       }>
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+      style?: 'normal' | 'h2' | 'h3' | 'blockquote'
       listItem?: 'bullet' | 'number'
       markDefs?: Array<{
-        linkType?: 'href' | 'page' | 'post'
+        linkType?: 'external' | 'internal'
         href?: string
-        page?: PageReference
-        post?: PostReference
-        openInNewTab?: boolean
+        route?: string
+        newTab?: boolean
         _type: 'link'
         _key: string
       }>
@@ -111,51 +44,25 @@ export type BlockContent = Array<
       _type: 'block'
       _key: string
     }
+  | ({
+      _key: string
+    } & Code)
   | {
       asset?: SanityImageAssetReference
       media?: unknown
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
+      alt?: string
+      caption?: string
       _type: 'image'
       _key: string
     }
 >
 
-export type Button = {
-  _type: 'button'
-  buttonText?: string
-  link?: Link
-}
-
-export type Settings = {
-  _id: string
-  _type: 'settings'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title: string
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal'
-    listItem?: never
-    markDefs?: Array<{
-      linkType?: 'href' | 'page' | 'post'
-      href?: string
-      page?: PageReference
-      post?: PostReference
-      openInNewTab?: boolean
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
+export type Seo = {
+  _type: 'seo'
+  metaTitle?: string
+  metaDescription?: string
   ogImage?: {
     asset?: SanityImageAssetReference
     media?: unknown
@@ -165,6 +72,124 @@ export type Settings = {
     metadataBase?: string
     _type: 'image'
   }
+}
+
+export type QaAction = {
+  _type: 'qaAction'
+  cmd?: string
+  flag?: string
+  route?: Array<string>
+}
+
+export type CtaCommand = {
+  _type: 'ctaCommand'
+  cmd: string
+  flag?: string
+  sub?: string
+  primary?: boolean
+  route?: Array<string>
+}
+
+export type StackRow = {
+  _type: 'stackRow'
+  term?: string
+  items?: Array<string>
+}
+
+export type ValueItem = {
+  _type: 'valueItem'
+  key?: string
+  value?: string
+}
+
+export type TimelineEntry = {
+  _type: 'timelineEntry'
+  years?: string
+  role?: string
+  company?: string
+  body?: string
+  current?: boolean
+}
+
+export type Metric = {
+  _type: 'metric'
+  value?: string
+  unit?: string
+  label?: string
+}
+
+export type QaEntry = {
+  _id: string
+  _type: 'qaEntry'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  keywords: Array<string>
+  answer?: Array<string>
+  action?: QaAction
+  enabled?: boolean
+}
+
+export type Tag = {
+  _id: string
+  _type: 'tag'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
+export type CategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'category'
+}
+
+export type TagReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'tag'
+}
+
+export type Post = {
+  _id: string
+  _type: 'post'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
+  summary: string
+  date: string
+  category: CategoryReference
+  tags?: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  readTime?: number
+  featured?: boolean
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    imagePrompt?: string
+    _type: 'image'
+  }
+  body?: BlockContent
+  seo?: Seo
 }
 
 export type SanityImageCrop = {
@@ -183,64 +208,295 @@ export type SanityImageHotspot = {
   width: number
 }
 
-export type Page = {
+export type Category = {
   _id: string
-  _type: 'page'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name: string
-  slug: Slug
-  heading: string
-  subheading?: string
-  pageBuilder?: Array<
-    | ({
-        _key: string
-      } & CallToAction)
-    | ({
-        _key: string
-      } & InfoSection)
-  >
-}
-
-export type PersonReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'person'
-}
-
-export type Post = {
-  _id: string
-  _type: 'post'
+  _type: 'category'
   _createdAt: string
   _updatedAt: string
   _rev: string
   title: string
   slug: Slug
-  content?: BlockContent
-  excerpt?: string
-  coverImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  }
-  date?: string
-  author?: PersonReference
+  description?: string
 }
 
-export type Person = {
+export type Project = {
   _id: string
-  _type: 'person'
+  _type: 'project'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  firstName: string
-  lastName: string
-  picture: {
+  title: string
+  slug: Slug
+  commit: string
+  status: 'live' | 'shipped' | 'active' | 'archived'
+  tags: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  role?: string
+  problem: string
+  solution: string
+  stack?: Array<string>
+  impact?: Array<string>
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    imagePrompt?: string
+    _type: 'image'
+  }
+  gallery?: Array<{
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    caption?: string
+    _type: 'image'
+    _key: string
+  }>
+  repo?: string
+  live?: string
+  order?: number
+  seo?: Seo
+}
+
+export type ContactPage = {
+  _id: string
+  _type: 'contactPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  formTitle?: string
+  formBadge?: string
+  nameField?: {
+    label?: string
+    placeholder?: string
+  }
+  emailField?: {
+    label?: string
+    placeholder?: string
+  }
+  messageField?: {
+    label?: string
+    placeholder?: string
+  }
+  submitLabel?: string
+  formNote?: string
+  validationMessages?: {
+    nameRequired?: string
+    emailRequired?: string
+    emailInvalid?: string
+    messageRequired?: string
+    messageTooShort?: string
+  }
+  successPanelTitle?: string
+  successLines?: Array<string>
+  successGreeting?: string
+  sendAnotherLabel?: string
+  availabilityHeading?: string
+  availabilityText?: string
+  resumeLabel?: string
+  seo?: Seo
+}
+
+export type BlogPage = {
+  _id: string
+  _type: 'blogPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  featuredPanelTitle?: string
+  featuredBadge?: string
+  readButtonLabel?: string
+  searchPlaceholder?: string
+  noMatchesText?: string
+  loadingText?: string
+  endText?: string
+  archiveLabel?: string
+  archiveNote?: string
+  articleLabels?: {
+    tocHeading?: string
+    searchHeading?: string
+    categoriesHeading?: string
+    tagsHeading?: string
+    recentHeading?: string
+    archivesHeading?: string
+    readingTimeHeading?: string
+    categoryHeading?: string
+    moreNotesHeading?: string
+    backLabel?: string
+    figCaptionPrefix?: string
+  }
+  seo?: Seo
+}
+
+export type PortfolioPage = {
+  _id: string
+  _type: 'portfolioPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  filterLabel?: string
+  matchesText?: string
+  loadingText?: string
+  endText?: string
+  detailLabels?: {
+    deployLogTitle?: string
+    deployLogLines?: Array<string>
+    briefHeading?: string
+    problemLabel?: string
+    solutionLabel?: string
+    stackLabel?: string
+    roleLabel?: string
+    impactHeading?: string
+    interfaceHeading?: string
+    cloneLabel?: string
+    openLiveLabel?: string
+    backLabel?: string
+    prevLabel?: string
+    nextLabel?: string
+  }
+  seo?: Seo
+}
+
+export type AboutPage = {
+  _id: string
+  _type: 'aboutPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  portraitCaption?: string
+  bioParagraphs?: Array<string>
+  experiencePrompt?: string
+  timeline?: Array<
+    {
+      _key: string
+    } & TimelineEntry
+  >
+  valuesPrompt?: string
+  values?: Array<
+    {
+      _key: string
+    } & ValueItem
+  >
+  stackPrompt?: string
+  stackRows?: Array<
+    {
+      _key: string
+    } & StackRow
+  >
+  ctas?: Array<
+    {
+      _key: string
+    } & CtaCommand
+  >
+  seo?: Seo
+}
+
+export type ProjectReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'project'
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  heroWord: string
+  promptCommand?: string
+  toolActions?: Array<string>
+  successLines?: Array<string>
+  portraitCaption?: string
+  featuredHeading?: string
+  featuredProjects?: Array<
+    {
+      _key: string
+    } & ProjectReference
+  >
+  metricsHeading?: string
+  metrics?: Array<
+    {
+      _key: string
+    } & Metric
+  >
+  nextStepsHeading?: string
+  nextSteps?: Array<
+    {
+      _key: string
+    } & CtaCommand
+  >
+  systemCard?: {
+    roleLine?: string
+    kvRows?: Array<
+      {
+        _key: string
+      } & ValueItem
+    >
+  }
+  seo?: Seo
+}
+
+export type Navigation = {
+  _id: string
+  _type: 'navigation'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  items?: Array<{
+    label: string
+    command: string
+    route?: Array<string>
+    _type: 'item'
+    _key: string
+  }>
+}
+
+export type SanityFileAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+}
+
+export type SiteSettings = {
+  _id: string
+  _type: 'siteSettings'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  handle: string
+  headline: string
+  shortBio: string
+  email: string
+  location?: string
+  availability?: string
+  availabilityStatus?: boolean
+  cv?: {
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
+  portrait?: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
@@ -248,12 +504,44 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
+  github?: string
+  linkedin?: string
+  theme?: {
+    accentColor?: Color
+    grain?: boolean
+    heroLayout?: 'boot' | 'split'
+  }
+  askConsole?: {
+    enabled?: boolean
+    heading?: string
+    description?: string
+    placeholder?: string
+    emptyMessage?: string
+    suggestions?: Array<string>
+    fallback?: Array<string>
+  }
+  statusbar?: {
+    branchLabel?: string
+    statusText?: string
+  }
+  uiText?: {
+    notFoundTitle?: string
+    notFoundBody?: string
+    commandPalettePlaceholder?: string
+    mobileConsolePrompt?: string
+    newSessionLabel?: string
+    copyEmailLabel?: string
+  }
+  seo?: Seo
 }
 
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
+export type Color = {
+  _type: 'color'
+  hex?: string
+  alpha?: number
+  hsl?: HslaColor
+  hsv?: HsvaColor
+  rgb?: RgbaColor
 }
 
 export type SanityAssistInstructionTask = {
@@ -393,6 +681,47 @@ export type SanityAssistSchemaTypeField = {
   >
 }
 
+export type Code = {
+  _type: 'code'
+  language?: string
+  filename?: string
+  code?: string
+  highlightedLines?: Array<number>
+}
+
+export type RgbaColor = {
+  _type: 'rgbaColor'
+  r?: number
+  g?: number
+  b?: number
+  a?: number
+}
+
+export type HsvaColor = {
+  _type: 'hsvaColor'
+  h?: number
+  s?: number
+  v?: number
+  a?: number
+}
+
+export type HslaColor = {
+  _type: 'hslaColor'
+  h?: number
+  s?: number
+  l?: number
+  a?: number
+}
+
+export type MediaTag = {
+  _id: string
+  _type: 'media.tag'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: Slug
+}
+
 export type SanityImagePaletteSwatch = {
   _type: 'sanity.imagePaletteSwatch'
   background?: string
@@ -491,23 +820,35 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
-  | PageReference
-  | PostReference
-  | Link
   | SanityImageAssetReference
-  | CallToAction
-  | InfoSection
-  | BlockContentTextOnly
   | BlockContent
-  | Button
-  | Settings
+  | Seo
+  | QaAction
+  | CtaCommand
+  | StackRow
+  | ValueItem
+  | TimelineEntry
+  | Metric
+  | QaEntry
+  | Tag
+  | Slug
+  | CategoryReference
+  | TagReference
+  | Post
   | SanityImageCrop
   | SanityImageHotspot
-  | Page
-  | PersonReference
-  | Post
-  | Person
-  | Slug
+  | Category
+  | Project
+  | ContactPage
+  | BlogPage
+  | PortfolioPage
+  | AboutPage
+  | ProjectReference
+  | HomePage
+  | Navigation
+  | SanityFileAssetReference
+  | SiteSettings
+  | Color
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations
@@ -521,6 +862,11 @@ export type AllSanitySchemaTypes =
   | SanityAssistInstructionFieldRef
   | SanityAssistInstruction
   | SanityAssistSchemaTypeField
+  | Code
+  | RgbaColor
+  | HsvaColor
+  | HslaColor
+  | MediaTag
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -531,216 +877,339 @@ export type AllSanitySchemaTypes =
   | Geopoint
 
 // Source: sanity/lib/queries.ts
-// Variable: SETTINGS_QUERY
-// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{    name,    handle,    headline,    shortBio,    email,    github,    linkedin,    location,    availability,    availabilityStatus,    cv,    portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},    theme{      accentColor,      grain,      heroLayout    },    askConsole{      enabled,      heading,      description,      placeholder,      emptyMessage,      suggestions,      fallback    },    statusbar{      branchLabel,      statusText    },    uiText{      notFoundTitle,      notFoundBody,      commandPalettePlaceholder,      mobileConsolePrompt,      newSessionLabel,      copyEmailLabel    },    seo{      metaTitle,      metaDescription,      ogImage{asset->{_id,url},alt,metadataBase}    }  }
-export type SETTINGS_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: NAVIGATION_QUERY
-// Query: *[_type == "navigation" && _id == "navigation"][0]{    items[]{      label,      command,      route    }  }
-export type NAVIGATION_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: HOME_PAGE_QUERY
-// Query: {    "homePage": *[_type == "homePage" && _id == "homePage"][0]{      heroWord,      promptCommand,      toolActions,      successLines,      portraitCaption,      featuredHeading,      featuredProjects[]->{        title,        "slug": slug.current,        commit,        status,        tags[]->{_id,title,"slug": slug.current},        coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},        role,        problem,        solution,        stack,        impact,        repo,        live,        order      },      metricsHeading,      metrics[]{        _key,        value,        unit,        label      },      nextStepsHeading,      nextSteps[]{        _key,        cmd,        flag,        sub,        primary,        route      },      systemCard{        roleLine,        kvRows[]{_key,key,value}      },      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "siteSettings": *[_type == "siteSettings" && _id == "siteSettings"][0]{      askConsole{        enabled,        heading,        description,        placeholder,        emptyMessage,        suggestions,        fallback      },      theme{accentColor,grain,heroLayout},      portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      name,      handle,      availabilityStatus    }  }
-export type HOME_PAGE_QUERY_RESULT = {
-  homePage: null
-  siteSettings: null
-}
-
-// Source: sanity/lib/queries.ts
-// Variable: ABOUT_PAGE_QUERY
-// Query: *[_type == "aboutPage" && _id == "aboutPage"][0]{    eyebrow,    heading,    portraitCaption,    bioParagraphs,    experiencePrompt,    timeline[]{      _key,      years,      role,      company,      body,      current    },    valuesPrompt,    values[]{      _key,      key,      value    },    stackPrompt,    stackRows[]{      _key,      term,      items    },    ctas[]{      _key,      cmd,      flag,      sub,      primary,      route    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
-export type ABOUT_PAGE_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: PORTFOLIO_PAGE_QUERY
-// Query: *[_type == "portfolioPage" && _id == "portfolioPage"][0]{    eyebrow,    heading,    intro,    filterLabel,    matchesText,    loadingText,    endText,    detailLabels{      deployLogTitle,      deployLogLines,      briefHeading,      problemLabel,      solutionLabel,      stackLabel,      roleLabel,      impactHeading,      interfaceHeading,      cloneLabel,      openLiveLabel,      backLabel,      prevLabel,      nextLabel    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
-export type PORTFOLIO_PAGE_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: PORTFOLIO_PROJECTS_QUERY
-// Query: *[_type == "project"] | order(order asc, _createdAt desc) {    _id,    title,    "slug": slug.current,    commit,    status,    tags[]->{_id,title,"slug": slug.current},    role,    problem,    solution,    stack,    impact,    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},    gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},    repo,    live,    order  }
-export type PORTFOLIO_PROJECTS_QUERY_RESULT = Array<never>
-
-// Source: sanity/lib/queries.ts
-// Variable: PROJECT_BY_SLUG_QUERY
-// Query: {    "project": *[_type == "project" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      commit,      status,      tags[]->{_id,title,"slug": slug.current},      role,      problem,      solution,      stack,      impact,      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},      repo,      live,      order,      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "prev": *[_type == "project" && order < *[_type == "project" && slug.current == $slug][0].order] | order(order desc) [0]{      title,      "slug": slug.current,      order    },    "next": *[_type == "project" && order > *[_type == "project" && slug.current == $slug][0].order] | order(order asc) [0]{      title,      "slug": slug.current,      order    }  }
-export type PROJECT_BY_SLUG_QUERY_RESULT = {
-  project: null
-  prev: null
-  next: null
-}
-
-// Source: sanity/lib/queries.ts
-// Variable: BLOG_PAGE_QUERY
-// Query: *[_type == "blogPage" && _id == "blogPage"][0]{    eyebrow,    heading,    intro,    featuredPanelTitle,    featuredBadge,    readButtonLabel,    searchPlaceholder,    noMatchesText,    loadingText,    endText,    archiveLabel,    archiveNote,    articleLabels{      tocHeading,      searchHeading,      categoriesHeading,      tagsHeading,      recentHeading,      archivesHeading,      readingTimeHeading,      categoryHeading,      moreNotesHeading,      backLabel,      figCaptionPrefix    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
-export type BLOG_PAGE_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: BLOG_POSTS_QUERY
-// Query: *[_type == "post"] | order(date desc) {    _id,    title,    "slug": slug.current,    summary,    date,    category->{_id,title,"slug": slug.current},    tags[]->{_id,title,"slug": slug.current},    readTime,    featured,    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt}  }
-export type BLOG_POSTS_QUERY_RESULT = Array<{
-  _id: string
-  title: string
-  slug: string
-  summary: null
-  date: string | null
-  category: null
-  tags: null
-  readTime: null
-  featured: null
-  coverImage: {
-    asset: {
-      _id: string
-      url: string
-      metadata: {
-        dimensions: SanityImageDimensions | null
-        lqip: string | null
-      } | null
-    } | null
-    hotspot: SanityImageHotspot | null
-    crop: SanityImageCrop | null
-    alt: string | null
-  } | null
-}>
-
-// Source: sanity/lib/queries.ts
-// Variable: POST_BY_SLUG_QUERY
-// Query: {    "post": *[_type == "post" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      summary,      date,      category->{_id,title,"slug": slug.current},      tags[]->{_id,title,"slug": slug.current},      readTime,      featured,      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      body[]{        ...,        _type == "image" => {          ...,          asset->{_id,url,metadata{dimensions,lqip}},          alt,          caption        }      },      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "prev": *[_type == "post" && date < *[_type == "post" && slug.current == $slug][0].date] | order(date desc) [0]{      title,      "slug": slug.current,      date    },    "next": *[_type == "post" && date > *[_type == "post" && slug.current == $slug][0].date] | order(date asc) [0]{      title,      "slug": slug.current,      date    },    "recent": *[_type == "post" && slug.current != $slug] | order(date desc) [0...5]{      title,      "slug": slug.current,      date,      category->{_id,title,"slug": slug.current}    }  }
-export type POST_BY_SLUG_QUERY_RESULT = {
-  post: {
-    _id: string
-    title: string
-    slug: string
-    summary: null
-    date: string | null
-    category: null
-    tags: null
-    readTime: null
-    featured: null
-    coverImage: {
-      asset: {
-        _id: string
-        url: string
-        metadata: {
-          dimensions: SanityImageDimensions | null
-          lqip: string | null
-        } | null
-      } | null
-      hotspot: SanityImageHotspot | null
-      crop: SanityImageCrop | null
-      alt: string | null
-    } | null
-    body: null
-    seo: null
-  } | null
-  prev: {
-    title: string
-    slug: string
-    date: string | null
-  } | null
-  next: {
-    title: string
-    slug: string
-    date: string | null
-  } | null
-  recent: Array<{
-    title: string
-    slug: string
-    date: string | null
-    category: null
-  }>
-}
-
-// Source: sanity/lib/queries.ts
-// Variable: CONTACT_PAGE_QUERY
-// Query: *[_type == "contactPage" && _id == "contactPage"][0]{    eyebrow,    heading,    intro,    formTitle,    formBadge,    nameField{label,placeholder},    emailField{label,placeholder},    messageField{label,placeholder},    submitLabel,    formNote,    validationMessages{      nameRequired,      emailRequired,      emailInvalid,      messageRequired,      messageTooShort    },    successPanelTitle,    successLines,    successGreeting,    sendAnotherLabel,    availabilityHeading,    availabilityText,    resumeLabel,    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
-export type CONTACT_PAGE_QUERY_RESULT = null
-
-// Source: sanity/lib/queries.ts
-// Variable: ALL_TAGS_QUERY
-// Query: *[_type == "tag"] | order(title asc) {    _id,    title,    "slug": slug.current  }
-export type ALL_TAGS_QUERY_RESULT = Array<never>
-
-// Source: sanity/lib/queries.ts
-// Variable: ALL_CATEGORIES_QUERY
-// Query: *[_type == "category"] {    _id,    title,    "slug": slug.current,    "postCount": count(*[_type == "post" && references(^._id)])  }
-export type ALL_CATEGORIES_QUERY_RESULT = Array<never>
-
-// Source: sanity/lib/queries.ts
-// Variable: QA_ENTRIES_QUERY
-// Query: *[_type == "qaEntry" && enabled == true] {    _id,    title,    keywords,    answer,    action{cmd,flag,route}  }
-export type QA_ENTRIES_QUERY_RESULT = Array<never>
-
-// Source: sanity/lib/queries.ts
-// Variable: PROJECTS_SLUG_QUERY
-// Query: *[_type == "project"].slug.current
-export type PROJECTS_SLUG_QUERY_RESULT = Array<never>
-
-// Source: sanity/lib/queries.ts
-// Variable: POSTS_SLUG_QUERY
-// Query: *[_type == "post"].slug.current
-export type POSTS_SLUG_QUERY_RESULT = Array<string>
-
-// Source: sanity/lib/queries.ts
 // Variable: settingsQuery
 // Query: *[_type == "settings"][0]
-export type SettingsQueryResult = {
-  _id: string
-  _type: 'settings'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
+export type SettingsQueryResult = null
+
+// Source: sanity/lib/queries.ts
+// Variable: SETTINGS_QUERY
+// Query: *[_type == "siteSettings"][0]{    name,    headline,    shortBio,    github,    linkedin,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type SETTINGS_QUERY_RESULT = {
+  name: string
+  headline: string
+  shortBio: string
+  github: string | null
+  linkedin: string | null
+  seo: {
+    metaTitle: string | null
+    metaDescription: string | null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: HOME_PAGE_META_QUERY
+// Query: *[_id == "homePage"][0]{    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type HOME_PAGE_META_QUERY_RESULT =
+  | {
+      seo: null
+    }
+  | {
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: ABOUT_PAGE_META_QUERY
+// Query: *[_id == "aboutPage"][0]{    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type ABOUT_PAGE_META_QUERY_RESULT =
+  | {
+      seo: null
+    }
+  | {
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: PORTFOLIO_PAGE_META_QUERY
+// Query: *[_id == "portfolioPage"][0]{    heading,    intro,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type PORTFOLIO_PAGE_META_QUERY_RESULT =
+  | {
+      heading: null
+      intro: null
+      seo: null
+    }
+  | {
+      heading: null
+      intro: null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | {
+      heading: string | null
+      intro: null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | {
+      heading: string | null
+      intro: string | null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: BLOG_PAGE_META_QUERY
+// Query: *[_id == "blogPage"][0]{    heading,    intro,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type BLOG_PAGE_META_QUERY_RESULT =
+  | {
+      heading: null
+      intro: null
+      seo: null
+    }
+  | {
+      heading: null
+      intro: null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | {
+      heading: string | null
+      intro: null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | {
+      heading: string | null
+      intro: string | null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: CONTACT_PAGE_META_QUERY
+// Query: *[_id == "contactPage"][0]{    heading,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type CONTACT_PAGE_META_QUERY_RESULT =
+  | {
+      heading: null
+      seo: null
+    }
+  | {
+      heading: null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | {
+      heading: string | null
+      seo: {
+        metaTitle: string | null
+        metaDescription: string | null
+        ogImage: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          metadataBase?: string
+          _type: 'image'
+        } | null
+      } | null
+    }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: PROJECT_META_QUERY
+// Query: *[_type == "project" && slug.current == $slug][0]{    title,    "slug": slug.current,    _updatedAt,    coverImage,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type PROJECT_META_QUERY_RESULT = {
   title: string
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal'
-    listItem?: never
-    markDefs?: Array<{
-      linkType?: 'href' | 'page' | 'post'
-      href?: string
-      page?: PageReference
-      post?: PostReference
-      openInNewTab?: boolean
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-  ogImage?: {
+  slug: string
+  _updatedAt: string
+  coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
-    metadataBase?: string
+    imagePrompt?: string
     _type: 'image'
   }
+  seo: {
+    metaTitle: string | null
+    metaDescription: string | null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
 } | null
 
 // Source: sanity/lib/queries.ts
-// Variable: sitemapData
-// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
-export type SitemapDataResult = Array<
-  | {
-      slug: string
-      _type: 'page'
-      _updatedAt: string
-    }
-  | {
-      slug: string
-      _type: 'post'
-      _updatedAt: string
-    }
->
+// Variable: POST_META_QUERY
+// Query: *[_type == "post" && slug.current == $slug][0]{    title,    summary,    "slug": slug.current,    date,    _updatedAt,    coverImage,    seo {      metaTitle,      metaDescription,      ogImage    }  }
+export type POST_META_QUERY_RESULT = {
+  title: string
+  summary: string
+  slug: string
+  date: string
+  _updatedAt: string
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    imagePrompt?: string
+    _type: 'image'
+  }
+  seo: {
+    metaTitle: string | null
+    metaDescription: string | null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: PROJECTS_SLUG_QUERY
+// Query: *[_type == "project" && defined(slug.current)]{    "slug": slug.current,    _updatedAt  }
+export type PROJECTS_SLUG_QUERY_RESULT = Array<{
+  slug: string
+  _updatedAt: string
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: POSTS_SLUG_QUERY
+// Query: *[_type == "post" && defined(slug.current)]{    "slug": slug.current,    date,    _updatedAt  }
+export type POSTS_SLUG_QUERY_RESULT = Array<{
+  slug: string
+  date: string
+  _updatedAt: string
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: RSS_POSTS_QUERY
+// Query: *[_type == "post" && defined(slug.current)] | order(date desc) [0...20] {    title,    "slug": slug.current,    summary,    date,    "categoryTitle": category->title  }
+export type RSS_POSTS_QUERY_RESULT = Array<{
+  title: string
+  slug: string
+  summary: string
+  date: string
+  categoryTitle: string
+}>
 
 // Source: sanity/lib/queries.ts
 // Variable: allPostsQuery
@@ -750,28 +1219,18 @@ export type AllPostsQueryResult = Array<{
   status: 'draft' | 'published'
   title: string
   slug: string
-  excerpt: string | null
+  excerpt: null
   coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
+    imagePrompt?: string
     _type: 'image'
-  } | null
+  }
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
+  author: null
 }>
 
 // Source: sanity/lib/queries.ts
@@ -782,93 +1241,41 @@ export type MorePostsQueryResult = Array<{
   status: 'draft' | 'published'
   title: string
   slug: string
-  excerpt: string | null
+  excerpt: null
   coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
+    imagePrompt?: string
     _type: 'image'
-  } | null
+  }
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
+  author: null
 }>
 
 // Source: sanity/lib/queries.ts
 // Variable: postQuery
 // Query: *[_type == "post" && slug.current == $slug] [0] {    content[]{      ...,      markDefs[]{        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },    _id,    "status": select(_originalId in path("drafts.**") => "draft", "published"),    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,    "date": coalesce(date, _updatedAt),    "author": author->{firstName, lastName, picture},  }
 export type PostQueryResult = {
-  content: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-        listItem?: 'bullet' | 'number'
-        markDefs: Array<{
-          linkType?: 'href' | 'page' | 'post'
-          href?: string
-          page: string | null
-          post: string | null
-          openInNewTab?: boolean
-          _type: 'link'
-          _key: string
-        }> | null
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: SanityImageAssetReference
-        media?: unknown
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        _type: 'image'
-        _key: string
-        markDefs: null
-      }
-  > | null
+  content: null
   _id: string
   status: 'draft' | 'published'
   title: string
   slug: string
-  excerpt: string | null
+  excerpt: null
   coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
+    imagePrompt?: string
     _type: 'image'
-  } | null
+  }
   date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
+  author: null
 } | null
 
 // Source: sanity/lib/queries.ts
@@ -881,118 +1288,411 @@ export type PostPagesSlugsResult = Array<{
 // Source: sanity/lib/queries.ts
 // Variable: pagesSlugs
 // Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
-export type PagesSlugsResult = Array<{
-  slug: string
-}>
+export type PagesSlugsResult = Array<never>
 
 // Source: sanity/lib/queries.ts
 // Variable: getPageQuery
 // Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,          link {            ...,            _type == "link" => {              "page": page->slug.current,              "post": post->slug.current            }          }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,            _type == "link" => {              "page": page->slug.current,              "post": post->slug.current            }          }        }      },    },  }
-export type GetPageQueryResult = {
+export type GetPageQueryResult = null
+
+// Source: sanity/lib/queries.ts
+// Variable: sitemapData
+// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
+export type SitemapDataResult = Array<{
+  slug: string
+  _type: 'post'
+  _updatedAt: string
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: siteSettingsQuery
+// Query: *[_type == "siteSettings"][0]{    _id,    siteTitle,    tagline,    bio,    email,    github,    linkedin,    twitter,    "portrait": portrait{asset, alt, crop, hotspot},    "seo": seo{title, description, ogImage},    "theme": theme{accentColor, grain, heroLayout},    "homePage": homePage{      heroHeading,      heroSub,      heroBio,      "metrics": metrics[]{_key, number, unit, label},      "nextSteps": nextSteps[]{_key, cmd, flag, description},      "featuredProjects": featuredProjects[]->{_id, title, "slug": slug.current, commit, status, tags},      "systemCard": systemCard{        "kvRows": kvRows[]{_key, key, value}      }    }  }
+export type SiteSettingsQueryResult = {
   _id: string
-  _type: 'page'
-  name: string
-  slug: Slug
-  heading: string
-  subheading: string | null
-  pageBuilder: Array<
-    | {
-        _key: string
-        _type: 'callToAction'
-        eyebrow?: string
-        heading: string
-        body?: BlockContentTextOnly
-        button: {
-          _type: 'button'
-          buttonText?: string
-          link: {
-            _type: 'link'
-            linkType?: 'href' | 'page' | 'post'
-            href?: string
-            page: string | null
-            post: string | null
-            openInNewTab?: boolean
-          } | null
-        } | null
-        image?: {
-          asset?: SanityImageAssetReference
-          media?: unknown
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          _type: 'image'
-        }
-        theme?: 'dark' | 'light'
-        contentAlignment?: 'imageFirst' | 'textFirst'
-      }
-    | {
-        _key: string
-        _type: 'infoSection'
-        heading?: string
-        subheading?: string
-        content: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>
-                text?: string
-                _type: 'span'
-                _key: string
-              }>
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-              listItem?: 'bullet' | 'number'
-              markDefs: Array<{
-                linkType?: 'href' | 'page' | 'post'
-                href?: string
-                page: string | null
-                post: string | null
-                openInNewTab?: boolean
-                _type: 'link'
-                _key: string
-              }> | null
-              level?: number
-              _type: 'block'
-              _key: string
-            }
-          | {
-              asset?: SanityImageAssetReference
-              media?: unknown
-              hotspot?: SanityImageHotspot
-              crop?: SanityImageCrop
-              _type: 'image'
-              _key: string
-              markDefs: null
-            }
-        > | null
-      }
-  > | null
+  siteTitle: null
+  tagline: null
+  bio: null
+  email: string
+  github: string | null
+  linkedin: string | null
+  twitter: null
+  portrait: {
+    asset: SanityImageAssetReference | null
+    alt: string | null
+    crop: SanityImageCrop | null
+    hotspot: SanityImageHotspot | null
+  } | null
+  seo: {
+    title: null
+    description: null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
+  theme: {
+    accentColor: Color | null
+    grain: boolean | null
+    heroLayout: 'boot' | 'split' | null
+  } | null
+  homePage: null
 } | null
+
+// Source: sanity/lib/queries.ts
+// Variable: navigationQuery
+// Query: *[_type == "navigation"][0]{    "items": items[]{_key, label, command, route}  }
+export type NavigationQueryResult = {
+  items: Array<{
+    _key: string
+    label: string
+    command: string
+    route: Array<string> | null
+  }> | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: homePageQuery
+// Query: *[_type == "homePage"][0]{    _id,    heroHeading,    heroSub,    heroBio,    "metrics": metrics[]{_key, number, unit, label},    "nextSteps": nextSteps[]{_key, cmd, flag, description},    "featuredProjects": featuredProjects[]->{_id, title, "slug": slug.current, commit, status, tags},    "systemCard": systemCard{      "kvRows": kvRows[]{_key, key, value}    }  }
+export type HomePageQueryResult = {
+  _id: string
+  heroHeading: null
+  heroSub: null
+  heroBio: null
+  metrics: Array<{
+    _key: string
+    number: null
+    unit: string | null
+    label: string | null
+  }> | null
+  nextSteps: Array<{
+    _key: string
+    cmd: string
+    flag: string | null
+    description: null
+  }> | null
+  featuredProjects: Array<{
+    _id: string
+    title: string
+    slug: string
+    commit: string
+    status: 'active' | 'archived' | 'live' | 'shipped'
+    tags: Array<
+      {
+        _key: string
+      } & TagReference
+    >
+  }> | null
+  systemCard: {
+    kvRows: Array<{
+      _key: string
+      key: string | null
+      value: string | null
+    }> | null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: aboutPageQuery
+// Query: *[_type == "aboutPage"][0]{    _id,    "bioParagraphs": bioParagraphs[],    "timeline": timeline[]{_key, year, title, company, description, lit},    "values": values[]{_key, title, description},    "stackRows": stackRows[]{_key, category, tools[]},    "ctas": ctas[]{_key, label, href, primary}  }
+export type AboutPageQueryResult = {
+  _id: string
+  bioParagraphs: Array<string> | null
+  timeline: Array<{
+    _key: string
+    year: null
+    title: null
+    company: string | null
+    description: null
+    lit: null
+  }> | null
+  values: Array<{
+    _key: string
+    title: null
+    description: null
+  }> | null
+  stackRows: Array<{
+    _key: string
+    category: null
+    tools: null
+  }> | null
+  ctas: Array<{
+    _key: string
+    label: null
+    href: null
+    primary: boolean | null
+  }> | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: portfolioPageQuery
+// Query: *[_type == "portfolioPage"][0]{    _id,    eyebrow,    heading,    intro,    filterLabel,    "detailLabels": detailLabels{      role,      problem,      solution,      stack,      impact    }  }
+export type PortfolioPageQueryResult = {
+  _id: string
+  eyebrow: string | null
+  heading: string | null
+  intro: string | null
+  filterLabel: string | null
+  detailLabels: {
+    role: null
+    problem: null
+    solution: null
+    stack: null
+    impact: null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: blogPageQuery
+// Query: *[_type == "blogPage"][0]{    _id,    heading,    intro,    "articleLabels": articleLabels{      recentHeading,      featuredLabel,      readMore,      minRead    }  }
+export type BlogPageQueryResult = {
+  _id: string
+  heading: string | null
+  intro: string | null
+  articleLabels: {
+    recentHeading: string | null
+    featuredLabel: null
+    readMore: null
+    minRead: null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: contactPageQuery
+// Query: *[_type == "contactPage"][0]{    _id,    heading,    intro,    "formFields": formFields{      namePlaceholder,      emailPlaceholder,      messagePlaceholder,      submitLabel    },    "validationMessages": validationMessages{      nameRequired,      emailInvalid,      messageRequired    },    "successLines": successLines[]  }
+export type ContactPageQueryResult = {
+  _id: string
+  heading: string | null
+  intro: string | null
+  formFields: null
+  validationMessages: {
+    nameRequired: string | null
+    emailInvalid: string | null
+    messageRequired: string | null
+  } | null
+  successLines: Array<string> | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: projectQuery
+// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    "problem": problem[],    "solution": solution[],    "stack": stack[],    "impact": impact[],    "coverImage": coverImage{asset, alt, crop, hotspot},    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},    repo,    live,    order,    "seo": seo{title, description, ogImage}  }
+export type ProjectQueryResult = {
+  _id: string
+  title: string
+  slug: string
+  commit: string
+  status: 'active' | 'archived' | 'live' | 'shipped'
+  tags: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  role: string | null
+  problem: null
+  solution: null
+  stack: Array<string> | null
+  impact: Array<string> | null
+  coverImage: {
+    asset: SanityImageAssetReference | null
+    alt: string | null
+    crop: SanityImageCrop | null
+    hotspot: SanityImageHotspot | null
+  }
+  gallery: Array<{
+    _key: string
+    image: null
+  }> | null
+  repo: string | null
+  live: string | null
+  order: number | null
+  seo: {
+    title: null
+    description: null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: allProjectsQuery
+// Query: *[_type == "project"] | order(order asc, _createdAt desc){    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    "problem": problem[],    "coverImage": coverImage{asset, alt, crop, hotspot},    repo,    live,    order  }
+export type AllProjectsQueryResult = Array<{
+  _id: string
+  title: string
+  slug: string
+  commit: string
+  status: 'active' | 'archived' | 'live' | 'shipped'
+  tags: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  role: string | null
+  problem: null
+  coverImage: {
+    asset: SanityImageAssetReference | null
+    alt: string | null
+    crop: SanityImageCrop | null
+    hotspot: SanityImageHotspot | null
+  }
+  repo: string | null
+  live: string | null
+  order: number | null
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: portfolioPostQuery
+// Query: *[_type == "post" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    category,    tags,    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot},    body,    "seo": seo{title, description, ogImage}  }
+export type PortfolioPostQueryResult = {
+  _id: string
+  title: string
+  slug: string
+  summary: string
+  date: string
+  category: CategoryReference
+  tags: Array<
+    {
+      _key: string
+    } & TagReference
+  > | null
+  readTime: number | null
+  featured: boolean | null
+  coverImage: {
+    asset: SanityImageAssetReference | null
+    alt: string | null
+    crop: SanityImageCrop | null
+    hotspot: SanityImageHotspot | null
+  }
+  body: BlockContent | null
+  seo: {
+    title: null
+    description: null
+    ogImage: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      metadataBase?: string
+      _type: 'image'
+    } | null
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: qaEntryQuery
+// Query: *[_type == "qaEntry" && enabled != false] | order(_createdAt asc){    _id,    title,    "keywords": keywords[],    "answer": answer[],    "action": action{cmd, flag, route},    enabled  }
+export type QaEntryQueryResult = Array<{
+  _id: string
+  title: string
+  keywords: Array<string>
+  answer: Array<string> | null
+  action: {
+    cmd: string | null
+    flag: string | null
+    route: Array<string> | null
+  } | null
+  enabled: boolean | null
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: BLOG_POSTS_QUERY
+// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){    _id,    _type,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    "category": category->{_id, title, "slug": slug.current},    "tags": tags[]->{_id, title, "slug": slug.current},    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot}  }
+export type BLOG_POSTS_QUERY_RESULT = Array<{
+  _id: string
+  _type: 'post'
+  title: string
+  slug: string
+  summary: string
+  date: string
+  category: {
+    _id: string
+    title: string
+    slug: string
+  }
+  tags: Array<{
+    _id: string
+    title: string
+    slug: string
+  }> | null
+  readTime: number | null
+  featured: boolean | null
+  coverImage: {
+    asset: SanityImageAssetReference | null
+    alt: string | null
+    crop: SanityImageCrop | null
+    hotspot: SanityImageHotspot | null
+  }
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: ALL_CATEGORIES_QUERY
+// Query: *[_type == "category"] | order(title asc){    _id,    title,    "slug": slug.current  }
+export type ALL_CATEGORIES_QUERY_RESULT = Array<{
+  _id: string
+  title: string
+  slug: string
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: RECENT_POSTS_QUERY
+// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...5]{    _id,    title,    "slug": slug.current,    "date": coalesce(date, _updatedAt),    summary,    readTime  }
+export type RECENT_POSTS_QUERY_RESULT = Array<{
+  _id: string
+  title: string
+  slug: string
+  date: string
+  summary: string
+  readTime: number | null
+}>
 
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_type == "siteSettings" && _id == "siteSettings"][0]{\n    name,\n    handle,\n    headline,\n    shortBio,\n    email,\n    github,\n    linkedin,\n    location,\n    availability,\n    availabilityStatus,\n    cv,\n    portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n    theme{\n      accentColor,\n      grain,\n      heroLayout\n    },\n    askConsole{\n      enabled,\n      heading,\n      description,\n      placeholder,\n      emptyMessage,\n      suggestions,\n      fallback\n    },\n    statusbar{\n      branchLabel,\n      statusText\n    },\n    uiText{\n      notFoundTitle,\n      notFoundBody,\n      commandPalettePlaceholder,\n      mobileConsolePrompt,\n      newSessionLabel,\n      copyEmailLabel\n    },\n    seo{\n      metaTitle,\n      metaDescription,\n      ogImage{asset->{_id,url},alt,metadataBase}\n    }\n  }\n': SETTINGS_QUERY_RESULT
-    '\n  *[_type == "navigation" && _id == "navigation"][0]{\n    items[]{\n      label,\n      command,\n      route\n    }\n  }\n': NAVIGATION_QUERY_RESULT
-    '\n  {\n    "homePage": *[_type == "homePage" && _id == "homePage"][0]{\n      heroWord,\n      promptCommand,\n      toolActions,\n      successLines,\n      portraitCaption,\n      featuredHeading,\n      featuredProjects[]->{\n        title,\n        "slug": slug.current,\n        commit,\n        status,\n        tags[]->{_id,title,"slug": slug.current},\n        coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n        role,\n        problem,\n        solution,\n        stack,\n        impact,\n        repo,\n        live,\n        order\n      },\n      metricsHeading,\n      metrics[]{\n        _key,\n        value,\n        unit,\n        label\n      },\n      nextStepsHeading,\n      nextSteps[]{\n        _key,\n        cmd,\n        flag,\n        sub,\n        primary,\n        route\n      },\n      systemCard{\n        roleLine,\n        kvRows[]{_key,key,value}\n      },\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "siteSettings": *[_type == "siteSettings" && _id == "siteSettings"][0]{\n      askConsole{\n        enabled,\n        heading,\n        description,\n        placeholder,\n        emptyMessage,\n        suggestions,\n        fallback\n      },\n      theme{accentColor,grain,heroLayout},\n      portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      name,\n      handle,\n      availabilityStatus\n    }\n  }\n': HOME_PAGE_QUERY_RESULT
-    '\n  *[_type == "aboutPage" && _id == "aboutPage"][0]{\n    eyebrow,\n    heading,\n    portraitCaption,\n    bioParagraphs,\n    experiencePrompt,\n    timeline[]{\n      _key,\n      years,\n      role,\n      company,\n      body,\n      current\n    },\n    valuesPrompt,\n    values[]{\n      _key,\n      key,\n      value\n    },\n    stackPrompt,\n    stackRows[]{\n      _key,\n      term,\n      items\n    },\n    ctas[]{\n      _key,\n      cmd,\n      flag,\n      sub,\n      primary,\n      route\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': ABOUT_PAGE_QUERY_RESULT
-    '\n  *[_type == "portfolioPage" && _id == "portfolioPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    filterLabel,\n    matchesText,\n    loadingText,\n    endText,\n    detailLabels{\n      deployLogTitle,\n      deployLogLines,\n      briefHeading,\n      problemLabel,\n      solutionLabel,\n      stackLabel,\n      roleLabel,\n      impactHeading,\n      interfaceHeading,\n      cloneLabel,\n      openLiveLabel,\n      backLabel,\n      prevLabel,\n      nextLabel\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': PORTFOLIO_PAGE_QUERY_RESULT
-    '\n  *[_type == "project"] | order(order asc, _createdAt desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags[]->{_id,title,"slug": slug.current},\n    role,\n    problem,\n    solution,\n    stack,\n    impact,\n    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n    gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},\n    repo,\n    live,\n    order\n  }\n': PORTFOLIO_PROJECTS_QUERY_RESULT
-    '\n  {\n    "project": *[_type == "project" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      commit,\n      status,\n      tags[]->{_id,title,"slug": slug.current},\n      role,\n      problem,\n      solution,\n      stack,\n      impact,\n      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},\n      repo,\n      live,\n      order,\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "prev": *[_type == "project" && order < *[_type == "project" && slug.current == $slug][0].order] | order(order desc) [0]{\n      title,\n      "slug": slug.current,\n      order\n    },\n    "next": *[_type == "project" && order > *[_type == "project" && slug.current == $slug][0].order] | order(order asc) [0]{\n      title,\n      "slug": slug.current,\n      order\n    }\n  }\n': PROJECT_BY_SLUG_QUERY_RESULT
-    '\n  *[_type == "blogPage" && _id == "blogPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    featuredPanelTitle,\n    featuredBadge,\n    readButtonLabel,\n    searchPlaceholder,\n    noMatchesText,\n    loadingText,\n    endText,\n    archiveLabel,\n    archiveNote,\n    articleLabels{\n      tocHeading,\n      searchHeading,\n      categoriesHeading,\n      tagsHeading,\n      recentHeading,\n      archivesHeading,\n      readingTimeHeading,\n      categoryHeading,\n      moreNotesHeading,\n      backLabel,\n      figCaptionPrefix\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': BLOG_PAGE_QUERY_RESULT
-    '\n  *[_type == "post"] | order(date desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    date,\n    category->{_id,title,"slug": slug.current},\n    tags[]->{_id,title,"slug": slug.current},\n    readTime,\n    featured,\n    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt}\n  }\n': BLOG_POSTS_QUERY_RESULT
-    '\n  {\n    "post": *[_type == "post" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      summary,\n      date,\n      category->{_id,title,"slug": slug.current},\n      tags[]->{_id,title,"slug": slug.current},\n      readTime,\n      featured,\n      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      body[]{\n        ...,\n        _type == "image" => {\n          ...,\n          asset->{_id,url,metadata{dimensions,lqip}},\n          alt,\n          caption\n        }\n      },\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "prev": *[_type == "post" && date < *[_type == "post" && slug.current == $slug][0].date] | order(date desc) [0]{\n      title,\n      "slug": slug.current,\n      date\n    },\n    "next": *[_type == "post" && date > *[_type == "post" && slug.current == $slug][0].date] | order(date asc) [0]{\n      title,\n      "slug": slug.current,\n      date\n    },\n    "recent": *[_type == "post" && slug.current != $slug] | order(date desc) [0...5]{\n      title,\n      "slug": slug.current,\n      date,\n      category->{_id,title,"slug": slug.current}\n    }\n  }\n': POST_BY_SLUG_QUERY_RESULT
-    '\n  *[_type == "contactPage" && _id == "contactPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    formTitle,\n    formBadge,\n    nameField{label,placeholder},\n    emailField{label,placeholder},\n    messageField{label,placeholder},\n    submitLabel,\n    formNote,\n    validationMessages{\n      nameRequired,\n      emailRequired,\n      emailInvalid,\n      messageRequired,\n      messageTooShort\n    },\n    successPanelTitle,\n    successLines,\n    successGreeting,\n    sendAnotherLabel,\n    availabilityHeading,\n    availabilityText,\n    resumeLabel,\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': CONTACT_PAGE_QUERY_RESULT
-    '\n  *[_type == "tag"] | order(title asc) {\n    _id,\n    title,\n    "slug": slug.current\n  }\n': ALL_TAGS_QUERY_RESULT
-    '\n  *[_type == "category"] {\n    _id,\n    title,\n    "slug": slug.current,\n    "postCount": count(*[_type == "post" && references(^._id)])\n  }\n': ALL_CATEGORIES_QUERY_RESULT
-    '\n  *[_type == "qaEntry" && enabled == true] {\n    _id,\n    title,\n    keywords,\n    answer,\n    action{cmd,flag,route}\n  }\n': QA_ENTRIES_QUERY_RESULT
-    '\n  *[_type == "project"].slug.current\n': PROJECTS_SLUG_QUERY_RESULT
-    '\n  *[_type == "post"].slug.current\n': POSTS_SLUG_QUERY_RESULT
     '*[_type == "settings"][0]': SettingsQueryResult
-    '\n  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
+    '\n  *[_type == "siteSettings"][0]{\n    name,\n    headline,\n    shortBio,\n    github,\n    linkedin,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': SETTINGS_QUERY_RESULT
+    '\n  *[_id == "homePage"][0]{\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': HOME_PAGE_META_QUERY_RESULT
+    '\n  *[_id == "aboutPage"][0]{\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': ABOUT_PAGE_META_QUERY_RESULT
+    '\n  *[_id == "portfolioPage"][0]{\n    heading,\n    intro,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': PORTFOLIO_PAGE_META_QUERY_RESULT
+    '\n  *[_id == "blogPage"][0]{\n    heading,\n    intro,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': BLOG_PAGE_META_QUERY_RESULT
+    '\n  *[_id == "contactPage"][0]{\n    heading,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': CONTACT_PAGE_META_QUERY_RESULT
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    title,\n    "slug": slug.current,\n    _updatedAt,\n    coverImage,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': PROJECT_META_QUERY_RESULT
+    '\n  *[_type == "post" && slug.current == $slug][0]{\n    title,\n    summary,\n    "slug": slug.current,\n    date,\n    _updatedAt,\n    coverImage,\n    seo {\n      metaTitle,\n      metaDescription,\n      ogImage\n    }\n  }\n': POST_META_QUERY_RESULT
+    '\n  *[_type == "project" && defined(slug.current)]{\n    "slug": slug.current,\n    _updatedAt\n  }\n': PROJECTS_SLUG_QUERY_RESULT
+    '\n  *[_type == "post" && defined(slug.current)]{\n    "slug": slug.current,\n    date,\n    _updatedAt\n  }\n': POSTS_SLUG_QUERY_RESULT
+    '\n  *[_type == "post" && defined(slug.current)] | order(date desc) [0...20] {\n    title,\n    "slug": slug.current,\n    summary,\n    date,\n    "categoryTitle": category->title\n  }\n': RSS_POSTS_QUERY_RESULT
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': AllPostsQueryResult
     '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': MorePostsQueryResult
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n      ...,\n      markDefs[]{\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    },\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          link {\n            ...,\n            _type == "link" => {\n              "page": page->slug.current,\n              "post": post->slug.current\n            }\n          }\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            _type == "link" => {\n              "page": page->slug.current,\n              "post": post->slug.current\n            }\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
+    '\n  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
+    '\n  *[_type == "siteSettings"][0]{\n    _id,\n    siteTitle,\n    tagline,\n    bio,\n    email,\n    github,\n    linkedin,\n    twitter,\n    "portrait": portrait{asset, alt, crop, hotspot},\n    "seo": seo{title, description, ogImage},\n    "theme": theme{accentColor, grain, heroLayout},\n    "homePage": homePage{\n      heroHeading,\n      heroSub,\n      heroBio,\n      "metrics": metrics[]{_key, number, unit, label},\n      "nextSteps": nextSteps[]{_key, cmd, flag, description},\n      "featuredProjects": featuredProjects[]->{_id, title, "slug": slug.current, commit, status, tags},\n      "systemCard": systemCard{\n        "kvRows": kvRows[]{_key, key, value}\n      }\n    }\n  }\n': SiteSettingsQueryResult
+    '\n  *[_type == "navigation"][0]{\n    "items": items[]{_key, label, command, route}\n  }\n': NavigationQueryResult
+    '\n  *[_type == "homePage"][0]{\n    _id,\n    heroHeading,\n    heroSub,\n    heroBio,\n    "metrics": metrics[]{_key, number, unit, label},\n    "nextSteps": nextSteps[]{_key, cmd, flag, description},\n    "featuredProjects": featuredProjects[]->{_id, title, "slug": slug.current, commit, status, tags},\n    "systemCard": systemCard{\n      "kvRows": kvRows[]{_key, key, value}\n    }\n  }\n': HomePageQueryResult
+    '\n  *[_type == "aboutPage"][0]{\n    _id,\n    "bioParagraphs": bioParagraphs[],\n    "timeline": timeline[]{_key, year, title, company, description, lit},\n    "values": values[]{_key, title, description},\n    "stackRows": stackRows[]{_key, category, tools[]},\n    "ctas": ctas[]{_key, label, href, primary}\n  }\n': AboutPageQueryResult
+    '\n  *[_type == "portfolioPage"][0]{\n    _id,\n    eyebrow,\n    heading,\n    intro,\n    filterLabel,\n    "detailLabels": detailLabels{\n      role,\n      problem,\n      solution,\n      stack,\n      impact\n    }\n  }\n': PortfolioPageQueryResult
+    '\n  *[_type == "blogPage"][0]{\n    _id,\n    heading,\n    intro,\n    "articleLabels": articleLabels{\n      recentHeading,\n      featuredLabel,\n      readMore,\n      minRead\n    }\n  }\n': BlogPageQueryResult
+    '\n  *[_type == "contactPage"][0]{\n    _id,\n    heading,\n    intro,\n    "formFields": formFields{\n      namePlaceholder,\n      emailPlaceholder,\n      messagePlaceholder,\n      submitLabel\n    },\n    "validationMessages": validationMessages{\n      nameRequired,\n      emailInvalid,\n      messageRequired\n    },\n    "successLines": successLines[]\n  }\n': ContactPageQueryResult
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "solution": solution[],\n    "stack": stack[],\n    "impact": impact[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},\n    repo,\n    live,\n    order,\n    "seo": seo{title, description, ogImage}\n  }\n': ProjectQueryResult
+    '\n  *[_type == "project"] | order(order asc, _createdAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    repo,\n    live,\n    order\n  }\n': AllProjectsQueryResult
+    '\n  *[_type == "post" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    category,\n    tags,\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    body,\n    "seo": seo{title, description, ogImage}\n  }\n': PortfolioPostQueryResult
+    '\n  *[_type == "qaEntry" && enabled != false] | order(_createdAt asc){\n    _id,\n    title,\n    "keywords": keywords[],\n    "answer": answer[],\n    "action": action{cmd, flag, route},\n    enabled\n  }\n': QaEntryQueryResult
+    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    "category": category->{_id, title, "slug": slug.current},\n    "tags": tags[]->{_id, title, "slug": slug.current},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot}\n  }\n': BLOG_POSTS_QUERY_RESULT
+    '\n  *[_type == "category"] | order(title asc){\n    _id,\n    title,\n    "slug": slug.current\n  }\n': ALL_CATEGORIES_QUERY_RESULT
+    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...5]{\n    _id,\n    title,\n    "slug": slug.current,\n    "date": coalesce(date, _updatedAt),\n    summary,\n    readTime\n  }\n': RECENT_POSTS_QUERY_RESULT
   }
 }

@@ -452,12 +452,13 @@ export const BLOG_PAGE_QUERY = blogPageQuery
 export const BLOG_POSTS_QUERY = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){
     _id,
+    _type,
     title,
     "slug": slug.current,
     summary,
     "date": coalesce(date, _updatedAt),
-    category,
-    tags,
+    "category": category->{_id, title, "slug": slug.current},
+    "tags": tags[]->{_id, title, "slug": slug.current},
     readTime,
     featured,
     "coverImage": coverImage{asset, alt, crop, hotspot}

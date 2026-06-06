@@ -15,78 +15,12 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: ../sanity.schema.json
-export type PageReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'page'
-}
-
-export type PostReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'post'
-}
-
-export type Link = {
-  _type: 'link'
-  linkType?: 'href' | 'page' | 'post'
-  href?: string
-  page?: PageReference
-  post?: PostReference
-  openInNewTab?: boolean
-}
-
 export type SanityImageAssetReference = {
   _ref: string
   _type: 'reference'
   _weak?: boolean
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
-
-export type CallToAction = {
-  _type: 'callToAction'
-  eyebrow?: string
-  heading: string
-  body?: BlockContentTextOnly
-  button?: Button
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  theme?: 'light' | 'dark'
-  contentAlignment?: 'textFirst' | 'imageFirst'
-}
-
-export type InfoSection = {
-  _type: 'infoSection'
-  heading?: string
-  subheading?: string
-  content?: BlockContent
-}
-
-export type BlockContentTextOnly = Array<{
-  children?: Array<{
-    marks?: Array<string>
-    text?: string
-    _type: 'span'
-    _key: string
-  }>
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-  listItem?: 'bullet' | 'number'
-  markDefs?: Array<{
-    href?: string
-    _type: 'link'
-    _key: string
-  }>
-  level?: number
-  _type: 'block'
-  _key: string
-}>
 
 export type BlockContent = Array<
   | {
@@ -96,14 +30,13 @@ export type BlockContent = Array<
         _type: 'span'
         _key: string
       }>
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+      style?: 'normal' | 'h2' | 'h3' | 'blockquote'
       listItem?: 'bullet' | 'number'
       markDefs?: Array<{
-        linkType?: 'href' | 'page' | 'post'
+        linkType?: 'external' | 'internal'
         href?: string
-        page?: PageReference
-        post?: PostReference
-        openInNewTab?: boolean
+        route?: string
+        newTab?: boolean
         _type: 'link'
         _key: string
       }>
@@ -111,51 +44,25 @@ export type BlockContent = Array<
       _type: 'block'
       _key: string
     }
+  | ({
+      _key: string
+    } & Code)
   | {
       asset?: SanityImageAssetReference
       media?: unknown
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
+      alt?: string
+      caption?: string
       _type: 'image'
       _key: string
     }
 >
 
-export type Button = {
-  _type: 'button'
-  buttonText?: string
-  link?: Link
-}
-
-export type Settings = {
-  _id: string
-  _type: 'settings'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title: string
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal'
-    listItem?: never
-    markDefs?: Array<{
-      linkType?: 'href' | 'page' | 'post'
-      href?: string
-      page?: PageReference
-      post?: PostReference
-      openInNewTab?: boolean
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
+export type Seo = {
+  _type: 'seo'
+  metaTitle?: string
+  metaDescription?: string
   ogImage?: {
     asset?: SanityImageAssetReference
     media?: unknown
@@ -165,6 +72,124 @@ export type Settings = {
     metadataBase?: string
     _type: 'image'
   }
+}
+
+export type QaAction = {
+  _type: 'qaAction'
+  cmd?: string
+  flag?: string
+  route?: Array<string>
+}
+
+export type CtaCommand = {
+  _type: 'ctaCommand'
+  cmd: string
+  flag?: string
+  sub?: string
+  primary?: boolean
+  route?: Array<string>
+}
+
+export type StackRow = {
+  _type: 'stackRow'
+  term?: string
+  items?: Array<string>
+}
+
+export type ValueItem = {
+  _type: 'valueItem'
+  key?: string
+  value?: string
+}
+
+export type TimelineEntry = {
+  _type: 'timelineEntry'
+  years?: string
+  role?: string
+  company?: string
+  body?: string
+  current?: boolean
+}
+
+export type Metric = {
+  _type: 'metric'
+  value?: string
+  unit?: string
+  label?: string
+}
+
+export type QaEntry = {
+  _id: string
+  _type: 'qaEntry'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  keywords: Array<string>
+  answer?: Array<string>
+  action?: QaAction
+  enabled?: boolean
+}
+
+export type Tag = {
+  _id: string
+  _type: 'tag'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
+export type CategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'category'
+}
+
+export type TagReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'tag'
+}
+
+export type Post = {
+  _id: string
+  _type: 'post'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
+  summary: string
+  date: string
+  category: CategoryReference
+  tags?: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  readTime?: number
+  featured?: boolean
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    imagePrompt?: string
+    _type: 'image'
+  }
+  body?: BlockContent
+  seo?: Seo
 }
 
 export type SanityImageCrop = {
@@ -183,64 +208,295 @@ export type SanityImageHotspot = {
   width: number
 }
 
-export type Page = {
+export type Category = {
   _id: string
-  _type: 'page'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name: string
-  slug: Slug
-  heading: string
-  subheading?: string
-  pageBuilder?: Array<
-    | ({
-        _key: string
-      } & CallToAction)
-    | ({
-        _key: string
-      } & InfoSection)
-  >
-}
-
-export type PersonReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'person'
-}
-
-export type Post = {
-  _id: string
-  _type: 'post'
+  _type: 'category'
   _createdAt: string
   _updatedAt: string
   _rev: string
   title: string
   slug: Slug
-  content?: BlockContent
-  excerpt?: string
-  coverImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  }
-  date?: string
-  author?: PersonReference
+  description?: string
 }
 
-export type Person = {
+export type Project = {
   _id: string
-  _type: 'person'
+  _type: 'project'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  firstName: string
-  lastName: string
-  picture: {
+  title: string
+  slug: Slug
+  commit: string
+  status: 'live' | 'shipped' | 'active' | 'archived'
+  tags: Array<
+    {
+      _key: string
+    } & TagReference
+  >
+  role?: string
+  problem: string
+  solution: string
+  stack?: Array<string>
+  impact?: Array<string>
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    imagePrompt?: string
+    _type: 'image'
+  }
+  gallery?: Array<{
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    caption?: string
+    _type: 'image'
+    _key: string
+  }>
+  repo?: string
+  live?: string
+  order?: number
+  seo?: Seo
+}
+
+export type ContactPage = {
+  _id: string
+  _type: 'contactPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  formTitle?: string
+  formBadge?: string
+  nameField?: {
+    label?: string
+    placeholder?: string
+  }
+  emailField?: {
+    label?: string
+    placeholder?: string
+  }
+  messageField?: {
+    label?: string
+    placeholder?: string
+  }
+  submitLabel?: string
+  formNote?: string
+  validationMessages?: {
+    nameRequired?: string
+    emailRequired?: string
+    emailInvalid?: string
+    messageRequired?: string
+    messageTooShort?: string
+  }
+  successPanelTitle?: string
+  successLines?: Array<string>
+  successGreeting?: string
+  sendAnotherLabel?: string
+  availabilityHeading?: string
+  availabilityText?: string
+  resumeLabel?: string
+  seo?: Seo
+}
+
+export type BlogPage = {
+  _id: string
+  _type: 'blogPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  featuredPanelTitle?: string
+  featuredBadge?: string
+  readButtonLabel?: string
+  searchPlaceholder?: string
+  noMatchesText?: string
+  loadingText?: string
+  endText?: string
+  archiveLabel?: string
+  archiveNote?: string
+  articleLabels?: {
+    tocHeading?: string
+    searchHeading?: string
+    categoriesHeading?: string
+    tagsHeading?: string
+    recentHeading?: string
+    archivesHeading?: string
+    readingTimeHeading?: string
+    categoryHeading?: string
+    moreNotesHeading?: string
+    backLabel?: string
+    figCaptionPrefix?: string
+  }
+  seo?: Seo
+}
+
+export type PortfolioPage = {
+  _id: string
+  _type: 'portfolioPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  filterLabel?: string
+  matchesText?: string
+  loadingText?: string
+  endText?: string
+  detailLabels?: {
+    deployLogTitle?: string
+    deployLogLines?: Array<string>
+    briefHeading?: string
+    problemLabel?: string
+    solutionLabel?: string
+    stackLabel?: string
+    roleLabel?: string
+    impactHeading?: string
+    interfaceHeading?: string
+    cloneLabel?: string
+    openLiveLabel?: string
+    backLabel?: string
+    prevLabel?: string
+    nextLabel?: string
+  }
+  seo?: Seo
+}
+
+export type AboutPage = {
+  _id: string
+  _type: 'aboutPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  eyebrow?: string
+  heading?: string
+  portraitCaption?: string
+  bioParagraphs?: Array<string>
+  experiencePrompt?: string
+  timeline?: Array<
+    {
+      _key: string
+    } & TimelineEntry
+  >
+  valuesPrompt?: string
+  values?: Array<
+    {
+      _key: string
+    } & ValueItem
+  >
+  stackPrompt?: string
+  stackRows?: Array<
+    {
+      _key: string
+    } & StackRow
+  >
+  ctas?: Array<
+    {
+      _key: string
+    } & CtaCommand
+  >
+  seo?: Seo
+}
+
+export type ProjectReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'project'
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  heroWord: string
+  promptCommand?: string
+  toolActions?: Array<string>
+  successLines?: Array<string>
+  portraitCaption?: string
+  featuredHeading?: string
+  featuredProjects?: Array<
+    {
+      _key: string
+    } & ProjectReference
+  >
+  metricsHeading?: string
+  metrics?: Array<
+    {
+      _key: string
+    } & Metric
+  >
+  nextStepsHeading?: string
+  nextSteps?: Array<
+    {
+      _key: string
+    } & CtaCommand
+  >
+  systemCard?: {
+    roleLine?: string
+    kvRows?: Array<
+      {
+        _key: string
+      } & ValueItem
+    >
+  }
+  seo?: Seo
+}
+
+export type Navigation = {
+  _id: string
+  _type: 'navigation'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  items?: Array<{
+    label: string
+    command: string
+    route?: Array<string>
+    _type: 'item'
+    _key: string
+  }>
+}
+
+export type SanityFileAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+}
+
+export type SiteSettings = {
+  _id: string
+  _type: 'siteSettings'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  handle: string
+  headline: string
+  shortBio: string
+  email: string
+  location?: string
+  availability?: string
+  availabilityStatus?: boolean
+  cv?: {
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
+  portrait?: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
@@ -248,12 +504,44 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
+  github?: string
+  linkedin?: string
+  theme?: {
+    accentColor?: Color
+    grain?: boolean
+    heroLayout?: 'boot' | 'split'
+  }
+  askConsole?: {
+    enabled?: boolean
+    heading?: string
+    description?: string
+    placeholder?: string
+    emptyMessage?: string
+    suggestions?: Array<string>
+    fallback?: Array<string>
+  }
+  statusbar?: {
+    branchLabel?: string
+    statusText?: string
+  }
+  uiText?: {
+    notFoundTitle?: string
+    notFoundBody?: string
+    commandPalettePlaceholder?: string
+    mobileConsolePrompt?: string
+    newSessionLabel?: string
+    copyEmailLabel?: string
+  }
+  seo?: Seo
 }
 
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
+export type Color = {
+  _type: 'color'
+  hex?: string
+  alpha?: number
+  hsl?: HslaColor
+  hsv?: HsvaColor
+  rgb?: RgbaColor
 }
 
 export type SanityAssistInstructionTask = {
@@ -393,6 +681,47 @@ export type SanityAssistSchemaTypeField = {
   >
 }
 
+export type Code = {
+  _type: 'code'
+  language?: string
+  filename?: string
+  code?: string
+  highlightedLines?: Array<number>
+}
+
+export type RgbaColor = {
+  _type: 'rgbaColor'
+  r?: number
+  g?: number
+  b?: number
+  a?: number
+}
+
+export type HsvaColor = {
+  _type: 'hsvaColor'
+  h?: number
+  s?: number
+  v?: number
+  a?: number
+}
+
+export type HslaColor = {
+  _type: 'hslaColor'
+  h?: number
+  s?: number
+  l?: number
+  a?: number
+}
+
+export type MediaTag = {
+  _id: string
+  _type: 'media.tag'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: Slug
+}
+
 export type SanityImagePaletteSwatch = {
   _type: 'sanity.imagePaletteSwatch'
   background?: string
@@ -491,23 +820,35 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
-  | PageReference
-  | PostReference
-  | Link
   | SanityImageAssetReference
-  | CallToAction
-  | InfoSection
-  | BlockContentTextOnly
   | BlockContent
-  | Button
-  | Settings
+  | Seo
+  | QaAction
+  | CtaCommand
+  | StackRow
+  | ValueItem
+  | TimelineEntry
+  | Metric
+  | QaEntry
+  | Tag
+  | Slug
+  | CategoryReference
+  | TagReference
+  | Post
   | SanityImageCrop
   | SanityImageHotspot
-  | Page
-  | PersonReference
-  | Post
-  | Person
-  | Slug
+  | Category
+  | Project
+  | ContactPage
+  | BlogPage
+  | PortfolioPage
+  | AboutPage
+  | ProjectReference
+  | HomePage
+  | Navigation
+  | SanityFileAssetReference
+  | SiteSettings
+  | Color
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations
@@ -521,6 +862,11 @@ export type AllSanitySchemaTypes =
   | SanityAssistInstructionFieldRef
   | SanityAssistInstruction
   | SanityAssistSchemaTypeField
+  | Code
+  | RgbaColor
+  | HsvaColor
+  | HslaColor
+  | MediaTag
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
