@@ -1,7 +1,6 @@
 import {type QueryParams} from 'next-sanity'
 import {defineLive, resolvePerspectiveFromCookies, type LivePerspective} from 'next-sanity/live'
 import {cookies, draftMode} from 'next/headers'
-
 import {client} from '@/sanity/lib/client'
 import {token} from '@/sanity/lib/token'
 
@@ -24,22 +23,18 @@ export interface DynamicFetchOptions {
   stega: boolean
 }
 
-/**
- * Resolves `perspective` and `stega` outside any `'use cache'` boundary so they
- * can be passed in as plain props (three-layer Page → Dynamic → Cached pattern).
- */
+/** Resolves perspective/stega outside 'use cache' boundaries — call from Layer 2 components */
 export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
   const {isEnabled: isDraftMode} = await draftMode()
   if (!isDraftMode) {
     return {perspective: 'published', stega: false}
   }
-
   const jar = await cookies()
   const perspective = await resolvePerspectiveFromCookies({cookies: jar})
   return {perspective: perspective ?? 'drafts', stega: true}
 }
 
-// For usage within `generateStaticParams`
+/** For use inside generateStaticParams only — stega/perspective are hardcoded */
 export async function sanityFetchStaticParams<const QueryString extends string>({
   query,
   params = {},
@@ -52,7 +47,7 @@ export async function sanityFetchStaticParams<const QueryString extends string>(
   return {data}
 }
 
-// For usage within `generateMetadata`, `generateViewport`, `sitemap.ts`, `robots.ts`, etc.
+/** For use inside generateMetadata, sitemap.ts, robots.ts, etc. — stega never wanted there */
 export async function sanityFetchMetadata<const QueryString extends string>({
   query,
   params = {},

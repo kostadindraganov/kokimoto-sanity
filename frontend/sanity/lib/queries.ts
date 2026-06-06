@@ -556,85 +556,94 @@ export const pagesSlugs = defineQuery(`
   {"slug": slug.current}
 `)
 
-/* ============================================================
-   Portfolio (kokikillara) queries
-   ============================================================ */
+// ─── Blog / Portfolio queries ──────────────────────────────────────────────
 
-const projectListFields = /* groq */ `
-  _id,
-  _type,
-  title,
-  "slug": slug.current,
-  commit,
-  status,
-  problem,
-  coverImage,
-  "tags": tags[]{_key, ...(@->{_id, title, "slug": slug.current})},
-  order,
-`
-
-export const PORTFOLIO_PAGE_QUERY = defineQuery(`
-  *[_type == "portfolioPage"][0]{
+export const BLOG_PAGE_QUERY = defineQuery(`
+  *[_type == "blogPage"][0]{
     _id,
-    _type,
     eyebrow,
     heading,
     intro,
-    filterLabel,
-    matchesText,
+    featuredPanelTitle,
+    featuredBadge,
+    readButtonLabel,
+    searchPlaceholder,
+    noMatchesText,
     loadingText,
     endText,
-    detailLabels{
-      deployLogTitle,
-      deployLogLines,
-      briefHeading,
-      problemLabel,
-      solutionLabel,
-      stackLabel,
-      roleLabel,
-      impactHeading,
-      interfaceHeading,
-      cloneLabel,
-      openLiveLabel,
+    archiveLabel,
+    archiveNote,
+    articleLabels{
+      tocHeading,
+      searchHeading,
+      categoriesHeading,
+      tagsHeading,
+      recentHeading,
+      archivesHeading,
+      readingTimeHeading,
+      categoryHeading,
+      moreNotesHeading,
       backLabel,
-      prevLabel,
-      nextLabel
+      figCaptionPrefix
     },
-    seo{metaTitle, metaDescription, ogImage}
+    seo
   }
 `)
 
-export const PORTFOLIO_PROJECTS_QUERY = defineQuery(`
-  *[_type == "project" && defined(slug.current)] | order(order asc, _createdAt desc){
-    ${projectListFields}
+export const BLOG_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
+    _id,
+    _type,
+    title,
+    "slug": slug.current,
+    summary,
+    date,
+    featured,
+    readTime,
+    "category": category->{_id, title, "slug": slug.current},
+    "tags": tags[]->{_id, title, "slug": slug.current},
+    coverImage
   }
 `)
 
-export const PORTFOLIO_TAGS_QUERY = defineQuery(`
-  *[_type == "tag" && count(*[_type == "project" && references(^._id)]) > 0] | order(title asc){
+export const POST_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "post" && slug.current == $slug][0]{
+    _id,
+    _type,
+    title,
+    "slug": slug.current,
+    summary,
+    date,
+    featured,
+    readTime,
+    "category": category->{_id, title, "slug": slug.current},
+    "tags": tags[]->{_id, title, "slug": slug.current},
+    coverImage,
+    body,
+    seo
+  }
+`)
+
+export const ALL_CATEGORIES_QUERY = defineQuery(`
+  *[_type == "category"] | order(title asc) {
     _id,
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    description,
+    "count": count(*[_type == "post" && references(^._id)])
   }
 `)
 
-export const PROJECT_BY_SLUG_QUERY = defineQuery(`
-  *[_type == "project" && slug.current == $slug][0]{
-    ${projectListFields}
-    role,
-    solution,
-    stack,
-    impact,
-    repo,
-    live,
-    gallery[]{_key, asset, hotspot, crop, alt, caption},
-    seo{metaTitle, metaDescription, ogImage},
-    "prev": *[_type == "project" && defined(slug.current) && order < ^.order] | order(order desc)[0]{title, "slug": slug.current},
-    "next": *[_type == "project" && defined(slug.current) && order > ^.order] | order(order asc)[0]{title, "slug": slug.current}
-  }
-`)
-
-export const PROJECTS_SLUG_QUERY = defineQuery(`
-  *[_type == "project" && defined(slug.current)]
+export const POSTS_SLUG_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)]
   {"slug": slug.current}
+`)
+
+export const RECENT_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc) [0...5] {
+    _id,
+    title,
+    "slug": slug.current,
+    date
+  }
 `)
