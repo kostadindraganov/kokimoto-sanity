@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p4-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d110f"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p4-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p4-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p4-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p4-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p4-glow)"></rect>
+  
+  <path d="M 60 150 Q 180 120 300 150 T 540 150 T 740 150" fill="none" stroke="rgba(236,230,215,0.18)" stroke-width="1" opacity="0.6"></path><path d="M 60 200 Q 240 170 360 200 T 600 200 T 740 200" fill="none" stroke="rgba(236,230,215,0.18)" stroke-width="1" opacity="0.6"></path><path d="M 60 250 Q 300 220 420 250 T 660 250 T 740 250" fill="none" stroke="#db8c4e" stroke-width="2" opacity="1"></path><path d="M 60 300 Q 360 270 480 300 T 720 300 T 740 300" fill="none" stroke="rgba(236,230,215,0.18)" stroke-width="1" opacity="0.6"></path><path d="M 60 350 Q 420 320 540 350 T 780 350 T 740 350" fill="none" stroke="rgba(236,230,215,0.18)" stroke-width="1" opacity="0.6"></path><path d="M 60 400 Q 480 370 600 400 T 840 400 T 740 400" fill="none" stroke="rgba(236,230,215,0.18)" stroke-width="1" opacity="0.6"></path>
+  <circle cx="60" cy="280" r="14" fill="#db8c4e"></circle>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">streaming · 180ms TTFB</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ edge · RSC · cache mesh</text>
+
+</svg>
