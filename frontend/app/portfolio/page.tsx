@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
-import {HOME_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
+import {PORTFOLIO_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
 
@@ -12,24 +12,28 @@ export async function generateMetadata(): Promise<Metadata> {
   const {perspective} = await getDynamicFetchOptions()
   const [{data: rawSettings}, {data: rawPage}] = await Promise.all([
     sanityFetchMetadata({query: SETTINGS_QUERY, perspective}),
-    sanityFetchMetadata({query: HOME_PAGE_META_QUERY, perspective}),
+    sanityFetchMetadata({query: PORTFOLIO_PAGE_META_QUERY, perspective}),
   ])
   const settings = rawSettings as SiteSettingsSeoData | null
   const page = rawPage as PageSeoData | null
 
   const title = page?.seo?.metaTitle || settings?.seo?.metaTitle || settings?.name || ''
   const description =
-    page?.seo?.metaDescription || settings?.seo?.metaDescription || settings?.shortBio || ''
+    page?.seo?.metaDescription ||
+    settings?.seo?.metaDescription ||
+    page?.intro ||
+    settings?.shortBio ||
+    ''
   const ogImage =
     resolveOpenGraphImage(page?.seo?.ogImage) || resolveOpenGraphImage(settings?.seo?.ogImage)
 
   return {
     title,
     description,
-    alternates: {canonical: SITE_URL + '/'},
+    alternates: {canonical: SITE_URL + '/portfolio'},
     openGraph: {
       type: 'website',
-      url: SITE_URL + '/',
+      url: SITE_URL + '/portfolio',
       title,
       description,
       images: ogImage ? [ogImage] : [],
@@ -44,32 +48,22 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-function PersonJsonLd({
+function CollectionPageJsonLd({
   name,
   url,
-  jobTitle,
-  github,
-  linkedin,
+  description,
 }: {
   name: string
   url: string
-  jobTitle: string
-  github?: string | null
-  linkedin?: string | null
+  description?: string
 }) {
-  const sameAs: string[] = []
-  if (github) sameAs.push(github)
-  if (linkedin) sameAs.push(linkedin)
-
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
+    '@type': 'CollectionPage',
     name,
     url,
-    jobTitle,
-    ...(sameAs.length > 0 ? {sameAs} : {}),
+    ...(description ? {description} : {}),
   }
-
   return (
     <script
       type="application/ld+json"
@@ -78,23 +72,19 @@ function PersonJsonLd({
   )
 }
 
-export default async function HomePage() {
+export default async function PortfolioPage() {
   const {perspective} = await getDynamicFetchOptions()
-  const {data: rawSettings} = await sanityFetchMetadata({query: SETTINGS_QUERY, perspective})
-  const settings = rawSettings as SiteSettingsSeoData | null
+  const {data: rawPage} = await sanityFetchMetadata({query: PORTFOLIO_PAGE_META_QUERY, perspective})
+  const page = rawPage as PageSeoData | null
 
   return (
     <>
-      {settings?.name && (
-        <PersonJsonLd
-          name={settings.name}
-          url={SITE_URL + '/'}
-          jobTitle={settings.headline || ''}
-          github={settings.github}
-          linkedin={settings.linkedin}
-        />
-      )}
-      {/* Phase 4 will replace this with the full home page UI */}
+      <CollectionPageJsonLd
+        name={page?.heading || 'Portfolio'}
+        url={SITE_URL + '/portfolio'}
+        description={page?.intro || undefined}
+      />
+      {/* Phase 4 will replace this with the full portfolio page UI */}
       <main />
     </>
   )

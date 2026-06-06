@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
-import {HOME_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
+import {CONTACT_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
 
@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const {perspective} = await getDynamicFetchOptions()
   const [{data: rawSettings}, {data: rawPage}] = await Promise.all([
     sanityFetchMetadata({query: SETTINGS_QUERY, perspective}),
-    sanityFetchMetadata({query: HOME_PAGE_META_QUERY, perspective}),
+    sanityFetchMetadata({query: CONTACT_PAGE_META_QUERY, perspective}),
   ])
   const settings = rawSettings as SiteSettingsSeoData | null
   const page = rawPage as PageSeoData | null
@@ -26,10 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {canonical: SITE_URL + '/'},
+    alternates: {canonical: SITE_URL + '/contact'},
     openGraph: {
       type: 'website',
-      url: SITE_URL + '/',
+      url: SITE_URL + '/contact',
       title,
       description,
       images: ogImage ? [ogImage] : [],
@@ -44,58 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-function PersonJsonLd({
-  name,
-  url,
-  jobTitle,
-  github,
-  linkedin,
-}: {
-  name: string
-  url: string
-  jobTitle: string
-  github?: string | null
-  linkedin?: string | null
-}) {
-  const sameAs: string[] = []
-  if (github) sameAs.push(github)
-  if (linkedin) sameAs.push(linkedin)
-
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name,
-    url,
-    jobTitle,
-    ...(sameAs.length > 0 ? {sameAs} : {}),
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{__html: JSON.stringify(schema)}}
-    />
-  )
-}
-
-export default async function HomePage() {
-  const {perspective} = await getDynamicFetchOptions()
-  const {data: rawSettings} = await sanityFetchMetadata({query: SETTINGS_QUERY, perspective})
-  const settings = rawSettings as SiteSettingsSeoData | null
-
-  return (
-    <>
-      {settings?.name && (
-        <PersonJsonLd
-          name={settings.name}
-          url={SITE_URL + '/'}
-          jobTitle={settings.headline || ''}
-          github={settings.github}
-          linkedin={settings.linkedin}
-        />
-      )}
-      {/* Phase 4 will replace this with the full home page UI */}
-      <main />
-    </>
-  )
+export default async function ContactPage() {
+  // Phase 4 will replace this with the full contact page UI
+  return <main />
 }

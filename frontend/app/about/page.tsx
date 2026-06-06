@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
-import {HOME_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
+import {ABOUT_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
 
@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const {perspective} = await getDynamicFetchOptions()
   const [{data: rawSettings}, {data: rawPage}] = await Promise.all([
     sanityFetchMetadata({query: SETTINGS_QUERY, perspective}),
-    sanityFetchMetadata({query: HOME_PAGE_META_QUERY, perspective}),
+    sanityFetchMetadata({query: ABOUT_PAGE_META_QUERY, perspective}),
   ])
   const settings = rawSettings as SiteSettingsSeoData | null
   const page = rawPage as PageSeoData | null
@@ -26,10 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {canonical: SITE_URL + '/'},
+    alternates: {canonical: SITE_URL + '/about'},
     openGraph: {
       type: 'website',
-      url: SITE_URL + '/',
+      url: SITE_URL + '/about',
       title,
       description,
       images: ogImage ? [ogImage] : [],
@@ -78,7 +78,7 @@ function PersonJsonLd({
   )
 }
 
-export default async function HomePage() {
+export default async function AboutPage() {
   const {perspective} = await getDynamicFetchOptions()
   const {data: rawSettings} = await sanityFetchMetadata({query: SETTINGS_QUERY, perspective})
   const settings = rawSettings as SiteSettingsSeoData | null
@@ -94,7 +94,7 @@ export default async function HomePage() {
           linkedin={settings.linkedin}
         />
       )}
-      {/* Phase 4 will replace this with the full home page UI */}
+      {/* Phase 4 will replace this with the full about page UI */}
       <main />
     </>
   )
