@@ -1,6 +1,7 @@
 import {type QueryParams} from 'next-sanity'
 import {defineLive, resolvePerspectiveFromCookies, type LivePerspective} from 'next-sanity/live'
 import {cookies, draftMode} from 'next/headers'
+
 import {client} from '@/sanity/lib/client'
 import {token} from '@/sanity/lib/token'
 
@@ -24,9 +25,8 @@ export interface DynamicFetchOptions {
 }
 
 /**
- * Resolves perspective and stega outside the 'use cache' boundary.
- * Must be called in a component inside a <Suspense> boundary (or a route
- * with a sibling loading.tsx) so it doesn't block the static shell.
+ * Resolves `perspective` and `stega` outside any `'use cache'` boundary so they
+ * can be passed in as plain props (three-layer Page → Dynamic → Cached pattern).
  */
 export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
   const {isEnabled: isDraftMode} = await draftMode()
@@ -39,11 +39,7 @@ export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
   return {perspective: perspective ?? 'drafts', stega: true}
 }
 
-/**
- * For usage within generateStaticParams only.
- * stega is never wanted (data feeds route params) and perspective cookies
- * aren't available at build time, so both are hardcoded.
- */
+// For usage within `generateStaticParams`
 export async function sanityFetchStaticParams<const QueryString extends string>({
   query,
   params = {},
@@ -56,12 +52,7 @@ export async function sanityFetchStaticParams<const QueryString extends string>(
   return {data}
 }
 
-/**
- * For usage within generateMetadata, generateViewport, sitemap.ts, robots.ts,
- * opengraph-image.tsx, etc. Never includes stega (not wanted in meta contexts).
- * Always resolve perspective via getDynamicFetchOptions so content-release
- * previewing works in Presentation Tool standalone preview.
- */
+// For usage within `generateMetadata`, `generateViewport`, `sitemap.ts`, `robots.ts`, etc.
 export async function sanityFetchMetadata<const QueryString extends string>({
   query,
   params = {},
