@@ -24,7 +24,8 @@
     "format": "prettier --cache --write .",
     "import-sample-data": "cd studio && sanity dataset import sample-data.tar.gz --dataset production --replace",
     "lint": "npm run lint --workspace=frontend",
-    "type-check": "npm run type-check --workspaces"
+    "type-check": "npm run type-check --workspaces",
+    "seed": "cd studio && npx sanity exec scripts/seed.ts --with-user-token"
   },
   "prettier": "@sanity/prettier-config",
   "devDependencies": {

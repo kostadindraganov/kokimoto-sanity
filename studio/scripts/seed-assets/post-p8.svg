@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p8-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#11100c"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p8-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p8-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p8-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p8-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p8-glow)"></rect>
+  
+  <rect x="80" y="200" width="62" height="240" rx="3" fill="#1a140e" stroke="#db8c4e" stroke-width="1.5"></rect>
+            <rect x="88" y="214" width="46" height="3" fill="#db8c4e"></rect>
+            <rect x="88" y="222" width="30" height="2" fill="#db8c4e" opacity="0.6"></rect><rect x="168" y="177" width="62" height="263" rx="3" fill="#1a140e" stroke="#7f9ec2" stroke-width="1.5"></rect>
+            <rect x="176" y="191" width="46" height="3" fill="#7f9ec2"></rect>
+            <rect x="176" y="199" width="30" height="2" fill="#7f9ec2" opacity="0.6"></rect><rect x="256" y="154" width="62" height="286" rx="3" fill="#1a140e" stroke="#8fb573" stroke-width="1.5"></rect>
+            <rect x="264" y="168" width="46" height="3" fill="#8fb573"></rect>
+            <rect x="264" y="176" width="30" height="2" fill="#8fb573" opacity="0.6"></rect><rect x="344" y="131" width="62" height="309" rx="3" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></rect>
+            <rect x="352" y="145" width="46" height="3" fill="rgba(236,230,215,0.18)"></rect>
+            <rect x="352" y="153" width="30" height="2" fill="rgba(236,230,215,0.18)" opacity="0.6"></rect><rect x="432" y="108" width="62" height="332" rx="3" fill="#1a140e" stroke="#db8c4e" stroke-width="1.5"></rect>
+            <rect x="440" y="122" width="46" height="3" fill="#db8c4e"></rect>
+            <rect x="440" y="130" width="30" height="2" fill="#db8c4e" opacity="0.6"></rect><rect x="520" y="185" width="62" height="255" rx="3" fill="#1a140e" stroke="#7f9ec2" stroke-width="1.5"></rect>
+            <rect x="528" y="199" width="46" height="3" fill="#7f9ec2"></rect>
+            <rect x="528" y="207" width="30" height="2" fill="#7f9ec2" opacity="0.6"></rect><rect x="608" y="162" width="62" height="278" rx="3" fill="#1a140e" stroke="#8fb573" stroke-width="1.5"></rect>
+            <rect x="616" y="176" width="46" height="3" fill="#8fb573"></rect>
+            <rect x="616" y="184" width="30" height="2" fill="#8fb573" opacity="0.6"></rect>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">2026 framework notes</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ reading the room</text>
+
+</svg>
