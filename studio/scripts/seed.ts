@@ -195,7 +195,7 @@ async function upsertBySlug(
   doc: Record<string, unknown>,
 ): Promise<string | null> {
   try {
-    const existing = await client.fetch<{_id: string}[]>(
+    const existing = await client.fetch<{_id: string} | null>(
       `*[_type == $type && slug.current == $slug][0]{_id}`,
       {type, slug},
     )
@@ -228,7 +228,7 @@ async function upsertByTitle(
   doc: Record<string, unknown>,
 ): Promise<string | null> {
   try {
-    const existing = await client.fetch<{_id: string}[]>(
+    const existing = await client.fetch<{_id: string} | null>(
       `*[_type == $type && title == $title][0]{_id}`,
       {type, title},
     )

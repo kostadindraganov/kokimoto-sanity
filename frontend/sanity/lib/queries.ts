@@ -156,7 +156,7 @@ const linkReference = /* groq */ `
     "page": page->slug.current,
     "post": post->slug.current
   }
-`)
+`
 
 export const allPostsQuery = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
