@@ -1,86 +1,91 @@
 import type {Metadata} from 'next'
-import {Suspense} from 'react'
-import {draftMode} from 'next/headers'
-import {CachedBlogPage} from '@/app/components/portfolio/blog/CachedBlogPage'
+
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
-import {BLOG_PAGE_QUERY} from '@/sanity/lib/queries'
+import {BLOG_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
+import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
+import {resolveOpenGraphImage} from '@/sanity/lib/utils'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || ''
+const IS_PRODUCTION = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
 
 export async function generateMetadata(): Promise<Metadata> {
   const {perspective} = await getDynamicFetchOptions()
-  const {data} = await sanityFetchMetadata({query: BLOG_PAGE_QUERY, perspective})
-  const page = data as {heading?: string | null; intro?: string | null; seo?: {metaTitle?: string | null; metaDescription?: string | null} | null} | null
-  return {
-    title: page?.seo?.metaTitle ?? page?.heading ?? 'Field notes',
-    description: page?.seo?.metaDescription ?? page?.intro ?? 'Engineering intelligence feed',
-  }
-}
-
-interface BlogPageProps {
-  searchParams: Promise<{search?: string; category?: string}>
-}
-
-export default async function BlogPage({searchParams}: BlogPageProps) {
-  const {isEnabled: isDraftMode} = await draftMode()
-  const {search, category} = await searchParams
-
-  if (isDraftMode) {
-    return (
-      <Suspense fallback={<BlogPageFallback />}>
-        <DynamicBlogPage
-          searchParams={searchParams}
-        />
-      </Suspense>
-    )
-  }
-
-  return (
-    <CachedBlogPage
-      perspective="published"
-      stega={false}
-      initialSearch={search}
-      initialCategory={category}
-    />
-  )
-}
-
-async function DynamicBlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{search?: string; category?: string}>
-}) {
-  const [{perspective, stega}, {search, category}] = await Promise.all([
-    getDynamicFetchOptions(),
-    searchParams,
+  const [{data: rawSettings}, {data: rawPage}] = await Promise.all([
+    sanityFetchMetadata({query: SETTINGS_QUERY, perspective}),
+    sanityFetchMetadata({query: BLOG_PAGE_META_QUERY, perspective}),
   ])
+  const settings = rawSettings as SiteSettingsSeoData | null
+  const page = rawPage as PageSeoData | null
+
+  const title = page?.seo?.metaTitle || settings?.seo?.metaTitle || settings?.name || ''
+  const description =
+    page?.seo?.metaDescription ||
+    settings?.seo?.metaDescription ||
+    page?.intro ||
+    settings?.shortBio ||
+    ''
+  const ogImage =
+    resolveOpenGraphImage(page?.seo?.ogImage) || resolveOpenGraphImage(settings?.seo?.ogImage)
+
+  return {
+    title,
+    description,
+    alternates: {canonical: SITE_URL + '/blog'},
+    openGraph: {
+      type: 'website',
+      url: SITE_URL + '/blog',
+      title,
+      description,
+      images: ogImage ? [ogImage] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ogImage ? [ogImage.url] : [],
+    },
+    robots: IS_PRODUCTION ? 'index,follow' : 'noindex',
+  }
+}
+
+function CollectionPageJsonLd({
+  name,
+  url,
+  description,
+}: {
+  name: string
+  url: string
+  description?: string
+}) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    url,
+    ...(description ? {description} : {}),
+  }
   return (
-    <CachedBlogPage
-      perspective={perspective}
-      stega={stega}
-      initialSearch={search}
-      initialCategory={category}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{__html: JSON.stringify(schema)}}
     />
   )
 }
 
-function BlogPageFallback() {
+export default async function BlogPage() {
+  const {perspective} = await getDynamicFetchOptions()
+  const {data: rawPage} = await sanityFetchMetadata({query: BLOG_PAGE_META_QUERY, perspective})
+  const page = rawPage as PageSeoData | null
+
   return (
-    <div className="page">
-      <div className="panel" style={{marginTop: 32}}>
-        <div className="panel-head">
-          <span className="lights">
-            <i />
-            <i />
-            <i />
-          </span>
-          <span className="title">~/blog</span>
-          <span className="meta">loading</span>
-        </div>
-        <div className="panel-body">
-          <div className="out muted">
-            <span className="spinner" aria-hidden="true" /> streaming field notes…
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <CollectionPageJsonLd
+        name={page?.heading || 'Blog'}
+        url={SITE_URL + '/blog'}
+        description={page?.intro || undefined}
+      />
+      {/* Phase 4 will replace this with the full blog page UI */}
+      <main />
+    </>
   )
 }
