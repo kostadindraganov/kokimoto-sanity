@@ -1,103 +1,211 @@
 /**
- * This config is used to configure your Sanity Studio.
- * Learn more: https://www.sanity.io/docs/configuration
+ * Sanity Studio configuration — two workspaces:
+ *   1. "default"  — dataset: production  — full schema + all plugins
+ *   2. "inbox"    — dataset: inbox        — contactSubmission only, read-only
  */
 
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './src/schemaTypes'
-import {structure} from './src/structure'
-import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
-import {
-  presentationTool,
-  defineDocuments,
-  defineLocations,
-  type DocumentLocation,
-} from 'sanity/presentation'
+import {presentationTool, defineDocuments, defineLocations} from 'sanity/presentation'
 import {assist} from '@sanity/assist'
+import {media} from 'sanity-plugin-media'
+import {colorInput} from '@sanity/color-input'
+import {codeInput} from '@sanity/code-input'
+import {dashboardTool, projectInfoWidget, sanityTutorialsWidget} from '@sanity/dashboard'
+import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 
-// Environment variables for project configuration
+import {schemaTypes} from './src/schemaTypes'
+import {structure, inboxStructure, filterHiddenTemplates} from './src/structure'
+
+// ---------------------------------------------------------------------------
+// Environment
+// ---------------------------------------------------------------------------
+
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
-const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+const previewUrl = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
 
-// URL for preview functionality, defaults to localhost:3000 if not set
-const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+// ---------------------------------------------------------------------------
+// Custom Vercel Deploy widget
+// sanity-plugin-vercel-deploy only supports Sanity v3 — use approved fallback:
+// a custom widget that POSTs to the Vercel Deploy Hook URL.
+// ---------------------------------------------------------------------------
 
-// Define the home location for the presentation tool
-const homeLocation = {
-  title: 'Home',
-  href: '/',
-} satisfies DocumentLocation
+interface VercelDeployWidgetOptions {
+  layout?: {width?: 'auto' | 'small' | 'medium' | 'large' | 'full'}
+}
 
-// resolveHref() is a convenience function that resolves the URL
-// path for different document types and used in the presentation tool.
-function resolveHref(documentType?: string, slug?: string): string | undefined {
-  switch (documentType) {
-    case 'post':
-      return slug ? `/posts/${slug}` : undefined
-    case 'page':
-      return slug ? `/${slug}` : undefined
-    default:
-      console.warn('Invalid document type:', documentType)
-      return undefined
+function vercelDeployWidget(options?: VercelDeployWidgetOptions) {
+  const deployHookUrl = process.env.VERCEL_DEPLOY_HOOK_URL
+
+  return {
+    name: 'vercel-deploy',
+    layout: options?.layout ?? {width: 'medium'},
+    component: function VercelDeployWidget() {
+      // Inline React component — no JSX needed; use createElement via React global.
+      // Sanity Studio ships React so we can import it.
+      const React = require('react') as typeof import('react')
+      const [status, setStatus] = React.useState<'idle' | 'deploying' | 'done' | 'error'>('idle')
+
+      async function triggerDeploy() {
+        if (!deployHookUrl) {
+          setStatus('error')
+          return
+        }
+        setStatus('deploying')
+        try {
+          await fetch(deployHookUrl, {method: 'POST'})
+          setStatus('done')
+          setTimeout(() => setStatus('idle'), 4000)
+        } catch {
+          setStatus('error')
+          setTimeout(() => setStatus('idle'), 4000)
+        }
+      }
+
+      const label =
+        status === 'deploying'
+          ? 'Deploying…'
+          : status === 'done'
+            ? 'Deployed!'
+            : status === 'error'
+              ? 'Error — check hook URL'
+              : 'Deploy to Vercel'
+
+      return React.createElement(
+        'div',
+        {
+          style: {
+            padding: '1.5rem',
+            display: 'flex',
+            flexDirection: 'column' as const,
+            gap: '0.75rem',
+          },
+        },
+        React.createElement('h3', {style: {margin: 0, fontSize: '1rem'}}, 'Vercel Deploy'),
+        React.createElement(
+          'p',
+          {style: {margin: 0, fontSize: '0.85rem', color: '#888'}},
+          deployHookUrl
+            ? 'Trigger a new production deployment on Vercel.'
+            : 'Set VERCEL_DEPLOY_HOOK_URL to enable deployments.',
+        ),
+        React.createElement(
+          'button',
+          {
+            onClick: triggerDeploy,
+            disabled: status === 'deploying' || !deployHookUrl,
+            style: {
+              alignSelf: 'flex-start',
+              padding: '0.5rem 1rem',
+              background: status === 'done' ? '#0070f3' : '#000',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 4,
+              cursor: deployHookUrl && status === 'idle' ? 'pointer' : 'not-allowed',
+              opacity: status === 'deploying' || !deployHookUrl ? 0.6 : 1,
+            },
+          },
+          label,
+        ),
+      )
+    },
   }
 }
 
-// Main Sanity configuration
-export default defineConfig({
+// ---------------------------------------------------------------------------
+// contactSubmission schema type — imported individually for the inbox workspace
+// ---------------------------------------------------------------------------
+
+// We import the full schema array and extract contactSubmission from it so the
+// inbox workspace gets only that type. The schema index is the single source of
+// truth — we do NOT import the type definition directly to avoid drift.
+// Cast to unknown[] first to avoid TypeScript narrowing on the current schema
+// union names — the 1A agent will add contactSubmission to the schema index.
+type AnySchemaType = (typeof schemaTypes)[number]
+const allSchemaTypes = schemaTypes as AnySchemaType[]
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const contactSubmissionType = (allSchemaTypes as any[]).find(
+  (t: {name: string}) => t.name === 'contactSubmission',
+) as AnySchemaType | undefined
+const inboxSchemaTypes: AnySchemaType[] = contactSubmissionType ? [contactSubmissionType] : []
+
+// Schema types for the default workspace — all types except contactSubmission
+// (contact submissions are written only to the private inbox dataset).
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const defaultSchemaTypes = (allSchemaTypes as any[]).filter(
+  (t: {name: string}) => t.name !== 'contactSubmission',
+) as AnySchemaType[]
+
+// ---------------------------------------------------------------------------
+// Workspace 1 — default (dataset: production)
+// ---------------------------------------------------------------------------
+
+const defaultWorkspace = defineConfig({
   name: 'default',
-  title: 'Sanity + Next.js Starter Template',
+  title: 'Kokimoto Studio',
 
   projectId,
-  dataset,
+  dataset: 'production',
 
   plugins: [
-    // Presentation tool configuration for Visual Editing
+    structureTool({structure}),
+
     presentationTool({
       previewUrl: {
-        origin: SANITY_STUDIO_PREVIEW_URL,
+        origin: previewUrl,
         previewMode: {
           enable: '/api/draft-mode/enable',
         },
       },
       resolve: {
-        // The Main Document Resolver API provides a method of resolving a main document from a given route or route pattern. https://www.sanity.io/docs/visual-editing/presentation-resolver-api#57720a5678d9
         mainDocuments: defineDocuments([
           {
             route: '/',
-            filter: `_type == "settings" && _id == "siteSettings"`,
+            filter: `_type == "homePage"`,
           },
           {
-            route: '/:slug',
-            filter: `_type == "page" && slug.current == $slug || _id == $slug`,
+            route: '/portfolio',
+            filter: `_type == "portfolioPage"`,
           },
           {
-            route: '/posts/:slug',
-            filter: `_type == "post" && slug.current == $slug || _id == $slug`,
+            route: '/portfolio/:slug',
+            filter: `_type == "project" && slug.current == $slug`,
+          },
+          {
+            route: '/blog',
+            filter: `_type == "blogPage"`,
+          },
+          {
+            route: '/blog/:slug',
+            filter: `_type == "post" && slug.current == $slug`,
+          },
+          {
+            route: '/about',
+            filter: `_type == "aboutPage"`,
+          },
+          {
+            route: '/contact',
+            filter: `_type == "contactPage"`,
           },
         ]),
-        // Locations Resolver API allows you to define where data is being used in your application. https://www.sanity.io/docs/visual-editing/presentation-resolver-api#8d8bca7bfcd7
+
         locations: {
-          settings: defineLocations({
-            locations: [homeLocation],
-            message: 'This document is used on all pages',
-            tone: 'positive',
-          }),
-          page: defineLocations({
+          project: defineLocations({
             select: {
-              name: 'name',
+              title: 'title',
               slug: 'slug.current',
             },
             resolve: (doc) => ({
               locations: [
                 {
-                  title: doc?.name || 'Untitled',
-                  href: resolveHref('page', doc?.slug)!,
+                  title: doc?.title || 'Project',
+                  href: `/portfolio/${doc?.slug}`,
                 },
               ],
             }),
           }),
+
           post: defineLocations({
             select: {
               title: 'title',
@@ -106,30 +214,142 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 {
-                  title: doc?.title || 'Untitled',
-                  href: resolveHref('post', doc?.slug)!,
+                  title: doc?.title || 'Post',
+                  href: `/blog/${doc?.slug}`,
                 },
-                {
-                  title: 'Home',
-                  href: '/',
-                } satisfies DocumentLocation,
-              ].filter(Boolean) as DocumentLocation[],
+              ],
+            }),
+          }),
+
+          tag: defineLocations({
+            select: {},
+            resolve: () => ({
+              locations: [
+                {title: 'Portfolio', href: '/portfolio'},
+                {title: 'Blog', href: '/blog'},
+              ],
+            }),
+          }),
+
+          category: defineLocations({
+            select: {},
+            resolve: () => ({
+              locations: [{title: 'Blog', href: '/blog'}],
+            }),
+          }),
+
+          siteSettings: defineLocations({
+            select: {},
+            resolve: () => ({
+              locations: [
+                {title: 'Home', href: '/'},
+                {title: 'Portfolio', href: '/portfolio'},
+                {title: 'Blog', href: '/blog'},
+                {title: 'About', href: '/about'},
+                {title: 'Contact', href: '/contact'},
+              ],
+              tone: 'positive' as const,
+              message: 'Used on all pages',
+            }),
+          }),
+
+          navigation: defineLocations({
+            select: {},
+            resolve: () => ({
+              locations: [
+                {title: 'Home', href: '/'},
+                {title: 'Portfolio', href: '/portfolio'},
+                {title: 'Blog', href: '/blog'},
+                {title: 'About', href: '/about'},
+                {title: 'Contact', href: '/contact'},
+              ],
+              tone: 'positive' as const,
+              message: 'Used on all pages',
             }),
           }),
         },
       },
     }),
-    structureTool({
-      structure, // Custom studio structure configuration, imported from ./src/structure.ts
+
+    media(),
+    colorInput(),
+    codeInput(),
+
+    dashboardTool({
+      widgets: [
+        vercelDeployWidget({layout: {width: 'medium'}}),
+        projectInfoWidget({layout: {width: 'small'}}),
+        sanityTutorialsWidget({layout: {width: 'medium'}}),
+      ],
     }),
-    // Additional plugins for enhanced functionality
-    unsplashImageAsset(),
+
     assist(),
+    unsplashImageAsset(),
     visionTool(),
   ],
 
-  // Schema configuration, imported from ./src/schemaTypes/index.ts
   schema: {
-    types: schemaTypes,
+    types: defaultSchemaTypes,
+    // Hide singletons + contactSubmission from "Create new document" menu
+    templates: (prev) => prev.filter(filterHiddenTemplates),
+  },
+
+  document: {
+    // Disable NewDocumentAction and DeleteAction for singletons + contactSubmission
+    actions: (prev, {schemaType}) => {
+      const lockedTypes = new Set([
+        'siteSettings',
+        'navigation',
+        'homePage',
+        'aboutPage',
+        'portfolioPage',
+        'blogPage',
+        'contactPage',
+        'contactSubmission',
+      ])
+
+      if (lockedTypes.has(schemaType)) {
+        return prev.filter(
+          ({action}) => action !== 'delete' && action !== 'duplicate' && action !== 'unpublish',
+        )
+      }
+
+      return prev
+    },
   },
 })
+
+// ---------------------------------------------------------------------------
+// Workspace 2 — inbox (dataset: inbox, private)
+// ---------------------------------------------------------------------------
+
+const inboxWorkspace = defineConfig({
+  name: 'inbox',
+  title: 'Inbox',
+  basePath: '/inbox',
+
+  projectId,
+  dataset: 'inbox',
+
+  plugins: [
+    structureTool({structure: inboxStructure}),
+  ],
+
+  schema: {
+    types: inboxSchemaTypes,
+    // No templates — creation is disabled for contactSubmission
+    templates: () => [],
+  },
+
+  document: {
+    // Disable all create/delete actions for the inbox workspace
+    actions: (prev) =>
+      prev.filter(({action}) => action !== 'delete' && action !== 'duplicate' && action !== 'unpublish'),
+  },
+})
+
+// ---------------------------------------------------------------------------
+// Export — array of two workspaces (not a single config)
+// ---------------------------------------------------------------------------
+
+export default [defaultWorkspace, inboxWorkspace]
