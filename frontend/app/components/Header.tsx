@@ -5,6 +5,8 @@ import {sanityFetch} from '@/sanity/lib/live'
 export default async function Header() {
   const {data: settings} = await sanityFetch({
     query: settingsQuery,
+    perspective: 'published',
+    stega: false,
   })
 
   return (

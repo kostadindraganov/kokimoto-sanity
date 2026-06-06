@@ -1,93 +1,123 @@
 import './globals.css'
+// portfolio.css is ported from the template's styles.css — created by the UI agent
+import './portfolio.css'
 
-import {SpeedInsights} from '@vercel/speed-insights/next'
-import type {Metadata} from 'next'
-import {Inter, IBM_Plex_Mono} from 'next/font/google'
+import {JetBrains_Mono, Space_Grotesk} from 'next/font/google'
 import {draftMode} from 'next/headers'
-import {toPlainText} from 'next-sanity'
 import {VisualEditing} from 'next-sanity/visual-editing'
-import {Toaster} from 'sonner'
+import {Suspense} from 'react'
 
 import DraftModeToast from '@/app/components/DraftModeToast'
-import Footer from '@/app/components/Footer'
-import Header from '@/app/components/Header'
-import * as demo from '@/sanity/lib/demo'
-import {sanityFetch, SanityLive} from '@/sanity/lib/live'
-import {settingsQuery} from '@/sanity/lib/queries'
-import {resolveOpenGraphImage} from '@/sanity/lib/utils'
+import {getDynamicFetchOptions, sanityFetch, SanityLive, type DynamicFetchOptions} from '@/sanity/lib/live'
+import {NAVIGATION_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import {handleError} from '@/app/client-utils'
 
-/**
- * Generate metadata for the page.
- * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
- */
-export async function generateMetadata(): Promise<Metadata> {
-  const {data: settings} = await sanityFetch({
-    query: settingsQuery,
-    // Metadata should never contain stega
-    stega: false,
-  })
-  const title = settings?.title || demo.title
-  const description = settings?.description || demo.description
+// ─── Fonts ────────────────────────────────────────────────────────────────────
+// JetBrains Mono → --mono (monospace-first body + UI chrome)
+// Space Grotesk  → --display (headings, names, metric numbers)
 
-  const ogImage = resolveOpenGraphImage(settings?.ogImage)
-  let metadataBase: URL | undefined = undefined
-  try {
-    metadataBase = settings?.ogImage?.metadataBase
-      ? new URL(settings.ogImage.metadataBase)
-      : undefined
-  } catch {
-    // ignore
-  }
-  return {
-    metadataBase,
-    title: {
-      template: `%s | ${title}`,
-      default: title,
-    },
-    description: toPlainText(description),
-    openGraph: {
-      images: ogImage ? [ogImage] : [],
-    },
-  }
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--mono',
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  variable: '--display',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+// ─── Layout helpers (three-layer pattern per sanity-live-cache-components) ────
+// Layer 2: resolves perspective + stega from cookies (dynamic API)
+async function DynamicTopBar() {
+  const {perspective, stega} = await getDynamicFetchOptions()
+  return <CachedTopBar perspective={perspective} stega={stega} />
 }
 
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap',
-})
+// Layer 3: 'use cache' — fetches settings + nav, renders TopBar
+async function CachedTopBar({perspective, stega}: DynamicFetchOptions) {
+  'use cache'
+  const [{data: settings}, {data: navigation}] = await Promise.all([
+    sanityFetch({query: SETTINGS_QUERY, perspective, stega}),
+    sanityFetch({query: NAVIGATION_QUERY, perspective, stega}),
+  ])
+  // TopBar is a client component — import lazily once it exists
+  // For now render a placeholder that gets replaced when the portfolio shell lands.
+  // The settings and navigation props will be threaded through once TopBar is implemented.
+  void settings
+  void navigation
+  return (
+    <header className="topbar">
+      {/* TopBar client component slot — portfolio shell agent will wire this */}
+    </header>
+  )
+}
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: '--font-ibm-plex-mono',
-  weight: ['400'],
-  subsets: ['latin'],
-  display: 'swap',
-})
+// Layer 2: StatusBar
+async function DynamicStatusBar() {
+  const {perspective, stega} = await getDynamicFetchOptions()
+  return <CachedStatusBar perspective={perspective} stega={stega} />
+}
+
+// Layer 3: StatusBar data
+async function CachedStatusBar({perspective, stega}: DynamicFetchOptions) {
+  'use cache'
+  const [{data: settings}, {data: navigation}] = await Promise.all([
+    sanityFetch({query: SETTINGS_QUERY, perspective, stega}),
+    sanityFetch({query: NAVIGATION_QUERY, perspective, stega}),
+  ])
+  // StatusBar is a client component — will be wired by the portfolio shell agent.
+  void settings
+  void navigation
+  return (
+    <footer className="statusbar">
+      {/* StatusBar client component slot — portfolio shell agent will wire this */}
+    </footer>
+  )
+}
+
+// ─── Root layout ──────────────────────────────────────────────────────────────
 
 export default async function RootLayout({children}: LayoutProps<'/'>) {
   const {isEnabled: isDraftMode} = await draftMode()
 
   return (
-    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable} bg-white text-black`}>
-      <body>
-        <section className="min-h-screen pt-24">
-          {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
-          <Toaster />
-          {isDraftMode && (
-            <>
-              <DraftModeToast />
-              {/*  Enable Visual Editing, only to be rendered when Draft Mode is enabled */}
-              <VisualEditing />
-            </>
-          )}
-          {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
-          <SanityLive onError={handleError} />
-          <Header />
-          <main className="">{children}</main>
-          <Footer />
-        </section>
-        <SpeedInsights />
+    <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}>
+      <body className="shell">
+        {/* TopBar — three-layer pattern keeps children streaming */}
+        {isDraftMode ? (
+          <Suspense fallback={<div className="topbar" aria-hidden />}>
+            <DynamicTopBar />
+          </Suspense>
+        ) : (
+          <CachedTopBar perspective="published" stega={false} />
+        )}
+
+        {/* Page content */}
+        <main className="shell-inner">{children}</main>
+
+        {/* StatusBar — three-layer pattern */}
+        {isDraftMode ? (
+          <Suspense fallback={<div className="statusbar" aria-hidden />}>
+            <DynamicStatusBar />
+          </Suspense>
+        ) : (
+          <CachedStatusBar perspective="published" stega={false} />
+        )}
+
+        {/* Atmosphere overlays (film grain + vignette) */}
+        <div className="fx-grain" aria-hidden />
+        <div className="fx-vignette" aria-hidden />
+
+        {/* Sanity Live — single instance, revalidates cached content */}
+        <SanityLive includeDrafts={isDraftMode} onError={handleError} />
+
+        {/* Draft mode tools — gated so they never ship to production visitors */}
+        {isDraftMode && <VisualEditing />}
+        {isDraftMode && <DraftModeToast />}
       </body>
     </html>
   )

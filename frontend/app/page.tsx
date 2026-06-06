@@ -12,6 +12,8 @@ import {dataAttr} from '@/sanity/lib/utils'
 export default async function Page() {
   const {data: settings} = await sanityFetch({
     query: settingsQuery,
+    perspective: 'published',
+    stega: false,
   })
 
   return (

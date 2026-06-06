@@ -531,6 +531,159 @@ export type AllSanitySchemaTypes =
   | Geopoint
 
 // Source: sanity/lib/queries.ts
+// Variable: SETTINGS_QUERY
+// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{    name,    handle,    headline,    shortBio,    email,    github,    linkedin,    location,    availability,    availabilityStatus,    cv,    portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},    theme{      accentColor,      grain,      heroLayout    },    askConsole{      enabled,      heading,      description,      placeholder,      emptyMessage,      suggestions,      fallback    },    statusbar{      branchLabel,      statusText    },    uiText{      notFoundTitle,      notFoundBody,      commandPalettePlaceholder,      mobileConsolePrompt,      newSessionLabel,      copyEmailLabel    },    seo{      metaTitle,      metaDescription,      ogImage{asset->{_id,url},alt,metadataBase}    }  }
+export type SETTINGS_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: NAVIGATION_QUERY
+// Query: *[_type == "navigation" && _id == "navigation"][0]{    items[]{      label,      command,      route    }  }
+export type NAVIGATION_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: HOME_PAGE_QUERY
+// Query: {    "homePage": *[_type == "homePage" && _id == "homePage"][0]{      heroWord,      promptCommand,      toolActions,      successLines,      portraitCaption,      featuredHeading,      featuredProjects[]->{        title,        "slug": slug.current,        commit,        status,        tags[]->{_id,title,"slug": slug.current},        coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},        role,        problem,        solution,        stack,        impact,        repo,        live,        order      },      metricsHeading,      metrics[]{        _key,        value,        unit,        label      },      nextStepsHeading,      nextSteps[]{        _key,        cmd,        flag,        sub,        primary,        route      },      systemCard{        roleLine,        kvRows[]{_key,key,value}      },      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "siteSettings": *[_type == "siteSettings" && _id == "siteSettings"][0]{      askConsole{        enabled,        heading,        description,        placeholder,        emptyMessage,        suggestions,        fallback      },      theme{accentColor,grain,heroLayout},      portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      name,      handle,      availabilityStatus    }  }
+export type HOME_PAGE_QUERY_RESULT = {
+  homePage: null
+  siteSettings: null
+}
+
+// Source: sanity/lib/queries.ts
+// Variable: ABOUT_PAGE_QUERY
+// Query: *[_type == "aboutPage" && _id == "aboutPage"][0]{    eyebrow,    heading,    portraitCaption,    bioParagraphs,    experiencePrompt,    timeline[]{      _key,      years,      role,      company,      body,      current    },    valuesPrompt,    values[]{      _key,      key,      value    },    stackPrompt,    stackRows[]{      _key,      term,      items    },    ctas[]{      _key,      cmd,      flag,      sub,      primary,      route    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
+export type ABOUT_PAGE_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: PORTFOLIO_PAGE_QUERY
+// Query: *[_type == "portfolioPage" && _id == "portfolioPage"][0]{    eyebrow,    heading,    intro,    filterLabel,    matchesText,    loadingText,    endText,    detailLabels{      deployLogTitle,      deployLogLines,      briefHeading,      problemLabel,      solutionLabel,      stackLabel,      roleLabel,      impactHeading,      interfaceHeading,      cloneLabel,      openLiveLabel,      backLabel,      prevLabel,      nextLabel    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
+export type PORTFOLIO_PAGE_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: PORTFOLIO_PROJECTS_QUERY
+// Query: *[_type == "project"] | order(order asc, _createdAt desc) {    _id,    title,    "slug": slug.current,    commit,    status,    tags[]->{_id,title,"slug": slug.current},    role,    problem,    solution,    stack,    impact,    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},    gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},    repo,    live,    order  }
+export type PORTFOLIO_PROJECTS_QUERY_RESULT = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: PROJECT_BY_SLUG_QUERY
+// Query: {    "project": *[_type == "project" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      commit,      status,      tags[]->{_id,title,"slug": slug.current},      role,      problem,      solution,      stack,      impact,      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},      repo,      live,      order,      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "prev": *[_type == "project" && order < *[_type == "project" && slug.current == $slug][0].order] | order(order desc) [0]{      title,      "slug": slug.current,      order    },    "next": *[_type == "project" && order > *[_type == "project" && slug.current == $slug][0].order] | order(order asc) [0]{      title,      "slug": slug.current,      order    }  }
+export type PROJECT_BY_SLUG_QUERY_RESULT = {
+  project: null
+  prev: null
+  next: null
+}
+
+// Source: sanity/lib/queries.ts
+// Variable: BLOG_PAGE_QUERY
+// Query: *[_type == "blogPage" && _id == "blogPage"][0]{    eyebrow,    heading,    intro,    featuredPanelTitle,    featuredBadge,    readButtonLabel,    searchPlaceholder,    noMatchesText,    loadingText,    endText,    archiveLabel,    archiveNote,    articleLabels{      tocHeading,      searchHeading,      categoriesHeading,      tagsHeading,      recentHeading,      archivesHeading,      readingTimeHeading,      categoryHeading,      moreNotesHeading,      backLabel,      figCaptionPrefix    },    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
+export type BLOG_PAGE_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: BLOG_POSTS_QUERY
+// Query: *[_type == "post"] | order(date desc) {    _id,    title,    "slug": slug.current,    summary,    date,    category->{_id,title,"slug": slug.current},    tags[]->{_id,title,"slug": slug.current},    readTime,    featured,    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt}  }
+export type BLOG_POSTS_QUERY_RESULT = Array<{
+  _id: string
+  title: string
+  slug: string
+  summary: null
+  date: string | null
+  category: null
+  tags: null
+  readTime: null
+  featured: null
+  coverImage: {
+    asset: {
+      _id: string
+      url: string
+      metadata: {
+        dimensions: SanityImageDimensions | null
+        lqip: string | null
+      } | null
+    } | null
+    hotspot: SanityImageHotspot | null
+    crop: SanityImageCrop | null
+    alt: string | null
+  } | null
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: POST_BY_SLUG_QUERY
+// Query: {    "post": *[_type == "post" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      summary,      date,      category->{_id,title,"slug": slug.current},      tags[]->{_id,title,"slug": slug.current},      readTime,      featured,      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},      body[]{        ...,        _type == "image" => {          ...,          asset->{_id,url,metadata{dimensions,lqip}},          alt,          caption        }      },      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}    },    "prev": *[_type == "post" && date < *[_type == "post" && slug.current == $slug][0].date] | order(date desc) [0]{      title,      "slug": slug.current,      date    },    "next": *[_type == "post" && date > *[_type == "post" && slug.current == $slug][0].date] | order(date asc) [0]{      title,      "slug": slug.current,      date    },    "recent": *[_type == "post" && slug.current != $slug] | order(date desc) [0...5]{      title,      "slug": slug.current,      date,      category->{_id,title,"slug": slug.current}    }  }
+export type POST_BY_SLUG_QUERY_RESULT = {
+  post: {
+    _id: string
+    title: string
+    slug: string
+    summary: null
+    date: string | null
+    category: null
+    tags: null
+    readTime: null
+    featured: null
+    coverImage: {
+      asset: {
+        _id: string
+        url: string
+        metadata: {
+          dimensions: SanityImageDimensions | null
+          lqip: string | null
+        } | null
+      } | null
+      hotspot: SanityImageHotspot | null
+      crop: SanityImageCrop | null
+      alt: string | null
+    } | null
+    body: null
+    seo: null
+  } | null
+  prev: {
+    title: string
+    slug: string
+    date: string | null
+  } | null
+  next: {
+    title: string
+    slug: string
+    date: string | null
+  } | null
+  recent: Array<{
+    title: string
+    slug: string
+    date: string | null
+    category: null
+  }>
+}
+
+// Source: sanity/lib/queries.ts
+// Variable: CONTACT_PAGE_QUERY
+// Query: *[_type == "contactPage" && _id == "contactPage"][0]{    eyebrow,    heading,    intro,    formTitle,    formBadge,    nameField{label,placeholder},    emailField{label,placeholder},    messageField{label,placeholder},    submitLabel,    formNote,    validationMessages{      nameRequired,      emailRequired,      emailInvalid,      messageRequired,      messageTooShort    },    successPanelTitle,    successLines,    successGreeting,    sendAnotherLabel,    availabilityHeading,    availabilityText,    resumeLabel,    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}  }
+export type CONTACT_PAGE_QUERY_RESULT = null
+
+// Source: sanity/lib/queries.ts
+// Variable: ALL_TAGS_QUERY
+// Query: *[_type == "tag"] | order(title asc) {    _id,    title,    "slug": slug.current  }
+export type ALL_TAGS_QUERY_RESULT = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: ALL_CATEGORIES_QUERY
+// Query: *[_type == "category"] {    _id,    title,    "slug": slug.current,    "postCount": count(*[_type == "post" && references(^._id)])  }
+export type ALL_CATEGORIES_QUERY_RESULT = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: QA_ENTRIES_QUERY
+// Query: *[_type == "qaEntry" && enabled == true] {    _id,    title,    keywords,    answer,    action{cmd,flag,route}  }
+export type QA_ENTRIES_QUERY_RESULT = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: PROJECTS_SLUG_QUERY
+// Query: *[_type == "project"].slug.current
+export type PROJECTS_SLUG_QUERY_RESULT = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: POSTS_SLUG_QUERY
+// Query: *[_type == "post"].slug.current
+export type POSTS_SLUG_QUERY_RESULT = Array<string>
+
+// Source: sanity/lib/queries.ts
 // Variable: settingsQuery
 // Query: *[_type == "settings"][0]
 export type SettingsQueryResult = {
@@ -574,8 +727,167 @@ export type SettingsQueryResult = {
 } | null
 
 // Source: sanity/lib/queries.ts
+// Variable: sitemapData
+// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
+export type SitemapDataResult = Array<
+  | {
+      slug: string
+      _type: 'page'
+      _updatedAt: string
+    }
+  | {
+      slug: string
+      _type: 'post'
+      _updatedAt: string
+    }
+>
+
+// Source: sanity/lib/queries.ts
+// Variable: allPostsQuery
+// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {    _id,    "status": select(_originalId in path("drafts.**") => "draft", "published"),    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,    "date": coalesce(date, _updatedAt),    "author": author->{firstName, lastName, picture},  }
+export type AllPostsQueryResult = Array<{
+  _id: string
+  status: 'draft' | 'published'
+  title: string
+  slug: string
+  excerpt: string | null
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  date: string
+  author: {
+    firstName: string
+    lastName: string
+    picture: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    }
+  } | null
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: morePostsQuery
+// Query: *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {    _id,    "status": select(_originalId in path("drafts.**") => "draft", "published"),    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,    "date": coalesce(date, _updatedAt),    "author": author->{firstName, lastName, picture},  }
+export type MorePostsQueryResult = Array<{
+  _id: string
+  status: 'draft' | 'published'
+  title: string
+  slug: string
+  excerpt: string | null
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  date: string
+  author: {
+    firstName: string
+    lastName: string
+    picture: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    }
+  } | null
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: postQuery
+// Query: *[_type == "post" && slug.current == $slug] [0] {    content[]{      ...,      markDefs[]{        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },    _id,    "status": select(_originalId in path("drafts.**") => "draft", "published"),    "title": coalesce(title, "Untitled"),    "slug": slug.current,    excerpt,    coverImage,    "date": coalesce(date, _updatedAt),    "author": author->{firstName, lastName, picture},  }
+export type PostQueryResult = {
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+        listItem?: 'bullet' | 'number'
+        markDefs: Array<{
+          linkType?: 'href' | 'page' | 'post'
+          href?: string
+          page: string | null
+          post: string | null
+          openInNewTab?: boolean
+          _type: 'link'
+          _key: string
+        }> | null
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+        _key: string
+        markDefs: null
+      }
+  > | null
+  _id: string
+  status: 'draft' | 'published'
+  title: string
+  slug: string
+  excerpt: string | null
+  coverImage: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  date: string
+  author: {
+    firstName: string
+    lastName: string
+    picture: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    }
+  } | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: postPagesSlugs
+// Query: *[_type == "post" && defined(slug.current)]  {"slug": slug.current}
+export type PostPagesSlugsResult = Array<{
+  slug: string
+}>
+
+// Source: sanity/lib/queries.ts
+// Variable: pagesSlugs
+// Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
+export type PagesSlugsResult = Array<{
+  slug: string
+}>
+
+// Source: sanity/lib/queries.ts
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,            link {      ...,        _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }      }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,              _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }          }        }      },    },  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,          link {            ...,            _type == "link" => {              "page": page->slug.current,              "post": post->slug.current            }          }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,            _type == "link" => {              "page": page->slug.current,              "post": post->slug.current            }          }        }      },    },  }
 export type GetPageQueryResult = {
   _id: string
   _type: 'page'
@@ -654,176 +966,33 @@ export type GetPageQueryResult = {
   > | null
 } | null
 
-// Source: sanity/lib/queries.ts
-// Variable: sitemapData
-// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
-export type SitemapDataResult = Array<
-  | {
-      slug: string
-      _type: 'page'
-      _updatedAt: string
-    }
-  | {
-      slug: string
-      _type: 'post'
-      _updatedAt: string
-    }
->
-
-// Source: sanity/lib/queries.ts
-// Variable: allPostsQuery
-// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {      _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},  }
-export type AllPostsQueryResult = Array<{
-  _id: string
-  status: 'draft' | 'published'
-  title: string
-  slug: string
-  excerpt: string | null
-  coverImage: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  } | null
-  date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
-}>
-
-// Source: sanity/lib/queries.ts
-// Variable: morePostsQuery
-// Query: *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {      _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},  }
-export type MorePostsQueryResult = Array<{
-  _id: string
-  status: 'draft' | 'published'
-  title: string
-  slug: string
-  excerpt: string | null
-  coverImage: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  } | null
-  date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
-}>
-
-// Source: sanity/lib/queries.ts
-// Variable: postQuery
-// Query: *[_type == "post" && slug.current == $slug] [0] {    content[]{    ...,    markDefs[]{      ...,        _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }    }  },      _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},  }
-export type PostQueryResult = {
-  content: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-        listItem?: 'bullet' | 'number'
-        markDefs: Array<{
-          linkType?: 'href' | 'page' | 'post'
-          href?: string
-          page: string | null
-          post: string | null
-          openInNewTab?: boolean
-          _type: 'link'
-          _key: string
-        }> | null
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: SanityImageAssetReference
-        media?: unknown
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        _type: 'image'
-        _key: string
-        markDefs: null
-      }
-  > | null
-  _id: string
-  status: 'draft' | 'published'
-  title: string
-  slug: string
-  excerpt: string | null
-  coverImage: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  } | null
-  date: string
-  author: {
-    firstName: string
-    lastName: string
-    picture: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-  } | null
-} | null
-
-// Source: sanity/lib/queries.ts
-// Variable: postPagesSlugs
-// Query: *[_type == "post" && defined(slug.current)]  {"slug": slug.current}
-export type PostPagesSlugsResult = Array<{
-  slug: string
-}>
-
-// Source: sanity/lib/queries.ts
-// Variable: pagesSlugs
-// Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
-export type PagesSlugsResult = Array<{
-  slug: string
-}>
-
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
+    '\n  *[_type == "siteSettings" && _id == "siteSettings"][0]{\n    name,\n    handle,\n    headline,\n    shortBio,\n    email,\n    github,\n    linkedin,\n    location,\n    availability,\n    availabilityStatus,\n    cv,\n    portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n    theme{\n      accentColor,\n      grain,\n      heroLayout\n    },\n    askConsole{\n      enabled,\n      heading,\n      description,\n      placeholder,\n      emptyMessage,\n      suggestions,\n      fallback\n    },\n    statusbar{\n      branchLabel,\n      statusText\n    },\n    uiText{\n      notFoundTitle,\n      notFoundBody,\n      commandPalettePlaceholder,\n      mobileConsolePrompt,\n      newSessionLabel,\n      copyEmailLabel\n    },\n    seo{\n      metaTitle,\n      metaDescription,\n      ogImage{asset->{_id,url},alt,metadataBase}\n    }\n  }\n': SETTINGS_QUERY_RESULT
+    '\n  *[_type == "navigation" && _id == "navigation"][0]{\n    items[]{\n      label,\n      command,\n      route\n    }\n  }\n': NAVIGATION_QUERY_RESULT
+    '\n  {\n    "homePage": *[_type == "homePage" && _id == "homePage"][0]{\n      heroWord,\n      promptCommand,\n      toolActions,\n      successLines,\n      portraitCaption,\n      featuredHeading,\n      featuredProjects[]->{\n        title,\n        "slug": slug.current,\n        commit,\n        status,\n        tags[]->{_id,title,"slug": slug.current},\n        coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n        role,\n        problem,\n        solution,\n        stack,\n        impact,\n        repo,\n        live,\n        order\n      },\n      metricsHeading,\n      metrics[]{\n        _key,\n        value,\n        unit,\n        label\n      },\n      nextStepsHeading,\n      nextSteps[]{\n        _key,\n        cmd,\n        flag,\n        sub,\n        primary,\n        route\n      },\n      systemCard{\n        roleLine,\n        kvRows[]{_key,key,value}\n      },\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "siteSettings": *[_type == "siteSettings" && _id == "siteSettings"][0]{\n      askConsole{\n        enabled,\n        heading,\n        description,\n        placeholder,\n        emptyMessage,\n        suggestions,\n        fallback\n      },\n      theme{accentColor,grain,heroLayout},\n      portrait{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      name,\n      handle,\n      availabilityStatus\n    }\n  }\n': HOME_PAGE_QUERY_RESULT
+    '\n  *[_type == "aboutPage" && _id == "aboutPage"][0]{\n    eyebrow,\n    heading,\n    portraitCaption,\n    bioParagraphs,\n    experiencePrompt,\n    timeline[]{\n      _key,\n      years,\n      role,\n      company,\n      body,\n      current\n    },\n    valuesPrompt,\n    values[]{\n      _key,\n      key,\n      value\n    },\n    stackPrompt,\n    stackRows[]{\n      _key,\n      term,\n      items\n    },\n    ctas[]{\n      _key,\n      cmd,\n      flag,\n      sub,\n      primary,\n      route\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': ABOUT_PAGE_QUERY_RESULT
+    '\n  *[_type == "portfolioPage" && _id == "portfolioPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    filterLabel,\n    matchesText,\n    loadingText,\n    endText,\n    detailLabels{\n      deployLogTitle,\n      deployLogLines,\n      briefHeading,\n      problemLabel,\n      solutionLabel,\n      stackLabel,\n      roleLabel,\n      impactHeading,\n      interfaceHeading,\n      cloneLabel,\n      openLiveLabel,\n      backLabel,\n      prevLabel,\n      nextLabel\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': PORTFOLIO_PAGE_QUERY_RESULT
+    '\n  *[_type == "project"] | order(order asc, _createdAt desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags[]->{_id,title,"slug": slug.current},\n    role,\n    problem,\n    solution,\n    stack,\n    impact,\n    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n    gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},\n    repo,\n    live,\n    order\n  }\n': PORTFOLIO_PROJECTS_QUERY_RESULT
+    '\n  {\n    "project": *[_type == "project" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      commit,\n      status,\n      tags[]->{_id,title,"slug": slug.current},\n      role,\n      problem,\n      solution,\n      stack,\n      impact,\n      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      gallery[]{_key,asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt,caption},\n      repo,\n      live,\n      order,\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "prev": *[_type == "project" && order < *[_type == "project" && slug.current == $slug][0].order] | order(order desc) [0]{\n      title,\n      "slug": slug.current,\n      order\n    },\n    "next": *[_type == "project" && order > *[_type == "project" && slug.current == $slug][0].order] | order(order asc) [0]{\n      title,\n      "slug": slug.current,\n      order\n    }\n  }\n': PROJECT_BY_SLUG_QUERY_RESULT
+    '\n  *[_type == "blogPage" && _id == "blogPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    featuredPanelTitle,\n    featuredBadge,\n    readButtonLabel,\n    searchPlaceholder,\n    noMatchesText,\n    loadingText,\n    endText,\n    archiveLabel,\n    archiveNote,\n    articleLabels{\n      tocHeading,\n      searchHeading,\n      categoriesHeading,\n      tagsHeading,\n      recentHeading,\n      archivesHeading,\n      readingTimeHeading,\n      categoryHeading,\n      moreNotesHeading,\n      backLabel,\n      figCaptionPrefix\n    },\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': BLOG_PAGE_QUERY_RESULT
+    '\n  *[_type == "post"] | order(date desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    date,\n    category->{_id,title,"slug": slug.current},\n    tags[]->{_id,title,"slug": slug.current},\n    readTime,\n    featured,\n    coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt}\n  }\n': BLOG_POSTS_QUERY_RESULT
+    '\n  {\n    "post": *[_type == "post" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      summary,\n      date,\n      category->{_id,title,"slug": slug.current},\n      tags[]->{_id,title,"slug": slug.current},\n      readTime,\n      featured,\n      coverImage{asset->{_id,url,metadata{dimensions,lqip}},hotspot,crop,alt},\n      body[]{\n        ...,\n        _type == "image" => {\n          ...,\n          asset->{_id,url,metadata{dimensions,lqip}},\n          alt,\n          caption\n        }\n      },\n      seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n    },\n    "prev": *[_type == "post" && date < *[_type == "post" && slug.current == $slug][0].date] | order(date desc) [0]{\n      title,\n      "slug": slug.current,\n      date\n    },\n    "next": *[_type == "post" && date > *[_type == "post" && slug.current == $slug][0].date] | order(date asc) [0]{\n      title,\n      "slug": slug.current,\n      date\n    },\n    "recent": *[_type == "post" && slug.current != $slug] | order(date desc) [0...5]{\n      title,\n      "slug": slug.current,\n      date,\n      category->{_id,title,"slug": slug.current}\n    }\n  }\n': POST_BY_SLUG_QUERY_RESULT
+    '\n  *[_type == "contactPage" && _id == "contactPage"][0]{\n    eyebrow,\n    heading,\n    intro,\n    formTitle,\n    formBadge,\n    nameField{label,placeholder},\n    emailField{label,placeholder},\n    messageField{label,placeholder},\n    submitLabel,\n    formNote,\n    validationMessages{\n      nameRequired,\n      emailRequired,\n      emailInvalid,\n      messageRequired,\n      messageTooShort\n    },\n    successPanelTitle,\n    successLines,\n    successGreeting,\n    sendAnotherLabel,\n    availabilityHeading,\n    availabilityText,\n    resumeLabel,\n    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}\n  }\n': CONTACT_PAGE_QUERY_RESULT
+    '\n  *[_type == "tag"] | order(title asc) {\n    _id,\n    title,\n    "slug": slug.current\n  }\n': ALL_TAGS_QUERY_RESULT
+    '\n  *[_type == "category"] {\n    _id,\n    title,\n    "slug": slug.current,\n    "postCount": count(*[_type == "post" && references(^._id)])\n  }\n': ALL_CATEGORIES_QUERY_RESULT
+    '\n  *[_type == "qaEntry" && enabled == true] {\n    _id,\n    title,\n    keywords,\n    answer,\n    action{cmd,flag,route}\n  }\n': QA_ENTRIES_QUERY_RESULT
+    '\n  *[_type == "project"].slug.current\n': PROJECTS_SLUG_QUERY_RESULT
+    '\n  *[_type == "post"].slug.current\n': POSTS_SLUG_QUERY_RESULT
     '*[_type == "settings"][0]': SettingsQueryResult
-    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
     '\n  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
-    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllPostsQueryResult
-    '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MorePostsQueryResult
-    '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult
+    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': AllPostsQueryResult
+    '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': MorePostsQueryResult
+    '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n      ...,\n      markDefs[]{\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    },\n    _id,\n    "status": select(_originalId in path("drafts.**") => "draft", "published"),\n    "title": coalesce(title, "Untitled"),\n    "slug": slug.current,\n    excerpt,\n    coverImage,\n    "date": coalesce(date, _updatedAt),\n    "author": author->{firstName, lastName, picture},\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
+    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          link {\n            ...,\n            _type == "link" => {\n              "page": page->slug.current,\n              "post": post->slug.current\n            }\n          }\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            _type == "link" => {\n              "page": page->slug.current,\n              "post": post->slug.current\n            }\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
   }
 }
