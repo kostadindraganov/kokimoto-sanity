@@ -144,6 +144,7 @@ const defaultSchemaTypes = (allSchemaTypes as any[]).filter(
 const defaultWorkspace = defineConfig({
   name: 'default',
   title: 'Kokimoto Studio',
+  basePath: '/',
 
   projectId,
   dataset: 'production',
