@@ -7,7 +7,7 @@ import Avatar from '@/app/components/Avatar'
 import {MorePosts} from '@/app/components/Posts'
 import PortableText from '@/app/components/PortableText'
 import Image from '@/app/components/SanityImage'
-import {sanityFetch} from '@/sanity/lib/live'
+import {getDynamicFetchOptions, sanityFetch, sanityFetchMetadata, sanityFetchStaticParams} from '@/sanity/lib/live'
 import {postPagesSlugs, postQuery} from '@/sanity/lib/queries'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
 
@@ -16,12 +16,7 @@ import {resolveOpenGraphImage} from '@/sanity/lib/utils'
  * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams() {
-  const {data} = await sanityFetch({
-    query: postPagesSlugs,
-    // Use the published perspective in generateStaticParams
-    perspective: 'published',
-    stega: false,
-  })
+  const {data} = await sanityFetchStaticParams({query: postPagesSlugs})
   return data
 }
 
@@ -33,12 +28,11 @@ export async function generateMetadata(
   props: PageProps<'/posts/[slug]'>,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const params = await props.params
-  const {data: post} = await sanityFetch({
+  const [params, {perspective}] = await Promise.all([props.params, getDynamicFetchOptions()])
+  const {data: post} = await sanityFetchMetadata({
     query: postQuery,
     params,
-    // Metadata should never contain stega
-    stega: false,
+    perspective,
   })
   const previousImages = (await parent).openGraph?.images || []
   const ogImage = resolveOpenGraphImage(post?.coverImage)
@@ -58,7 +52,9 @@ export async function generateMetadata(
 
 export default async function PostPage(props: PageProps<'/posts/[slug]'>) {
   const params = await props.params
-  const [{data: post}] = await Promise.all([sanityFetch({query: postQuery, params})])
+  const [{data: post}] = await Promise.all([
+    sanityFetch({query: postQuery, params, perspective: 'published', stega: false}),
+  ])
 
   if (!post?._id) {
     return notFound()

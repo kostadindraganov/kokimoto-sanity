@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import Head from 'next/head'
 
 import PageBuilderPage from '@/app/components/PageBuilder'
-import {sanityFetch} from '@/sanity/lib/live'
+import {getDynamicFetchOptions, sanityFetch, sanityFetchMetadata, sanityFetchStaticParams} from '@/sanity/lib/live'
 import {getPageQuery, pagesSlugs} from '@/sanity/lib/queries'
 import {GetPageQueryResult} from '@/sanity.types'
 import {PageOnboarding} from '@/app/components/Onboarding'
@@ -12,12 +12,7 @@ import {PageOnboarding} from '@/app/components/Onboarding'
  * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams() {
-  const {data} = await sanityFetch({
-    query: pagesSlugs,
-    // // Use the published perspective in generateStaticParams
-    perspective: 'published',
-    stega: false,
-  })
+  const {data} = await sanityFetchStaticParams({query: pagesSlugs})
   return data
 }
 
@@ -26,12 +21,11 @@ export async function generateStaticParams() {
  * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
  */
 export async function generateMetadata(props: PageProps<'/[slug]'>): Promise<Metadata> {
-  const params = await props.params
-  const {data: page} = await sanityFetch({
+  const [params, {perspective}] = await Promise.all([props.params, getDynamicFetchOptions()])
+  const {data: page} = await sanityFetchMetadata({
     query: getPageQuery,
     params,
-    // Metadata should never contain stega
-    stega: false,
+    perspective,
   })
 
   return {
@@ -42,7 +36,9 @@ export async function generateMetadata(props: PageProps<'/[slug]'>): Promise<Met
 
 export default async function Page(props: PageProps<'/[slug]'>) {
   const params = await props.params
-  const [{data: page}] = await Promise.all([sanityFetch({query: getPageQuery, params})])
+  const [{data: page}] = await Promise.all([
+    sanityFetch({query: getPageQuery, params, perspective: 'published', stega: false}),
+  ])
 
   if (!page?._id) {
     return (
