@@ -99,3 +99,60 @@ export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}
 `)
+
+export const CONTACT_PAGE_QUERY = defineQuery(`
+  *[_type == "contactPage"][0]{
+    formTitle,
+    formBadge,
+    nameField,
+    emailField,
+    messageField,
+    submitLabel,
+    formNote,
+    validationMessages,
+    successPanelTitle,
+    successLines,
+    successGreeting,
+    sendAnotherLabel,
+    availabilityHeading,
+    availabilityText,
+    resumeLabel,
+  }
+`)
+
+export const SITE_SETTINGS_CONTACT_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0]{
+    email,
+    github,
+    linkedin,
+    cv,
+    availabilityStatus,
+    availability,
+    location,
+  }
+`)
+
+export const QA_ENTRIES_QUERY = defineQuery(`
+  *[_type == "qaEntry" && enabled != false] | order(_createdAt asc) {
+    _id,
+    title,
+    "keywords": keywords,
+    "answer": answer,
+    action,
+  }
+`)
+
+export const SITE_SETTINGS_ASK_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0]{
+    handle,
+    "askConsole": askConsole{
+      enabled,
+      heading,
+      description,
+      placeholder,
+      emptyMessage,
+      suggestions,
+      fallback,
+    },
+  }
+`)
