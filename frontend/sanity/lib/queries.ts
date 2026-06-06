@@ -1,6 +1,75 @@
-import {defineQuery} from 'next-sanity'
+import {defineQuery, groq} from 'next-sanity'
 
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]`)
+
+// ─── Portfolio queries ────────────────────────────────────────────────────────
+
+export const ABOUT_PAGE_QUERY = defineQuery(groq`
+  *[_type == "aboutPage" && _id == "aboutPage"][0]{
+    eyebrow,
+    heading,
+    portraitCaption,
+    bioParagraphs,
+    experiencePrompt,
+    timeline[]{
+      _key,
+      years,
+      role,
+      company,
+      body,
+      current
+    },
+    valuesPrompt,
+    values[]{
+      _key,
+      key,
+      value
+    },
+    stackPrompt,
+    stackRows[]{
+      _key,
+      term,
+      items
+    },
+    ctas[]{
+      _key,
+      cmd,
+      flag,
+      sub,
+      primary,
+      route
+    },
+    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}
+  }
+`)
+
+export const SETTINGS_ABOUT_QUERY = defineQuery(groq`
+  *[_type == "siteSettings" && _id == "siteSettings"][0]{
+    name,
+    handle,
+    availabilityStatus,
+    askConsole{
+      enabled,
+      heading,
+      description,
+      placeholder,
+      emptyMessage,
+      suggestions,
+      fallback
+    },
+    seo{metaTitle,metaDescription,ogImage{asset->{_id,url},alt,metadataBase}}
+  }
+`)
+
+export const QA_ENTRIES_QUERY = defineQuery(groq`
+  *[_type == "qaEntry" && enabled == true] {
+    _id,
+    title,
+    keywords,
+    answer,
+    action{cmd,flag,route}
+  }
+`)
 
 const postFields = /* groq */ `
   _id,
