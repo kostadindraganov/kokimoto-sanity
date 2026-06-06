@@ -1,28 +1,58 @@
-import {person} from './documents/person'
-import {page} from './documents/page'
+import {category} from './documents/category'
+import {contactSubmission} from './documents/contactSubmission'
 import {post} from './documents/post'
-import {callToAction} from './objects/callToAction'
-import {infoSection} from './objects/infoSection'
-import {settings} from './singletons/settings'
-import {link} from './objects/link'
+import {project} from './documents/project'
+import {qaEntry} from './documents/qaEntry'
+import {tag} from './documents/tag'
 import {blockContent} from './objects/blockContent'
-import button from './objects/button'
-import {blockContentTextOnly} from './objects/blockContentTextOnly'
+import {ctaCommand} from './objects/ctaCommand'
+import {metric} from './objects/metric'
+import {qaAction} from './objects/qaAction'
+import {seo} from './objects/seo'
+import {stackRow} from './objects/stackRow'
+import {timelineEntry} from './objects/timelineEntry'
+import {valueItem} from './objects/valueItem'
+import {aboutPage} from './singletons/aboutPage'
+import {blogPage} from './singletons/blogPage'
+import {contactPage} from './singletons/contactPage'
+import {homePage} from './singletons/homePage'
+import {navigation} from './singletons/navigation'
+import {portfolioPage} from './singletons/portfolioPage'
+import {siteSettings} from './singletons/siteSettings'
 
-// Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/studio/schema-types
-
+/**
+ * All schema types for the default (production) workspace.
+ * https://www.sanity.io/docs/studio/schema-types
+ */
 export const schemaTypes = [
   // Singletons
-  settings,
+  siteSettings,
+  navigation,
+  homePage,
+  aboutPage,
+  portfolioPage,
+  blogPage,
+  contactPage,
   // Documents
-  page,
+  project,
   post,
-  person,
+  category,
+  tag,
+  qaEntry,
   // Objects
-  button,
+  metric,
+  timelineEntry,
+  valueItem,
+  stackRow,
+  ctaCommand,
+  qaAction,
+  seo,
   blockContent,
-  blockContentTextOnly,
-  infoSection,
-  callToAction,
-  link,
 ]
+
+/**
+ * Schema for the private "inbox" workspace (dataset: inbox).
+ * Contains only contact form submissions created by the frontend
+ * server action.
+ */
+export const inboxSchemaTypes = [contactSubmission]
