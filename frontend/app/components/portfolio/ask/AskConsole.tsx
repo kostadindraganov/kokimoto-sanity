@@ -1,64 +1,50 @@
 'use client'
 
-/* ============================================================
-   AskConsole.tsx — interactive Claude-Code-style Q&A REPL.
-   Ported 1:1 from ask-console.jsx + qa.jsx (keyword matcher).
-   Entries are fetched server-side and passed as props.
-   ============================================================ */
-
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {useRouter} from 'next/navigation'
+import {stegaClean} from 'next-sanity'
+import {type QaEntry, matchQA} from './kwMatch'
 
-import type {AskConsoleSettings, QaEntry} from '@/app/components/portfolio/about/types'
+export type {QaEntry}
 
-// ---------- keyword matcher (ported from qa.jsx) ----------
-
-function kwScore(entry: QaEntry, query: string): number {
-  const q = query.toLowerCase()
-  const words = q.split(/\s+/).filter(Boolean)
-  let score = 0
-  for (const kw of entry.keywords) {
-    const k = kw.toLowerCase()
-    if (q === k) score += 12
-    else if (q.includes(k) || k.includes(q)) score += 6
-    else {
-      for (const w of words) {
-        if (k.includes(w) || w.includes(k)) score += 3
-      }
-    }
-  }
-  return score
+export interface AskConsoleSettings {
+  heading?: string | null
+  description?: string | null
+  placeholder?: string | null
+  emptyMessage?: string | null
+  suggestions?: string[] | null
+  fallback?: string[] | null
 }
 
-function matchQA(
-  entries: QaEntry[],
-  query: string,
-  fallback: string[],
-): {lines: string[]; action?: QaEntry['action']} {
-  if (!entries.length) return {lines: fallback.length ? fallback : ['No answer found.']}
-  const scored = entries
-    .map((e) => ({e, s: kwScore(e, query)}))
-    .filter((x) => x.s > 0)
-    .sort((a, b) => b.s - a.s)
-  if (!scored.length) return {lines: fallback.length ? fallback : ['No answer found.']}
-  const best = scored[0].e
-  return {lines: best.answer, action: best.action ?? undefined}
+interface NavItem {
+  label: string
+  command: string
+  route: string
 }
+
+interface HistoryEntry {
+  uid: number
+  q: string
+  lines: string[]
+  action?: QaEntry['action']
+  tools: string[]
+  done: boolean
+}
+
+const QA_TOOLS_SETS = [
+  ['Searching field notes', 'Matching intent', 'Composing reply'],
+  ['Indexing profile.md', 'Ranking answers', 'Streaming response'],
+  ['Reading knowledge base', 'Resolving context'],
+  ['Grepping ./notes', 'Scoring relevance', 'Drafting'],
+]
 
 function qaTools(): string[] {
-  const pool = [
-    'read_file(notes.md)',
-    'search_docs(profile)',
-    'grep -r "experience"',
-    'cat timeline.json',
-    'ls ./stack',
-    'inspect engineering-values.json',
-  ]
-  const n = 1 + Math.floor(Math.random() * 2)
-  return pool.sort(() => Math.random() - 0.5).slice(0, n)
+  return QA_TOOLS_SETS[Math.floor(Math.random() * QA_TOOLS_SETS.length)]
 }
 
-// ---------- Animated placeholder ----------
+let __askUid = 0
 
+/* animated terminal placeholder — scrambles in left→right */
 function AskPlaceholder({text}: {text: string}) {
   const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#%*+=:.'
   const [chars, setChars] = useState<string[]>(() => text.split(''))
@@ -66,6 +52,7 @@ function AskPlaceholder({text}: {text: string}) {
   useEffect(() => {
     let settle: ReturnType<typeof setInterval> | null = null
     let loop: ReturnType<typeof setInterval> | null = null
+
     const scramble = () => {
       let frame = 0
       if (settle) clearInterval(settle)
@@ -85,6 +72,7 @@ function AskPlaceholder({text}: {text: string}) {
         }
       }, 38)
     }
+
     scramble()
     loop = setInterval(scramble, 5200)
     return () => {
@@ -95,7 +83,7 @@ function AskPlaceholder({text}: {text: string}) {
 
   return (
     <span className="ask-ph" aria-hidden="true">
-      <span className="ask-ph-cursor">▍</span>
+      <span className="ask-ph-cursor">&#9613;</span>
       <span className="ask-ph-text">
         {chars.map((ch, i) => (
           <span key={i} className="ask-ph-ch" style={{animationDelay: i * 55 + 'ms'}}>
@@ -107,160 +95,152 @@ function AskPlaceholder({text}: {text: string}) {
   )
 }
 
-// ---------- Answer stream (inline, avoids circular dep on Stream) ----------
-
-type QaQueueEntry = {
-  uid: number
-  q: string
-  lines: string[]
-  action?: QaEntry['action']
-  tools: string[] | null
-  done: boolean
-}
-
-function AnswerLines({lines, animate, onDone}: {lines: string[]; animate: boolean; onDone: () => void}) {
-  const [shown, setShown] = useState(animate ? 0 : lines.length)
-  const doneRef = useRef(onDone)
-  useEffect(() => {
-    doneRef.current = onDone
-  }, [onDone])
-
-  useEffect(() => {
-    if (!animate) return
-    let i = 0
-    let t: ReturnType<typeof setTimeout>
-    const tick = () => {
-      i++
-      setShown(i)
-      if (i < lines.length) t = setTimeout(tick, 38 + Math.random() * 25)
-      else doneRef.current()
-    }
-    t = setTimeout(tick, 38)
-    return () => clearTimeout(t)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [animate])
-
+/* tool-use animation block */
+function ToolBlock({tools, done}: {tools: string[]; done: boolean}) {
   return (
-    <div className="out">
-      {lines.slice(0, shown).map((ln, i) => (
-        <div key={i} className="ln reveal muted">
-          {ln}
+    <div className="tool">
+      <div className="tool-head">
+        <span className={done ? 'ok' : 'acc'} style={{marginRight: 8}}>
+          {done ? '✓' : '◌'}
+        </span>
+        <span className="faint">running tools</span>
+      </div>
+      {tools.map((t, i) => (
+        <div key={i} className="tool-line">
+          <span className="faint">  └─ </span>
+          {t}
         </div>
       ))}
     </div>
   )
 }
 
-function AnswerStream({
-  entry,
-  animate,
-  onDone,
-}: {
-  entry: QaQueueEntry
-  animate: boolean
-  onDone: () => void
-}) {
-  const [phase, setPhase] = useState<'tools' | 'lines'>(
-    entry.tools && entry.tools.length > 0 && animate ? 'tools' : 'lines',
-  )
-  const [toolsDone, setToolsDone] = useState(!entry.tools || !animate)
-  const [toolRunning, setToolRunning] = useState(animate ? 0 : (entry.tools?.length ?? 0))
-  const doneRef = useRef(onDone)
-  useEffect(() => {
-    doneRef.current = onDone
-  }, [onDone])
+/* streamed answer lines */
+function AnswerLines({lines, done, onDone}: {lines: string[]; done: boolean; onDone: () => void}) {
+  const [shown, setShown] = useState<string[]>(done ? lines : [])
+  const [settled, setSettled] = useState(done)
 
   useEffect(() => {
-    if (!animate || !entry.tools || entry.tools.length === 0) return
-    let idx = 0
-    let t: ReturnType<typeof setTimeout>
-    const step = () => {
-      idx++
-      setToolRunning(idx)
-      if (idx < (entry.tools?.length ?? 0)) {
-        t = setTimeout(step, 180 + Math.random() * 140)
-      } else {
-        t = setTimeout(() => {
-          setToolsDone(true)
-          setPhase('lines')
-        }, 280)
+    if (done) return
+    let i = 0
+    const id = setInterval(() => {
+      i++
+      setShown(lines.slice(0, i))
+      if (i >= lines.length) {
+        clearInterval(id)
+        setSettled(true)
+        onDone()
       }
-    }
-    t = setTimeout(step, 220)
-    return () => clearTimeout(t)
+    }, 38)
+    return () => clearInterval(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [animate])
+  }, [])
 
   return (
-    <div className="qa-answer-inner">
-      {entry.tools && entry.tools.length > 0 && (
-        <div className="tool reveal" style={{marginBottom: 10}}>
-          <div className="tool-head open">
-            <span className="bullet">●</span>
-            <span>{toolsDone ? `${entry.tools.length} tool uses` : 'running tools'}</span>
-          </div>
-          {!toolsDone && (
-            <div className="tool-list">
-              {entry.tools.map((a, i) => {
-                const done = i < toolRunning
-                const run = i === toolRunning && animate
-                return (
-                  <div key={i} className={'tool-line' + (done ? ' done' : run ? ' run' : '')}>
-                    <span className="ic">{done ? '✓' : '·'}</span>
-                    <span>{a}</span>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+    <div className="out" style={{marginTop: 10}}>
+      {shown.map((line, i) => (
+        <div key={i} className="muted">
+          {line}
         </div>
-      )}
-      {(phase === 'lines' || !animate) && (
-        <AnswerLines lines={entry.lines} animate={animate && !entry.done} onDone={onDone} />
-      )}
-      {entry.action && entry.done && (
-        <div style={{marginTop: 14}}>
-          <button
-            className={'btn' + (entry.action.cmd ? ' ghost' : '')}
-            onClick={() => {
-              if (entry.action?.route) {
-                window.location.href = '/' + entry.action.route.replace(/^\//, '')
-              }
-            }}
-          >
-            <span className="car">›</span>
-            {entry.action.cmd}
-            {entry.action.flag && <span className="flag"> {entry.action.flag}</span>}
-          </button>
-        </div>
-      )}
+      ))}
+      {!settled && <span className="cursor" style={{display: 'inline-block'}} />}
     </div>
   )
 }
 
-// ---------- AskConsole ----------
+/* think pill */
+function ThinkPill() {
+  return (
+    <div className="think" style={{marginBottom: 8}}>
+      <span className="think-glyph">●</span> thinking
+    </div>
+  )
+}
 
-let __uid = 0
+/* single Q/A entry renderer */
+function EntryView({
+  entry,
+  handle,
+  onDone,
+}: {
+  entry: HistoryEntry
+  handle: string
+  onDone: () => void
+}) {
+  const [phase, setPhase] = useState<'think' | 'tools' | 'lines'>(entry.done ? 'lines' : 'think')
+
+  useEffect(() => {
+    if (entry.done) return
+    const t1 = setTimeout(() => setPhase('tools'), 1200)
+    const t2 = setTimeout(() => setPhase('lines'), 2400)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [entry.done])
+
+  return (
+    <div className="qa-entry">
+      <div className="q-echo">
+        <span className="who">{handle}</span>
+        <span className="pct">:~ %</span>
+        <span className="q"> {entry.q}</span>
+      </div>
+      <div className="qa-answer">
+        {!entry.done && phase === 'think' && <ThinkPill />}
+        {(phase === 'tools' || phase === 'lines') && (
+          <ToolBlock tools={entry.tools} done={phase === 'lines' || entry.done} />
+        )}
+        {phase === 'lines' && (
+          <AnswerLines lines={entry.lines} done={entry.done} onDone={onDone} />
+        )}
+        {phase === 'lines' && entry.action?.route && (
+          <div style={{marginTop: 14}}>
+            <button
+              className="btn ghost"
+              onClick={() => {
+                if (entry.action?.route) {
+                  window.location.href = '/' + entry.action.route
+                }
+              }}
+            >
+              <span className="car">›</span> {entry.action.cmd}
+              {entry.action.flag && <span className="flag" style={{marginLeft: 8}}>{entry.action.flag}</span>}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
 
 export interface AskConsoleProps {
   entries: QaEntry[]
   settings: AskConsoleSettings
   handle: string
+  navItems?: NavItem[]
 }
 
-export function AskConsole({entries, settings, handle}: AskConsoleProps) {
+export default function AskConsole({entries, settings, handle, navItems = []}: AskConsoleProps) {
+  const router = useRouter()
+  const [history, setHistory] = useState<HistoryEntry[]>([])
   const [input, setInput] = useState('')
-  const [queue, setQueue] = useState<QaQueueEntry[]>([])
   const [focus, setFocus] = useState(false)
   const [hist, setHist] = useState<string[]>([])
-  const [, setHistIdx] = useState(-1)
+  const [histIdx, setHistIdx] = useState(-1)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const fallback = useMemo(() => settings.fallback ?? [], [settings.fallback])
-  const suggestions = useMemo(() => (settings.suggestions ?? []).slice(0, 6), [settings.suggestions])
+  const fallback = useMemo(
+    () => settings.fallback ?? ["I don't have a note on that yet — try asking about experience, stack, or availability."],
+    [settings.fallback],
+  )
 
-  const placeholder = settings.placeholder ?? 'Ask me something'
-  const emptyMessage = settings.emptyMessage ?? '// session listening — the prompt is at the bottom.'
+  const placeholder = useMemo(() => {
+    const raw = settings.placeholder ?? 'Ask me something'
+    return stegaClean(raw)
+  }, [settings.placeholder])
+
+  const suggestions = useMemo(() => (settings.suggestions ?? []).slice(0, 6), [settings.suggestions])
 
   const scrollBottom = useCallback(() => {
     requestAnimationFrame(() =>
@@ -269,22 +249,16 @@ export function AskConsole({entries, settings, handle}: AskConsoleProps) {
   }, [])
 
   const markDone = useCallback((uid: number) => {
-    setQueue((qs) => qs.map((e) => (e.uid === uid ? {...e, done: true} : e)))
-  }, [])
+    setHistory((es) => es.map((e) => (e.uid === uid ? {...e, done: true} : e)))
+    scrollBottom()
+  }, [scrollBottom])
 
   const push = useCallback(
-    (q: string, lines: string[], action?: QaEntry['action'], noTools?: boolean) => {
-      const uid = ++__uid
-      setQueue((qs) => [
-        ...qs,
-        {
-          uid,
-          q,
-          lines,
-          action,
-          tools: noTools ? null : qaTools(),
-          done: false,
-        },
+    (q: string, lines: string[], opts: {action?: QaEntry['action']; noTools?: boolean} = {}) => {
+      const uid = ++__askUid
+      setHistory((es) => [
+        ...es,
+        {uid, q, lines, action: opts.action, tools: opts.noTools ? [] : qaTools(), done: false},
       ])
       scrollBottom()
     },
@@ -300,15 +274,29 @@ export function AskConsole({entries, settings, handle}: AskConsoleProps) {
       setInput('')
 
       const lower = text.toLowerCase()
+
       if (lower === 'clear' || lower === 'cls') {
-        setQueue([])
+        setHistory([])
         return
       }
+
       if (lower === 'ls' || lower === 'ls ./' || lower === 'ls .') {
-        push(text, ['home/   portfolio/   about/   blog/   contact/'], undefined, true)
+        const routes = navItems.length
+          ? navItems.map((n) => n.route + '/').join('   ')
+          : 'home/   portfolio/   about/   blog/   contact/'
+        push(text, [routes], {noTools: true})
         return
       }
-      const navMap: Record<string, string> = {
+
+      // Navigation commands like /home, /portfolio etc.
+      const navMap: Record<string, string> = {}
+      navItems.forEach((n) => {
+        navMap['/' + n.route] = n.route
+        navMap[n.route] = n.route
+        if (n.command) navMap[n.command] = n.route
+      })
+      // Fallback defaults
+      const defaultNavMap: Record<string, string> = {
         '/home': 'home',
         '/portfolio': 'portfolio',
         '/about': 'about',
@@ -320,17 +308,17 @@ export function AskConsole({entries, settings, handle}: AskConsoleProps) {
         blog: 'blog',
         contact: 'contact',
       }
-      if (navMap[lower]) {
-        push(text, ['→ opening /' + navMap[lower] + ' …'], undefined, true)
-        setTimeout(() => {
-          window.location.href = '/' + navMap[lower]
-        }, 280)
+      const merged = {...defaultNavMap, ...navMap}
+      if (merged[lower]) {
+        push(text, ['→ opening /' + merged[lower] + ' …'], {noTools: true})
+        setTimeout(() => router.push('/' + merged[lower]), 280)
         return
       }
-      const res = matchQA(entries, text, fallback)
-      push(text, res.lines, res.action ?? undefined)
+
+      const res = matchQA(entries, fallback, text)
+      push(text, res.lines, {action: res.action})
     },
-    [entries, fallback, push],
+    [entries, fallback, navItems, push, router],
   )
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -351,41 +339,34 @@ export function AskConsole({entries, settings, handle}: AskConsoleProps) {
     }
   }
 
-  const heading = settings.heading ?? 'ask the console'
-  const description =
-    settings.description ??
-    "A live session — type below and it answers like a Claude-Code CLI, from Kostadin's notes. Replies stream in above the prompt. Try a suggestion, or ask about experience, stack, or values."
+  // suppress unused warning
+  void histIdx
 
   return (
-    <section className="ask-wrap" aria-label={heading}>
+    <section className="ask-wrap" aria-label="Ask the console">
       <div className="sec-head">
         <span className="idx">»</span>
-        <h2>{heading}</h2>
-        <span className="rule" aria-hidden="true" />
+        <h2>ask the console</h2>
       </div>
-      <p className="muted" style={{fontSize: 13, margin: '-6px 0 18px', maxWidth: '64ch'}}>
-        {description}
-      </p>
+      {settings.description && (
+        <p className="muted" style={{fontSize: 13, margin: '-6px 0 18px', maxWidth: '64ch'}}>
+          {settings.description}
+        </p>
+      )}
 
-      {queue.length === 0 ? (
-        <div className="qa-empty">{emptyMessage}</div>
+      {history.length === 0 ? (
+        <div className="qa-empty">
+          {'// '}{settings.emptyMessage ?? 'session listening — the prompt is at the bottom.'}
+        </div>
       ) : (
         <div className="qa-transcript">
-          {queue.map((e) => (
-            <div key={e.uid} className="qa-entry">
-              <div className="q-echo">
-                <span className="who">{handle}</span>
-                <span className="pct">:~ %</span>
-                <span className="q"> {e.q}</span>
-              </div>
-              <div className="qa-answer">
-                <AnswerStream
-                  entry={e}
-                  animate={!e.done}
-                  onDone={() => markDone(e.uid)}
-                />
-              </div>
-            </div>
+          {history.map((e) => (
+            <EntryView
+              key={e.uid}
+              entry={e}
+              handle={handle}
+              onDone={() => markDone(e.uid)}
+            />
           ))}
         </div>
       )}
@@ -426,12 +407,10 @@ export function AskConsole({entries, settings, handle}: AskConsoleProps) {
               />
               {!focus && input.length === 0 && <AskPlaceholder text={placeholder} />}
             </span>
-            <span className="ret">↵</span>
+            <span className="ret">&#8629;</span>
           </div>
         </form>
       </div>
     </section>
   )
 }
-
-export default AskConsole

@@ -230,94 +230,59 @@ export const pagesSlugs = defineQuery(`
   {"slug": slug.current}
 `)
 
-// ─── Blog / Portfolio queries ──────────────────────────────────────────────
+export const CONTACT_PAGE_QUERY = defineQuery(`
+  *[_type == "contactPage"][0]{
+    formTitle,
+    formBadge,
+    nameField,
+    emailField,
+    messageField,
+    submitLabel,
+    formNote,
+    validationMessages,
+    successPanelTitle,
+    successLines,
+    successGreeting,
+    sendAnotherLabel,
+    availabilityHeading,
+    availabilityText,
+    resumeLabel,
+  }
+`)
 
-export const BLOG_PAGE_QUERY = defineQuery(`
-  *[_type == "blogPage"][0]{
+export const SITE_SETTINGS_CONTACT_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0]{
+    email,
+    github,
+    linkedin,
+    cv,
+    availabilityStatus,
+    availability,
+    location,
+  }
+`)
+
+export const QA_ENTRIES_QUERY = defineQuery(`
+  *[_type == "qaEntry" && enabled != false] | order(_createdAt asc) {
     _id,
-    eyebrow,
-    heading,
-    intro,
-    featuredPanelTitle,
-    featuredBadge,
-    readButtonLabel,
-    searchPlaceholder,
-    noMatchesText,
-    loadingText,
-    endText,
-    archiveLabel,
-    archiveNote,
-    articleLabels{
-      tocHeading,
-      searchHeading,
-      categoriesHeading,
-      tagsHeading,
-      recentHeading,
-      archivesHeading,
-      readingTimeHeading,
-      categoryHeading,
-      moreNotesHeading,
-      backLabel,
-      figCaptionPrefix
+    title,
+    "keywords": keywords,
+    "answer": answer,
+    action,
+  }
+`)
+
+export const SITE_SETTINGS_ASK_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0]{
+    handle,
+    "askConsole": askConsole{
+      enabled,
+      heading,
+      description,
+      placeholder,
+      emptyMessage,
+      suggestions,
+      fallback,
     },
-    seo
-  }
-`)
-
-export const BLOG_POSTS_QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
-    _id,
-    _type,
-    title,
-    "slug": slug.current,
-    summary,
-    date,
-    featured,
-    readTime,
-    "category": category->{_id, title, "slug": slug.current},
-    "tags": tags[]->{_id, title, "slug": slug.current},
-    coverImage
-  }
-`)
-
-export const POST_BY_SLUG_QUERY = defineQuery(`
-  *[_type == "post" && slug.current == $slug][0]{
-    _id,
-    _type,
-    title,
-    "slug": slug.current,
-    summary,
-    date,
-    featured,
-    readTime,
-    "category": category->{_id, title, "slug": slug.current},
-    "tags": tags[]->{_id, title, "slug": slug.current},
-    coverImage,
-    body,
-    seo
-  }
-`)
-
-export const ALL_CATEGORIES_QUERY = defineQuery(`
-  *[_type == "category"] | order(title asc) {
-    _id,
-    title,
-    "slug": slug.current,
-    description,
-    "count": count(*[_type == "post" && references(^._id)])
-  }
-`)
-
-export const POSTS_SLUG_QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current)]
-  {"slug": slug.current}
-`)
-
-export const RECENT_POSTS_QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(date desc) [0...5] {
-    _id,
-    title,
-    "slug": slug.current,
-    date
   }
 `)
