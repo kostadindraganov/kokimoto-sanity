@@ -55,7 +55,15 @@ const Posts = ({
   </div>
 )
 
-export const MorePosts = async ({skip, limit}: {skip: string; limit: number}) => {
+export const MorePosts = async ({
+  skip,
+  limit,
+  recentHeading = 'Recent Posts',
+}: {
+  skip: string
+  limit: number
+  recentHeading?: string
+}) => {
   const {data} = await sanityFetch({
     query: morePostsQuery,
     params: {skip, limit},
@@ -66,7 +74,7 @@ export const MorePosts = async ({skip, limit}: {skip: string; limit: number}) =>
   }
 
   return (
-    <Posts heading={`Recent Posts (${data?.length})`}>
+    <Posts heading={`${recentHeading} (${data?.length})`}>
       {data?.map((post: AllPostsQueryResult[number]) => (
         <Post key={post._id} post={post} />
       ))}
@@ -74,7 +82,7 @@ export const MorePosts = async ({skip, limit}: {skip: string; limit: number}) =>
   )
 }
 
-export const AllPosts = async () => {
+export const AllPosts = async ({recentHeading = 'Recent Posts'}: {recentHeading?: string} = {}) => {
   const {data} = await sanityFetch({query: allPostsQuery})
 
   if (!data || data.length === 0) {
@@ -83,7 +91,7 @@ export const AllPosts = async () => {
 
   return (
     <Posts
-      heading="Recent Posts"
+      heading={recentHeading}
       subHeading={`${data.length === 1 ? 'This blog post is' : `These ${data.length} blog posts are`} populated from your Sanity Studio.`}
     >
       {data.map((post: AllPostsQueryResult[number]) => (
