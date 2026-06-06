@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g-notes" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#13100a"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="g-notes-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="g-notes-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g-notes)"></rect>
+  <rect width="1200" height="800" fill="url(#g-notes-grid)"></rect>
+  <rect width="1200" height="800" fill="url(#g-notes-glow)"></rect>
+  
+  <g transform="translate(240 180) rotate(-3)" opacity="1">
+      <rect width="540" height="380" rx="6" fill="#1a140e" stroke="rgba(236,230,215,0.10)" stroke-width="1"></rect>
+      <rect x="30" y="32" width="240" height="14" rx="3" fill="#db8c4e" opacity="0.85"></rect>
+      <rect x="30" y="64" width="180" height="8" rx="3" fill="rgba(236,230,215,0.18)"></rect>
+      <rect x="30" y="100" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.5"></rect><rect x="30" y="130" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.46"></rect><rect x="30" y="160" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.42"></rect><rect x="30" y="190" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.38"></rect><rect x="30" y="220" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.33999999999999997"></rect><rect x="30" y="250" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.3"></rect><rect x="30" y="280" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.26"></rect><rect x="30" y="310" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.21999999999999997"></rect>
+    </g><g transform="translate(262 169) rotate(-1.8)" opacity="0.87">
+      <rect width="540" height="380" rx="6" fill="#1a140e" stroke="rgba(236,230,215,0.10)" stroke-width="1"></rect>
+      <rect x="30" y="32" width="240" height="14" rx="3" fill="#db8c4e" opacity="0.85"></rect>
+      <rect x="30" y="64" width="180" height="8" rx="3" fill="rgba(236,230,215,0.18)"></rect>
+      <rect x="30" y="100" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.5"></rect><rect x="30" y="130" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.46"></rect><rect x="30" y="160" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.42"></rect><rect x="30" y="190" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.38"></rect><rect x="30" y="220" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.33999999999999997"></rect><rect x="30" y="250" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.3"></rect><rect x="30" y="280" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.26"></rect><rect x="30" y="310" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.21999999999999997"></rect>
+    </g><g transform="translate(284 158) rotate(-0.6000000000000001)" opacity="0.74">
+      <rect width="540" height="380" rx="6" fill="#1a140e" stroke="rgba(236,230,215,0.10)" stroke-width="1"></rect>
+      <rect x="30" y="32" width="240" height="14" rx="3" fill="#db8c4e" opacity="0.85"></rect>
+      <rect x="30" y="64" width="180" height="8" rx="3" fill="rgba(236,230,215,0.18)"></rect>
+      <rect x="30" y="100" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.5"></rect><rect x="30" y="130" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.46"></rect><rect x="30" y="160" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.42"></rect><rect x="30" y="190" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.38"></rect><rect x="30" y="220" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.33999999999999997"></rect><rect x="30" y="250" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.3"></rect><rect x="30" y="280" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.26"></rect><rect x="30" y="310" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.21999999999999997"></rect>
+    </g><g transform="translate(306 147) rotate(0.5999999999999996)" opacity="0.61">
+      <rect width="540" height="380" rx="6" fill="#1a140e" stroke="rgba(236,230,215,0.10)" stroke-width="1"></rect>
+      <rect x="30" y="32" width="240" height="14" rx="3" fill="#db8c4e" opacity="0.85"></rect>
+      <rect x="30" y="64" width="180" height="8" rx="3" fill="rgba(236,230,215,0.18)"></rect>
+      <rect x="30" y="100" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.5"></rect><rect x="30" y="130" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.46"></rect><rect x="30" y="160" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.42"></rect><rect x="30" y="190" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.38"></rect><rect x="30" y="220" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.33999999999999997"></rect><rect x="30" y="250" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.3"></rect><rect x="30" y="280" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.26"></rect><rect x="30" y="310" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.21999999999999997"></rect>
+    </g><g transform="translate(328 136) rotate(1.7999999999999998)" opacity="0.48">
+      <rect width="540" height="380" rx="6" fill="#1a140e" stroke="rgba(236,230,215,0.10)" stroke-width="1"></rect>
+      <rect x="30" y="32" width="240" height="14" rx="3" fill="#db8c4e" opacity="0.85"></rect>
+      <rect x="30" y="64" width="180" height="8" rx="3" fill="rgba(236,230,215,0.18)"></rect>
+      <rect x="30" y="100" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.5"></rect><rect x="30" y="130" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.46"></rect><rect x="30" y="160" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.42"></rect><rect x="30" y="190" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.38"></rect><rect x="30" y="220" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.33999999999999997"></rect><rect x="30" y="250" width="260" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.3"></rect><rect x="30" y="280" width="380" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.26"></rect><rect x="30" y="310" width="320" height="6" rx="2" fill="rgba(236,230,215,0.18)" opacity="0.21999999999999997"></rect>
+    </g>
+  <text x="120" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="22" font-weight="600">~/field-notes</text>
+  <text x="120" y="730" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="14">▸ typed schemas · git-backed · queryable</text>
+
+</svg>

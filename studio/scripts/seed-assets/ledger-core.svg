@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g-ledger" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1208"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="g-ledger-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="g-ledger-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g-ledger)"></rect>
+  <rect width="1200" height="800" fill="url(#g-ledger-grid)"></rect>
+  <rect width="1200" height="800" fill="url(#g-ledger-glow)"></rect>
+  
+  <line x1="120" y1="140" x2="1080" y2="140" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="200" cy="140" r="6" fill="#db8c4e" opacity="0.4"></circle>
+            <text x="86" y="144" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0018</text>
+<line x1="120" y1="210" x2="1080" y2="210" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="337" cy="210" r="6" fill="#db8c4e" opacity="0.6000000000000001"></circle>
+            <text x="86" y="214" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">001c</text>
+<line x1="120" y1="280" x2="1080" y2="280" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="474" cy="280" r="6" fill="#db8c4e" opacity="0.8"></circle>
+            <text x="86" y="284" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0020</text>
+<line x1="120" y1="350" x2="1080" y2="350" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="611" cy="350" r="6" fill="#db8c4e" opacity="0.4"></circle>
+            <text x="86" y="354" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0024</text>
+<line x1="120" y1="420" x2="1080" y2="420" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="748" cy="420" r="6" fill="#db8c4e" opacity="0.6000000000000001"></circle>
+            <text x="86" y="424" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0028</text>
+<line x1="120" y1="490" x2="1080" y2="490" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="885" cy="490" r="6" fill="#db8c4e" opacity="0.8"></circle>
+            <text x="86" y="494" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">002c</text>
+<line x1="120" y1="560" x2="1080" y2="560" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="322" cy="560" r="6" fill="#db8c4e" opacity="0.4"></circle>
+            <text x="86" y="564" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0030</text>
+<line x1="120" y1="630" x2="1080" y2="630" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="2 6"></line>
+            <circle cx="459" cy="630" r="6" fill="#db8c4e" opacity="0.6000000000000001"></circle>
+            <text x="86" y="634" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="13" text-anchor="end">0034</text>
+  <text x="120" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="22" font-weight="600">$ tail -f ledger.events</text>
+  <text x="120" y="730" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="14">▸ debit ▾ credit · double-entry · streaming</text>
+
+</svg>

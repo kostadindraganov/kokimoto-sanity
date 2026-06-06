@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p6-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#100f0c"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p6-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p6-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p6-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p6-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p6-glow)"></rect>
+  
+  <line x1="400" y1="130" x2="220" y2="220" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="400" y1="130" x2="400" y2="220" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="400" y1="130" x2="580" y2="220" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="220" y1="220" x2="140" y2="310" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="220" y1="220" x2="300" y2="310" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="400" y1="220" x2="460" y2="310" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="580" y1="220" x2="620" y2="310" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="140" y1="310" x2="220" y2="400" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="300" y1="310" x2="380" y2="400" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="460" y1="310" x2="520" y2="400" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><line x1="620" y1="310" x2="660" y2="400" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line><circle cx="400" cy="130" r="10" fill="#db8c4e" stroke="#db8c4e" stroke-width="1.5"></circle><circle cx="220" cy="220" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="400" cy="220" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="580" cy="220" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="140" cy="310" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="300" cy="310" r="10" fill="#db8c4e" stroke="#db8c4e" stroke-width="1.5"></circle><circle cx="460" cy="310" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="620" cy="310" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="220" cy="400" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="380" cy="400" r="10" fill="#db8c4e" stroke="#db8c4e" stroke-width="1.5"></circle><circle cx="520" cy="400" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle><circle cx="660" cy="400" r="10" fill="#1a140e" stroke="rgba(236,230,215,0.18)" stroke-width="1.5"></circle>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">make change cheap</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ safe refactors · taxonomy</text>
+
+</svg>

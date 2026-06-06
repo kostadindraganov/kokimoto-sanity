@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g-edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c100f"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="g-edge-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="g-edge-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g-edge)"></rect>
+  <rect width="1200" height="800" fill="url(#g-edge-grid)"></rect>
+  <rect width="1200" height="800" fill="url(#g-edge-glow)"></rect>
+  
+  <g transform="translate(600 400)">
+    <circle r="80" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="4 6"></circle><circle r="160" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="4 6"></circle><circle r="250" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="4 6"></circle><circle r="340" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1" stroke-dasharray="4 6"></circle>
+    <circle r="40" fill="#db8c4e" opacity="0.9"></circle>
+    <circle r="56" fill="none" stroke="#db8c4e" stroke-width="2" opacity="0.6"></circle>
+    <line x1="0" y1="0" x2="250.0" y2="0.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="250.0" cy="0.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="250.0" cy="0.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="251.1" y2="145.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="251.1" cy="145.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="251.1" cy="145.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="165.0" y2="285.8" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="165.0" cy="285.8" r="6" fill="#ece6d7"></circle>
+        <circle cx="165.0" cy="285.8" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="0.0" y2="250.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="0.0" cy="250.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="0.0" cy="250.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-145.0" y2="251.1" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-145.0" cy="251.1" r="6" fill="#ece6d7"></circle>
+        <circle cx="-145.0" cy="251.1" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-285.8" y2="165.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-285.8" cy="165.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="-285.8" cy="165.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-250.0" y2="0.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-250.0" cy="0.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="-250.0" cy="0.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-251.1" y2="-145.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-251.1" cy="-145.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="-251.1" cy="-145.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-165.0" y2="-285.8" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-165.0" cy="-285.8" r="6" fill="#ece6d7"></circle>
+        <circle cx="-165.0" cy="-285.8" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="-0.0" y2="-250.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="-0.0" cy="-250.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="-0.0" cy="-250.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="145.0" y2="-251.1" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="145.0" cy="-251.1" r="6" fill="#ece6d7"></circle>
+        <circle cx="145.0" cy="-251.1" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle><line x1="0" y1="0" x2="285.8" y2="-165.0" stroke="rgba(219,140,78,0.35)" stroke-width="0.6"></line>
+        <circle cx="285.8" cy="-165.0" r="6" fill="#ece6d7"></circle>
+        <circle cx="285.8" cy="-165.0" r="14" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="1"></circle>
+  </g>
+  <text x="120" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="22" font-weight="600">edge · 36 PoPs · 180ms TTFB</text>
+  <text x="120" y="730" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="14">▸ streaming RSC · cache mesh · islands</text>
+
+</svg>

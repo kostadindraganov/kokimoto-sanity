@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="p1-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1208"></stop>
+      <stop offset="100%" stop-color="#0f0c09"></stop>
+    </linearGradient>
+    <radialGradient id="p1-glow" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="rgba(219,140,78,0.35)"></stop>
+      <stop offset="60%" stop-color="rgba(219,140,78,0)"></stop>
+    </radialGradient>
+    <pattern id="p1-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(236,230,215,0.10)" stroke-width="0.5" opacity="1"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#p1-bg)"></rect>
+  <rect width="800" height="560" fill="url(#p1-grid)"></rect>
+  <rect width="800" height="560" fill="url(#p1-glow)"></rect>
+  
+  <rect x="90" y="380" width="44" height="60" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="112" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">10</text><rect x="154" y="339" width="44" height="101" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="176" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">20</text><rect x="218" y="298" width="44" height="142" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="240" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">30</text><rect x="282" y="257" width="44" height="183" rx="2" fill="#db8c4e"></rect>
+            <text x="304" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">40</text><rect x="346" y="216" width="44" height="224" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="368" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">50</text><rect x="410" y="175" width="44" height="265" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="432" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">60</text><rect x="474" y="354" width="44" height="86" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="496" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">70</text><rect x="538" y="313" width="44" height="127" rx="2" fill="#db8c4e"></rect>
+            <text x="560" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">80</text><rect x="602" y="272" width="44" height="168" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="624" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">90</text><rect x="666" y="231" width="44" height="209" rx="2" fill="rgba(236,230,215,0.18)"></rect>
+            <text x="688" y="460" fill="rgba(236,230,215,0.55)" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">100</text>
+  <line x1="80" y1="445" x2="730" y2="445" stroke="rgba(236,230,215,0.10)" stroke-width="1"></line>
+  <text x="80" y="100" fill="#ece6d7" font-family="ui-monospace, monospace" font-size="20" font-weight="600">eval coverage · 92%</text>
+  <text x="80" y="500" fill="#db8c4e" font-family="ui-monospace, monospace" font-size="13">▸ scored · gated · versioned</text>
+
+</svg>
