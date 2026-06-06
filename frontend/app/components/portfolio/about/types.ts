@@ -55,9 +55,9 @@ export interface AboutPageData {
 }
 
 export interface QaAction {
-  cmd?: string | null
-  flag?: string | null
-  route?: string | null
+  cmd?: string
+  flag?: string
+  route?: string
 }
 
 export interface QaEntry {
@@ -65,7 +65,7 @@ export interface QaEntry {
   title: string
   keywords: string[]
   answer: string[]
-  action?: QaAction | null
+  action?: QaAction
 }
 
 export interface AskConsoleSettings {

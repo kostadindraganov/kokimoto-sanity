@@ -1,22 +1,30 @@
-import {sanityFetch} from '@/sanity/lib/live'
-import {allPostsQuery} from '@/sanity/lib/queries'
+import {client} from '@/sanity/lib/client'
+import {RSS_POSTS_QUERY} from '@/sanity/lib/queries'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://kostalindraganov.com'
 const siteTitle = 'Kostadin Draganov'
 const siteDescription = 'Senior software developer & AI-native engineer'
 
+type RssPost = {
+  title: string | null
+  slug: string | null
+  summary: string | null
+  date: string | null
+  categoryTitle: string | null
+}
+
 export async function GET() {
-  const {data: posts} = await sanityFetch({query: allPostsQuery})
+  const posts = await client.fetch<RssPost[]>(RSS_POSTS_QUERY)
 
   const items = (posts ?? [])
     .map(
       (post) => `
     <item>
-      <title><![CDATA[${post.title}]]></title>
-      <link>${siteUrl}/posts/${post.slug}</link>
-      <guid isPermaLink="true">${siteUrl}/posts/${post.slug}</guid>
-      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      ${post.excerpt ? `<description><![CDATA[${post.excerpt}]]></description>` : ''}
+      <title><![CDATA[${post.title ?? ''}]]></title>
+      <link>${siteUrl}/blog/${post.slug}</link>
+      <guid isPermaLink="true">${siteUrl}/blog/${post.slug}</guid>
+      <pubDate>${new Date(post.date ?? '').toUTCString()}</pubDate>
+      ${post.summary ? `<description><![CDATA[${post.summary}]]></description>` : ''}
     </item>`,
     )
     .join('\n')

@@ -153,7 +153,7 @@ async function cleanDemoDocs(): Promise<void> {
 
   log(`\n  Found ${allDemo.length} demo document(s):`)
   allDemo.forEach((d) => {
-    const slugInfo = 'slug' in d && d.slug ? ` [${d.slug.current}]` : ''
+    const slugInfo = 'slug' in d && d.slug ? ` [${(d.slug as {current: string}).current}]` : ''
     log(`    [${d._type}] ${d._id}${slugInfo} — ${d.title || '(no title)'}`)
   })
 
@@ -172,10 +172,10 @@ async function upsertSingleton(doc: Record<string, unknown>): Promise<string> {
   const id = doc._id as string
   try {
     if (FORCE) {
-      await client.createOrReplace(doc)
+      await client.createOrReplace(doc as any)
       ok(`singleton ${id} — replaced`)
     } else {
-      await client.createIfNotExists(doc)
+      await client.createIfNotExists(doc as any)
       // Always patch non-id fields to keep content fresh
       const {_id, _type, ...fields} = doc
       await client.patch(id).set(fields).commit()
@@ -206,12 +206,12 @@ async function upsertBySlug(
       skip(`${type}:${slug} — patched existing (${existing._id})`)
       return existing._id
     } else if (existing && FORCE) {
-      await client.createOrReplace({...doc, _id: existing._id})
+      await client.createOrReplace({...doc, _id: existing._id} as any)
       ok(`${type}:${slug} — force-replaced (${existing._id})`)
       return existing._id
     } else {
       // Create new — let Sanity generate _id
-      const created = await client.create(doc)
+      const created = await client.create(doc as any)
       ok(`${type}:${slug} — created (${created._id})`)
       return created._id
     }
@@ -239,11 +239,11 @@ async function upsertByTitle(
       skip(`${type}:"${title}" — patched existing`)
       return existing._id
     } else if (existing && FORCE) {
-      await client.createOrReplace({...doc, _id: existing._id})
+      await client.createOrReplace({...doc, _id: existing._id} as any)
       ok(`${type}:"${title}" — force-replaced`)
       return existing._id
     } else {
-      const created = await client.create(doc)
+      const created = await client.create(doc as any)
       ok(`${type}:"${title}" — created (${created._id})`)
       return created._id
     }

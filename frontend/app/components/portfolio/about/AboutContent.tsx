@@ -20,7 +20,7 @@ import type {
   TimelineEntry,
   ValueItem,
 } from '@/app/components/portfolio/about/types'
-import {AskConsole} from '@/app/components/portfolio/ask/AskConsole'
+import AskConsole from '@/app/components/portfolio/ask/AskConsole'
 
 // ---------- helpers ----------
 

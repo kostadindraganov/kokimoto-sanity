@@ -338,9 +338,9 @@ function HomeBody({
     </div>
   )
 
-  const askConsole = settings.askConsole?.enabled !== false && (
+  const askConsole = settings.askConsole != null && settings.askConsole.enabled !== false && (
     <div className="reveal">
-      <AskConsole entries={qaEntries} settings={settings.askConsole} />
+      <AskConsole entries={qaEntries} settings={settings.askConsole} handle={handle} />
     </div>
   )
 

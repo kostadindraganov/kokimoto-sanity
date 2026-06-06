@@ -264,41 +264,6 @@ export const sitemapData = defineQuery(`
   }
 `)
 
-export const allPostsQuery = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {
-    ${postFields}
-  }
-`)
-
-export const morePostsQuery = defineQuery(`
-  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {
-    ${postFields}
-  }
-`)
-
-export const postQuery = defineQuery(`
-  *[_type == "post" && slug.current == $slug] [0] {
-    content[]{
-    ...,
-    markDefs[]{
-      ...,
-      ${linkReference}
-    }
-  },
-    ${postFields}
-  }
-`)
-
-export const postPagesSlugs = defineQuery(`
-  *[_type == "post" && defined(slug.current)]
-  {"slug": slug.current}
-`)
-
-export const pagesSlugs = defineQuery(`
-  *[_type == "page" && defined(slug.current)]
-  {"slug": slug.current}
-`)
-
 // ============================================================
 // Portfolio-specific queries (PRD §4.1 / §4.2)
 // ============================================================
@@ -477,5 +442,43 @@ export const qaEntryQuery = defineQuery(`
     "answer": answer[],
     "action": action{cmd, flag, route},
     enabled
+  }
+`)
+
+// ─── Aliases expected by portfolio components ─────────────────────────────────
+export const POST_BY_SLUG_QUERY = portfolioPostQuery
+export const BLOG_PAGE_QUERY = blogPageQuery
+
+export const BLOG_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){
+    _id,
+    title,
+    "slug": slug.current,
+    summary,
+    "date": coalesce(date, _updatedAt),
+    category,
+    tags,
+    readTime,
+    featured,
+    "coverImage": coverImage{asset, alt, crop, hotspot}
+  }
+`)
+
+export const ALL_CATEGORIES_QUERY = defineQuery(`
+  *[_type == "category"] | order(title asc){
+    _id,
+    title,
+    "slug": slug.current
+  }
+`)
+
+export const RECENT_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...5]{
+    _id,
+    title,
+    "slug": slug.current,
+    "date": coalesce(date, _updatedAt),
+    summary,
+    readTime
   }
 `)
