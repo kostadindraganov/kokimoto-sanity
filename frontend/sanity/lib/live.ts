@@ -23,7 +23,7 @@ export interface DynamicFetchOptions {
   stega: boolean
 }
 
-/** Resolves perspective/stega outside 'use cache' boundaries — call from Layer 2 components */
+/** Resolves perspective/stega from cookies — call outside 'use cache' boundaries. */
 export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
   const {isEnabled: isDraftMode} = await draftMode()
   if (!isDraftMode) {
@@ -34,20 +34,7 @@ export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
   return {perspective: perspective ?? 'drafts', stega: true}
 }
 
-/** For use inside generateStaticParams only — stega/perspective are hardcoded */
-export async function sanityFetchStaticParams<const QueryString extends string>({
-  query,
-  params = {},
-}: {
-  query: QueryString
-  params?: QueryParams
-}) {
-  'use cache'
-  const {data} = await sanityFetch({query, params, perspective: 'published', stega: false})
-  return {data}
-}
-
-/** For use inside generateMetadata, sitemap.ts, robots.ts, etc. — stega never wanted there */
+/** For generateMetadata, sitemap, robots — never stega. */
 export async function sanityFetchMetadata<const QueryString extends string>({
   query,
   params = {},
@@ -59,5 +46,18 @@ export async function sanityFetchMetadata<const QueryString extends string>({
 }) {
   'use cache'
   const {data} = await sanityFetch({query, params, perspective, stega: false})
+  return {data}
+}
+
+/** For generateStaticParams only. */
+export async function sanityFetchStaticParams<const QueryString extends string>({
+  query,
+  params = {},
+}: {
+  query: QueryString
+  params?: QueryParams
+}) {
+  'use cache'
+  const {data} = await sanityFetch({query, params, perspective: 'published', stega: false})
   return {data}
 }
