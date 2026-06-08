@@ -1,6 +1,7 @@
 'use client'
 
 import {useState} from 'react'
+import {createPortal} from 'react-dom'
 import SanityImage from '@/app/components/SanityImage'
 
 interface PreviewState {
@@ -26,12 +27,17 @@ function isCoarsePointer(): boolean {
 
 /** Cursor-following floating image preview for blog list rows.
  *  Implements DESIGN.md §7 interaction #8: spring pop + idle breathing.
- *  Disabled on coarse pointer devices (touchscreens). */
+ *  Disabled on coarse pointer devices (touchscreens).
+ *
+ *  Rendered through a portal to <body>: the preview is `position: fixed`, but
+ *  an ancestor (`.page`) animates `transform`, which makes it the containing
+ *  block for fixed descendants. Without the portal the preview anchors to
+ *  `.page` (not the viewport) and drifts far above the cursor once scrolled. */
 export function PostHoverPreview({preview}: PostHoverPreviewProps) {
   // Lazy initial state — read matchMedia once on first render
   const [coarse] = useState(isCoarsePointer)
 
-  if (!preview || coarse) return null
+  if (!preview || coarse || typeof document === 'undefined') return null
 
   const W = 248
   const H = 168
@@ -47,7 +53,7 @@ export function PostHoverPreview({preview}: PostHoverPreviewProps) {
   // Vertically centred on the cursor, kept on-screen
   const top = Math.min(vh - H - 12, Math.max(12, preview.y - H / 2))
 
-  return (
+  return createPortal(
     <div
       key={preview.id}
       className="post-preview"
@@ -66,7 +72,8 @@ export function PostHoverPreview({preview}: PostHoverPreviewProps) {
         <div className="post-preview-placeholder" aria-hidden="true" />
       )}
       <div className="post-preview-scan" aria-hidden="true" />
-    </div>
+    </div>,
+    document.body,
   )
 }
 

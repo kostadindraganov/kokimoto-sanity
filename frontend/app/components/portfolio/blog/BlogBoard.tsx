@@ -69,21 +69,11 @@ export function BlogBoard({
       )
   }, [q, cat, posts])
 
-  // Expand baseList into a cycling feed up to `count`
-  const list = useMemo(() => {
-    if (baseList.length === 0) return []
-    const out: Array<BlogPost & {_cycle: number; _key: string}> = []
-    let cycle = 0
-    while (out.length < count && out.length < BLOG_MAX) {
-      for (const p of baseList) {
-        if (out.length >= count) break
-        out.push({...p, _cycle: cycle, _key: p._id + '@' + cycle})
-        if (out.length >= BLOG_MAX) break
-      }
-      cycle++
-    }
-    return out
-  }, [baseList, count])
+  // Show each post once, revealed progressively up to `count`
+  const list = useMemo(
+    () => baseList.slice(0, Math.min(count, BLOG_MAX)),
+    [baseList, count],
+  )
 
   // Sentinel observer — load more when nearing the bottom
   useEffect(() => {
@@ -108,8 +98,7 @@ export function BlogBoard({
     return () => io.disconnect()
   }, [list.length, count, filterKey])
 
-  const atMax = list.length >= BLOG_MAX || count > baseList.length * 12
-  const showingCycle = baseList.length ? Math.ceil(list.length / baseList.length) : 0
+  const atMax = list.length >= baseList.length || list.length >= BLOG_MAX
 
   const searchPlaceholder = blogPage?.searchPlaceholder ?? 'search field notes…'
   const loadingText = (blogPage?.loadingText ?? 'loading next {n} entries…').replace(
@@ -179,8 +168,7 @@ export function BlogBoard({
           <h2>log stream</h2>
         </div>
         <span className="faint" style={{fontSize: 12, whiteSpace: 'nowrap'}}>
-          {list.length} loaded{' '}
-          {baseList.length > 0 && <>· cycle {showingCycle}</>}
+          {list.length} / {baseList.length} loaded
         </span>
       </div>
 
@@ -193,7 +181,7 @@ export function BlogBoard({
         )}
         {list.map((p, i) => (
           <Link
-            key={p._key}
+            key={p._id}
             href={`/blog/${p.slug}`}
             className="post-row reveal"
             style={{
