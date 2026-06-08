@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 
+import {CachedPortfolioPage} from './CachedPortfolioPage'
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
 import {PORTFOLIO_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
@@ -73,7 +74,7 @@ function CollectionPageJsonLd({
 }
 
 export default async function PortfolioPage() {
-  const {perspective} = await getDynamicFetchOptions()
+  const {perspective, stega} = await getDynamicFetchOptions()
   const {data: rawPage} = await sanityFetchMetadata({query: PORTFOLIO_PAGE_META_QUERY, perspective})
   const page = rawPage as PageSeoData | null
 
@@ -84,8 +85,7 @@ export default async function PortfolioPage() {
         url={SITE_URL + '/portfolio'}
         description={page?.intro || undefined}
       />
-      {/* Phase 4 will replace this with the full portfolio page UI */}
-      <main />
+      <CachedPortfolioPage perspective={perspective} stega={stega} />
     </>
   )
 }

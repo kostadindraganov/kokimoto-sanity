@@ -1,6 +1,18 @@
 import type {Metadata} from 'next'
 
-import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
+import type {QaEntry} from '@/app/components/portfolio/ask/kwMatch'
+import HomePage from '@/app/components/portfolio/home/HomePage'
+import {
+  HOME_PAGE_QUERY,
+  QA_ENTRIES_QUERY,
+  type HomePageQueryResult,
+} from '@/app/components/portfolio/home/queries'
+import {
+  getDynamicFetchOptions,
+  sanityFetch,
+  sanityFetchMetadata,
+  type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import {HOME_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
@@ -78,9 +90,29 @@ function PersonJsonLd({
   )
 }
 
-export default async function HomePage() {
-  const {perspective} = await getDynamicFetchOptions()
-  const {data: rawSettings} = await sanityFetchMetadata({query: SETTINGS_QUERY, perspective})
+/* Cached server wrapper — mirrors CachedBlogPage's three-layer Cache
+   Components pattern: dynamic options resolved in the page, data fetched
+   inside 'use cache' with perspective/stega as cache keys. */
+async function CachedHomePage({perspective, stega}: DynamicFetchOptions) {
+  'use cache'
+
+  const [homeResult, qaResult] = await Promise.all([
+    sanityFetch({query: HOME_PAGE_QUERY, perspective, stega}),
+    sanityFetch({query: QA_ENTRIES_QUERY, perspective, stega}),
+  ])
+
+  const home = homeResult.data as HomePageQueryResult | null
+  const qaEntries = (qaResult.data as QaEntry[] | null) ?? []
+
+  return <HomePage home={home} qaEntries={qaEntries} />
+}
+
+export default async function Page() {
+  const fetchOptions = await getDynamicFetchOptions()
+  const {data: rawSettings} = await sanityFetchMetadata({
+    query: SETTINGS_QUERY,
+    perspective: fetchOptions.perspective,
+  })
   const settings = rawSettings as SiteSettingsSeoData | null
 
   return (
@@ -94,8 +126,7 @@ export default async function HomePage() {
           linkedin={settings.linkedin}
         />
       )}
-      {/* Phase 4 will replace this with the full home page UI */}
-      <main />
+      <CachedHomePage {...fetchOptions} />
     </>
   )
 }

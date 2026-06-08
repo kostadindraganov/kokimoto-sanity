@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 
+import {CachedBlogPage} from '@/app/components/portfolio/blog/CachedBlogPage'
 import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
 import {BLOG_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
@@ -72,8 +73,18 @@ function CollectionPageJsonLd({
   )
 }
 
-export default async function BlogPage() {
-  const {perspective} = await getDynamicFetchOptions()
+function firstParam(value: string | string[] | undefined): string | undefined {
+  return Array.isArray(value) ? value[0] : value
+}
+
+export default async function BlogPage(props: {
+  searchParams: Promise<{[key: string]: string | string[] | undefined}>
+}) {
+  const searchParams = await props.searchParams
+  const initialSearch = firstParam(searchParams.search)
+  const initialCategory = firstParam(searchParams.category)
+
+  const {perspective, stega} = await getDynamicFetchOptions()
   const {data: rawPage} = await sanityFetchMetadata({query: BLOG_PAGE_META_QUERY, perspective})
   const page = rawPage as PageSeoData | null
 
@@ -84,8 +95,12 @@ export default async function BlogPage() {
         url={SITE_URL + '/blog'}
         description={page?.intro || undefined}
       />
-      {/* Phase 4 will replace this with the full blog page UI */}
-      <main />
+      <CachedBlogPage
+        perspective={perspective}
+        stega={stega}
+        initialSearch={initialSearch}
+        initialCategory={initialCategory}
+      />
     </>
   )
 }

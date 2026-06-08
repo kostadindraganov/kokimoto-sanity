@@ -1,6 +1,20 @@
 import type {Metadata} from 'next'
+import {stegaClean} from 'next-sanity'
 
-import {getDynamicFetchOptions, sanityFetchMetadata} from '@/sanity/lib/live'
+import AboutClient from '@/app/about/AboutClient'
+import {ABOUT_PAGE_QUERY, type AboutPageQueryResult} from '@/app/about/queries'
+import type {
+  AboutPageData,
+  AskConsoleSettings,
+  QaEntry,
+} from '@/app/components/portfolio/about/types'
+import {QA_ENTRIES_QUERY} from '@/app/components/portfolio/home/queries'
+import {
+  getDynamicFetchOptions,
+  sanityFetch,
+  sanityFetchMetadata,
+  type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import {ABOUT_PAGE_META_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PageSeoData} from '@/sanity/lib/seo-types'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
@@ -78,9 +92,56 @@ function PersonJsonLd({
   )
 }
 
+const EMPTY_ABOUT_PAGE: AboutPageData = {
+  eyebrow: null,
+  heading: null,
+  portraitCaption: null,
+  bioParagraphs: null,
+  experiencePrompt: null,
+  timeline: null,
+  valuesPrompt: null,
+  values: null,
+  stackPrompt: null,
+  stackRows: null,
+  ctas: null,
+}
+
+/* Cached server wrapper — mirrors CachedBlogPage's three-layer Cache
+   Components pattern: dynamic options resolved in the page, data fetched
+   inside 'use cache' with perspective/stega as cache keys. */
+async function CachedAboutPage({perspective, stega}: DynamicFetchOptions) {
+  'use cache'
+
+  const [aboutResult, qaResult] = await Promise.all([
+    sanityFetch({query: ABOUT_PAGE_QUERY, perspective, stega}),
+    sanityFetch({query: QA_ENTRIES_QUERY, perspective, stega}),
+  ])
+
+  const about = aboutResult.data as AboutPageQueryResult | null
+  const qaEntries = (qaResult.data as QaEntry[] | null) ?? []
+
+  const handle = stegaClean(about?.settings?.handle ?? '')
+  const askSettings: AskConsoleSettings = about?.settings?.askConsole ?? {}
+
+  return (
+    <AboutClient
+      page={about ?? EMPTY_ABOUT_PAGE}
+      qaEntries={qaEntries}
+      askSettings={askSettings}
+      handle={handle}
+      documentId={about?._id ?? null}
+      documentType={about?._type ?? null}
+      stega={stega}
+    />
+  )
+}
+
 export default async function AboutPage() {
-  const {perspective} = await getDynamicFetchOptions()
-  const {data: rawSettings} = await sanityFetchMetadata({query: SETTINGS_QUERY, perspective})
+  const fetchOptions = await getDynamicFetchOptions()
+  const {data: rawSettings} = await sanityFetchMetadata({
+    query: SETTINGS_QUERY,
+    perspective: fetchOptions.perspective,
+  })
   const settings = rawSettings as SiteSettingsSeoData | null
 
   return (
@@ -94,8 +155,7 @@ export default async function AboutPage() {
           linkedin={settings.linkedin}
         />
       )}
-      {/* Phase 4 will replace this with the full about page UI */}
-      <main />
+      <CachedAboutPage {...fetchOptions} />
     </>
   )
 }

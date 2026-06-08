@@ -1,6 +1,7 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 
+import {CachedArticlePage} from '@/app/components/portfolio/article/CachedArticlePage'
 import {getDynamicFetchOptions, sanityFetchMetadata, sanityFetchStaticParams} from '@/sanity/lib/live'
 import {POST_META_QUERY, POSTS_SLUG_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, PostMetaData, SlugItem} from '@/sanity/lib/seo-types'
@@ -129,7 +130,7 @@ function BlogPostingJsonLd({
 
 export default async function BlogPostPage(props: Props) {
   const {slug} = await props.params
-  const {perspective} = await getDynamicFetchOptions()
+  const {perspective, stega} = await getDynamicFetchOptions()
   const [{data: rawPost}, {data: rawSettings}] = await Promise.all([
     sanityFetchMetadata({query: POST_META_QUERY, params: {slug}, perspective}),
     sanityFetchMetadata({query: SETTINGS_QUERY, perspective}),
@@ -152,8 +153,7 @@ export default async function BlogPostPage(props: Props) {
         authorName={settings?.name || ''}
         authorUrl={SITE_URL + '/about'}
       />
-      {/* Phase 4 will replace this with the full article UI */}
-      <main />
+      <CachedArticlePage slug={slug} perspective={perspective} stega={stega} />
     </>
   )
 }

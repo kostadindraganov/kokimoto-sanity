@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
-import {notFound} from 'next/navigation'
 
+import {CachedProjectPage} from './CachedProjectPage'
 import {getDynamicFetchOptions, sanityFetchMetadata, sanityFetchStaticParams} from '@/sanity/lib/live'
 import {PROJECT_META_QUERY, PROJECTS_SLUG_QUERY, SETTINGS_QUERY} from '@/sanity/lib/queries'
 import type {SiteSettingsSeoData, ProjectMetaData, SlugItem} from '@/sanity/lib/seo-types'
@@ -60,16 +60,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function ProjectPage(props: Props) {
   const {slug} = await props.params
-  const {perspective} = await getDynamicFetchOptions()
-  const {data: rawProject} = await sanityFetchMetadata({
-    query: PROJECT_META_QUERY,
-    params: {slug},
-    perspective,
-  })
-  const project = rawProject as ProjectMetaData | null
+  const {perspective, stega} = await getDynamicFetchOptions()
 
-  if (!project) return notFound()
-
-  // Phase 4 will replace this with the full project detail UI
-  return <main />
+  // notFound() for unknown slugs is raised inside CachedProjectPage
+  return <CachedProjectPage slug={slug} perspective={perspective} stega={stega} />
 }
