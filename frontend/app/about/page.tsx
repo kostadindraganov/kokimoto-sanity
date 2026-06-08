@@ -136,11 +136,9 @@ async function CachedAboutPage({perspective, stega}: DynamicFetchOptions) {
   )
 }
 
-/* The page's default export must return a SINGLE top-level child. Next.js
-   16's dev-only Segment Explorer renders a page segment's children as a list,
-   and a multi-child Fragment here (JSON-LD + the 'use cache' boundary) trips
-   React's missing-key warning. Nesting the body in one component keeps the
-   segment's child count at 1 and silences the warning. */
+/* JSON-LD + the 'use cache' page body are siblings under a Fragment. Next.js
+   16's dev-only Segment Explorer renders a segment's children as an array, so
+   each sibling needs an explicit `key` or React warns about missing keys. */
 async function AboutPageContent() {
   const fetchOptions = await getDynamicFetchOptions()
   const {data: rawSettings} = await sanityFetchMetadata({
@@ -153,6 +151,7 @@ async function AboutPageContent() {
     <>
       {settings?.name && (
         <PersonJsonLd
+          key="person-jsonld"
           name={settings.name}
           url={SITE_URL + '/'}
           jobTitle={settings.headline || ''}
@@ -160,7 +159,7 @@ async function AboutPageContent() {
           linkedin={settings.linkedin}
         />
       )}
-      <CachedAboutPage {...fetchOptions} />
+      <CachedAboutPage key="about-body" {...fetchOptions} />
     </>
   )
 }

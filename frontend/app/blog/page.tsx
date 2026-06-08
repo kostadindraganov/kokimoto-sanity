@@ -91,11 +91,13 @@ export default async function BlogPage(props: {
   return (
     <>
       <CollectionPageJsonLd
+        key="collection-jsonld"
         name={page?.heading || 'Blog'}
         url={SITE_URL + '/blog'}
         description={page?.intro || undefined}
       />
       <CachedBlogPage
+        key="blog-body"
         perspective={perspective}
         stega={stega}
         initialSearch={initialSearch}

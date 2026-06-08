@@ -1,10 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import {stegaClean} from 'next-sanity'
-import {type ReactNode} from 'react'
+import {type ReactNode, useMemo} from 'react'
 
 import {dataAttr, urlForImage} from '@/sanity/lib/utils'
 
+import AsciiImageReveal from '../fx/AsciiImageReveal'
+import {useStreamReveal} from '../fx/useStreamReveal'
+import {shellPrompt, Stream, type StreamStep} from '../home/fx/Streaming'
 import {displayUrl, hrefUrl, interpolate, shortHash} from './interpolate'
 import {CmdBtn, Pill, SecHead} from './primitives'
 import {ProjectHeaderTags} from './ProjectHeaderTags'
@@ -122,109 +127,231 @@ export function ProjectDetail({
   const repoHref = project.repo ? hrefUrl(stegaClean(project.repo)) : null
   const liveHref = project.live ? hrefUrl(stegaClean(project.live)) : null
   const gallery = (project.gallery ?? []).filter((img) => img.asset).slice(0, 2)
+  // NOTE: covers are uploaded as SVG. Sanity only rasterizes an SVG when a
+  // format is set explicitly (fm=png); width/height/crop alone keep it SVG,
+  // which loads with naturalWidth 0 and can't be sampled for the ASCII decode.
+  const coverUrl = project.coverImage?.asset
+    ? urlForImage(project.coverImage).width(1600).height(900).fit('crop').format('png').url()
+    : null
 
-  return (
-    <div className="page">
-      <Link className="crumb" href="/portfolio" data-sanity={pageAttr('detailLabels.backLabel')}>
-        <span className="ar">←</span> {labels?.backLabel}
-      </Link>
+  const steps = useMemo<StreamStep[]>(() => {
+    const s: StreamStep[] = []
 
-      <div style={{marginTop: 26}}>
-        <div className="row gap-10 metarow" style={{flexWrap: 'wrap', fontSize: 12}}>
-          <span className="commit tnum acc">{shortHash(stegaClean(project.slug) || project._id)}</span>
-          <span className="faint" data-sanity={projAttr('commit')}>
-            {project.commit}
-          </span>
-          <span style={{marginLeft: 'auto'}} data-sanity={projAttr('status')}>
-            <Pill status={project.status} />
-          </span>
-        </div>
-        <h1
-          className="h-display"
-          style={{fontSize: 'clamp(30px,5.5vw,52px)', marginTop: 14}}
-          data-sanity={projAttr('title')}
-        >
-          {project.title}
-        </h1>
-        <div
-          className="role"
-          style={{fontSize: 13.5, color: 'var(--ink-3)', marginTop: 6}}
-          data-sanity={projAttr('role')}
-        >
-          {project.role}
-        </div>
-        <ProjectHeaderTags
-          projectId={project._id}
-          projectType={project._type}
-          tags={project.tags ?? []}
-        />
-      </div>
+    // 1. back crumb
+    s.push({
+      kind: 'node',
+      gap: 0,
+      delay: 140,
+      node: (
+        <Link className="crumb" href="/portfolio" data-sanity={pageAttr('detailLabels.backLabel')}>
+          <span className="ar">←</span> {labels?.backLabel}
+        </Link>
+      ),
+    })
 
-      <div style={{marginTop: 30}}>
-        <LogPanel page={page} project={project} pageAttr={pageAttr} />
-      </div>
-
-      <div style={{marginTop: 40}}>
-        <SecHead idx="01" title={labels?.briefHeading ?? ''} dataSanity={pageAttr('detailLabels.briefHeading')} />
-      </div>
-      <div className="panel" style={{background: 'var(--bg-1)'}}>
-        <div className="panel-body" style={{paddingTop: 6, paddingBottom: 6}}>
-          <Field
-            k={<span data-sanity={pageAttr('detailLabels.problemLabel')}>{labels?.problemLabel}</span>}
-            dataSanity={projAttr('problem')}
-          >
-            {project.problem}
-          </Field>
-          <Field
-            k={<span data-sanity={pageAttr('detailLabels.solutionLabel')}>{labels?.solutionLabel}</span>}
-            dataSanity={projAttr('solution')}
-          >
-            {project.solution}
-          </Field>
-          <Field
-            k={<span data-sanity={pageAttr('detailLabels.stackLabel')}>{labels?.stackLabel}</span>}
-            dataSanity={projAttr('stack')}
-          >
-            <span className="chips">
-              {(project.stack ?? []).map((s, i) => (
-                <span key={i} className="chip">
-                  {s}
-                </span>
-              ))}
+    // 2. header block
+    s.push({
+      kind: 'node',
+      gap: 26,
+      delay: 180,
+      node: (
+        <div>
+          <div className="row gap-10 metarow" style={{flexWrap: 'wrap', fontSize: 12}}>
+            <span className="commit tnum acc">{shortHash(stegaClean(project.slug) || project._id)}</span>
+            <span className="faint" data-sanity={projAttr('commit')}>
+              {project.commit}
             </span>
-          </Field>
-          <Field
-            k={<span data-sanity={pageAttr('detailLabels.roleLabel')}>{labels?.roleLabel}</span>}
-            dataSanity={projAttr('role')}
+            <span style={{marginLeft: 'auto'}} data-sanity={projAttr('status')}>
+              <Pill status={project.status} />
+            </span>
+          </div>
+          <h1
+            className="h-display"
+            style={{fontSize: 'clamp(30px,5.5vw,52px)', marginTop: 14}}
+            data-sanity={projAttr('title')}
+          >
+            {project.title}
+          </h1>
+          <div
+            className="role"
+            style={{fontSize: 13.5, color: 'var(--ink-3)', marginTop: 6}}
+            data-sanity={projAttr('role')}
           >
             {project.role}
-          </Field>
-        </div>
-      </div>
-
-      <div style={{marginTop: 40}}>
-        <SecHead idx="02" title={labels?.impactHeading ?? ''} dataSanity={pageAttr('detailLabels.impactHeading')} />
-      </div>
-      <div className="grid cols-3" data-sanity={projAttr('impact')}>
-        {(project.impact ?? []).slice(0, 3).map((im, i) => (
-          <div key={i} className="metric">
-            <div className="diff" style={{fontSize: 14}}>
-              <span className="add">+ </span>
-              <span style={{color: 'var(--ink)'}}>{im}</span>
-            </div>
           </div>
-        ))}
-      </div>
+          <ProjectHeaderTags
+            projectId={project._id}
+            projectType={project._type}
+            tags={project.tags ?? []}
+          />
+        </div>
+      ),
+    })
 
-      {gallery.length > 0 && (
-        <>
-          <div style={{marginTop: 40}}>
-            <SecHead
-              idx="03"
-              title={labels?.interfaceHeading ?? ''}
-              dataSanity={pageAttr('detailLabels.interfaceHeading')}
+    // 2b. cover image — full-width hero band below the title, decoding in
+    //     from scrambling ASCII characters (codegrid-style reveal)
+    if (coverUrl) {
+      s.push({
+        kind: 'node',
+        gap: 22,
+        delay: 240,
+        node: (
+          <div
+            className="ph"
+            style={{
+              aspectRatio: '16 / 9',
+              position: 'relative',
+              overflow: 'hidden',
+              border: '1px solid var(--line)',
+              borderRadius: 'var(--r-lg)',
+              background: 'var(--bg-1)',
+            }}
+            data-sanity={projAttr('coverImage')}
+          >
+            <AsciiImageReveal
+              src={coverUrl}
+              alt={
+                stegaClean(project.coverImage?.alt) ||
+                (stegaClean(project.title) || '') + ' cover'
+              }
+              columns={120}
             />
           </div>
+        ),
+      })
+    }
+
+    // 3. shell prompt
+    s.push({
+      kind: 'prompt',
+      gap: 30,
+      segments: shellPrompt('kostadin', 'open ./portfolio/' + (stegaClean(project.slug) || project._id)),
+    })
+
+    // 4. think
+    s.push({kind: 'think', duration: 1000})
+
+    // 5. tools
+    s.push({
+      kind: 'tools',
+      label: 'running tools',
+      collapsedLabel: '4 tool uses',
+      actions: ['Cloning repository', 'Reading manifest', 'Resolving build status', 'Computing impact deltas'],
+    })
+
+    // 6. deploy log panel
+    s.push({
+      kind: 'node',
+      delay: 280,
+      node: <LogPanel page={page} project={project} pageAttr={pageAttr} />,
+    })
+
+    // 7. brief section heading
+    s.push({
+      kind: 'node',
+      gap: 40,
+      delay: 200,
+      node: (
+        <SecHead
+          idx="01"
+          title={labels?.briefHeading ?? ''}
+          dataSanity={pageAttr('detailLabels.briefHeading')}
+        />
+      ),
+    })
+
+    // 8. brief panel
+    s.push({
+      kind: 'node',
+      delay: 240,
+      node: (
+        <div className="panel" style={{background: 'var(--bg-1)'}}>
+          <div className="panel-body" style={{paddingTop: 6, paddingBottom: 6}}>
+            <Field
+              k={<span data-sanity={pageAttr('detailLabels.problemLabel')}>{labels?.problemLabel}</span>}
+              dataSanity={projAttr('problem')}
+            >
+              {project.problem}
+            </Field>
+            <Field
+              k={<span data-sanity={pageAttr('detailLabels.solutionLabel')}>{labels?.solutionLabel}</span>}
+              dataSanity={projAttr('solution')}
+            >
+              {project.solution}
+            </Field>
+            <Field
+              k={<span data-sanity={pageAttr('detailLabels.stackLabel')}>{labels?.stackLabel}</span>}
+              dataSanity={projAttr('stack')}
+            >
+              <span className="chips">
+                {(project.stack ?? []).map((s, i) => (
+                  <span key={i} className="chip">
+                    {s}
+                  </span>
+                ))}
+              </span>
+            </Field>
+            <Field
+              k={<span data-sanity={pageAttr('detailLabels.roleLabel')}>{labels?.roleLabel}</span>}
+              dataSanity={projAttr('role')}
+            >
+              {project.role}
+            </Field>
+          </div>
+        </div>
+      ),
+    })
+
+    // 9. impact section heading
+    s.push({
+      kind: 'node',
+      gap: 40,
+      delay: 160,
+      node: (
+        <SecHead
+          idx="02"
+          title={labels?.impactHeading ?? ''}
+          dataSanity={pageAttr('detailLabels.impactHeading')}
+        />
+      ),
+    })
+
+    // 10. impact grid
+    s.push({
+      kind: 'node',
+      delay: 240,
+      node: (
+        <div className="grid cols-3" data-sanity={projAttr('impact')}>
+          {(project.impact ?? []).slice(0, 3).map((im, i) => (
+            <div key={i} className="metric">
+              <div className="diff" style={{fontSize: 14}}>
+                <span className="add">+ </span>
+                <span style={{color: 'var(--ink)'}}>{im}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    })
+
+    // 11. gallery (conditional)
+    if (gallery.length > 0) {
+      s.push({
+        kind: 'node',
+        gap: 40,
+        delay: 160,
+        node: (
+          <SecHead
+            idx="03"
+            title={labels?.interfaceHeading ?? ''}
+            dataSanity={pageAttr('detailLabels.interfaceHeading')}
+          />
+        ),
+      })
+      s.push({
+        kind: 'node',
+        delay: 240,
+        node: (
           <div className="grid cols-2" data-sanity={projAttr('gallery')}>
             {gallery.map((img, i) => (
               <div
@@ -243,65 +370,95 @@ export function ProjectDetail({
               </div>
             ))}
           </div>
-        </>
-      )}
+        ),
+      })
+    }
 
-      {(repoHref || liveHref) && (
-        <div className="row wrap gap-10" style={{marginTop: 40}}>
-          {repoHref && (
-            <CmdBtn
-              cmd={stegaClean(labels?.cloneLabel) || ''}
-              sub={displayUrl(stegaClean(project.repo))}
-              primary
-              href={repoHref}
-              dataSanity={projAttr('repo')}
-            />
-          )}
-          {liveHref && (
-            <CmdBtn
-              cmd={stegaClean(labels?.openLiveLabel) || ''}
-              sub={displayUrl(stegaClean(project.live))}
-              href={liveHref}
-              dataSanity={projAttr('live')}
-            />
-          )}
-        </div>
-      )}
-
-      {(project.prev || project.next) && (
-        <div style={{marginTop: 44}}>
-          <div className="pager">
-            {project.prev ? (
-              <Link className="prev" href={`/portfolio/${stegaClean(project.prev.slug)}`}>
-                <span className="pk" data-sanity={pageAttr('detailLabels.prevLabel')}>
-                  <span className="ar">←</span> {labels?.prevLabel}
-                </span>
-                <span className="pt">{project.prev.title}</span>
-              </Link>
-            ) : (
-              <span className="prev empty" />
+    // 12. repo/live links (conditional)
+    if (repoHref || liveHref) {
+      s.push({
+        kind: 'node',
+        gap: 40,
+        delay: 200,
+        node: (
+          <div className="row wrap gap-10">
+            {repoHref && (
+              <CmdBtn
+                cmd={stegaClean(labels?.cloneLabel) || ''}
+                sub={displayUrl(stegaClean(project.repo))}
+                primary
+                href={repoHref}
+                dataSanity={projAttr('repo')}
+              />
             )}
-            {project.next ? (
-              <Link className="next" href={`/portfolio/${stegaClean(project.next.slug)}`}>
-                <span className="pk" data-sanity={pageAttr('detailLabels.nextLabel')}>
-                  {labels?.nextLabel} <span className="ar">→</span>
-                </span>
-                <span className="pt">{project.next.title}</span>
-              </Link>
-            ) : (
-              <span className="next empty" />
+            {liveHref && (
+              <CmdBtn
+                cmd={stegaClean(labels?.openLiveLabel) || ''}
+                sub={displayUrl(stegaClean(project.live))}
+                href={liveHref}
+                dataSanity={projAttr('live')}
+              />
             )}
           </div>
-          <div style={{marginTop: 22}}>
-            <Link className="btn" href="/portfolio" data-sanity={pageAttr('detailLabels.backLabel')}>
-              <span className="car">›</span>
-              <span>
-                <span className="cmd">{labels?.backLabel}</span>
-              </span>
-            </Link>
+        ),
+      })
+    }
+
+    // 13. pager (conditional)
+    if (project.prev || project.next) {
+      s.push({
+        kind: 'node',
+        gap: 44,
+        delay: 160,
+        node: (
+          <div>
+            <SecHead idx="—" title="more work" />
+            <div className="pager">
+              {project.prev ? (
+                <Link className="prev" href={`/portfolio/${stegaClean(project.prev.slug)}`}>
+                  <span className="pk" data-sanity={pageAttr('detailLabels.prevLabel')}>
+                    <span className="ar">←</span> {labels?.prevLabel}
+                  </span>
+                  <span className="pt">{project.prev.title}</span>
+                </Link>
+              ) : (
+                <span className="prev empty" />
+              )}
+              {project.next ? (
+                <Link className="next" href={`/portfolio/${stegaClean(project.next.slug)}`}>
+                  <span className="pk" data-sanity={pageAttr('detailLabels.nextLabel')}>
+                    {labels?.nextLabel} <span className="ar">→</span>
+                  </span>
+                  <span className="pt">{project.next.title}</span>
+                </Link>
+              ) : (
+                <span className="next empty" />
+              )}
+            </div>
+            <div style={{marginTop: 22}}>
+              <Link className="btn" href="/portfolio" data-sanity={pageAttr('detailLabels.backLabel')}>
+                <span className="car">›</span>
+                <span>
+                  <span className="cmd">{labels?.backLabel}</span>
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        ),
+      })
+    }
+
+    return s
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, project, labels])
+
+  const {animate, streamKey, onComplete} = useStreamReveal(
+    `portfolio/${stegaClean(project.slug) || project._id}`,
+  )
+
+  return (
+    <div className="page">
+      <Stream key={streamKey} steps={steps} animate={animate} onComplete={onComplete} />
     </div>
   )
 }

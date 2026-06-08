@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   cacheLife: {default: sanity},
   images: {
-    remotePatterns: [new URL('https://cdn.sanity.io/**')],
+    remotePatterns: [{protocol: 'https', hostname: 'cdn.sanity.io'}],
   },
   turbopack: {
     // Monorepo root — silences incorrect workspace-root inference caused by a

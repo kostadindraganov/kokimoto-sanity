@@ -145,6 +145,7 @@ export default async function BlogPostPage(props: Props) {
   return (
     <>
       <BlogPostingJsonLd
+        key="blogposting-jsonld"
         title={post.title || ''}
         slug={slug}
         description={post.summary || ''}
@@ -153,7 +154,7 @@ export default async function BlogPostPage(props: Props) {
         authorName={settings?.name || ''}
         authorUrl={SITE_URL + '/about'}
       />
-      <CachedArticlePage slug={slug} perspective={perspective} stega={stega} />
+      <CachedArticlePage key="article-body" slug={slug} perspective={perspective} stega={stega} />
     </>
   )
 }

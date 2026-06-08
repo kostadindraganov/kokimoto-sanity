@@ -29,6 +29,10 @@ export interface CtaCommand {
   sub?: string
   primary?: boolean
   route?: string
+  /** Asset URL of an uploaded file (e.g. CV PDF) — when set, the button downloads it. */
+  fileUrl?: string | null
+  /** Original filename of the uploaded file, used as the download name. */
+  fileName?: string | null
 }
 
 export interface AboutPageData {

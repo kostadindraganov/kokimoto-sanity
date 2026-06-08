@@ -1,7 +1,7 @@
 import {sanityFetch} from '@/sanity/lib/live'
 import type {DynamicFetchOptions} from '@/sanity/lib/live'
 import {BLOG_PAGE_QUERY, BLOG_POSTS_QUERY, ALL_CATEGORIES_QUERY} from '@/sanity/lib/queries'
-import {BlogBoard} from './BlogBoard'
+import {BlogStream} from './BlogStream'
 import type {BlogPageData, BlogPost, BlogCategory} from './types'
 
 interface CachedBlogPageProps extends DynamicFetchOptions {
@@ -35,36 +35,15 @@ export async function CachedBlogPage({
 
   return (
     <div className="page">
-      {/* Page header */}
-      <div>
-        <div className="eyebrow">{eyebrow}</div>
-        <h1
-          className="h-display"
-          style={{fontSize: 'clamp(28px,5vw,46px)', marginTop: 12}}
-        >
-          {heading}
-        </h1>
-        <p className="hero-bio" style={{marginTop: 10}}>
-          {intro}
-        </p>
-      </div>
-
-      {/* Prompt line */}
-      <div className="prompt" style={{marginTop: 28}}>
-        <span className="who">kostadin</span>
-        <span className="path">~/blog</span>
-        <span className="cmd">tail -f ./blog</span>
-        <span className="flag">--latest</span>
-        <span className="cursor" aria-hidden="true" />
-      </div>
-
-      {/* Blog board (client — handles search, filter, infinite scroll, hover preview) */}
-      <BlogBoard
+      <BlogStream
+        blogPage={blogPage}
         posts={posts}
         categories={categories}
-        blogPage={blogPage}
         initialSearch={initialSearch}
         initialCategory={initialCategory}
+        eyebrow={eyebrow}
+        heading={heading}
+        intro={intro}
       />
     </div>
   )

@@ -45,13 +45,23 @@ export const ctaCommand = defineType({
       description:
         'Target as path segments for internal pages — e.g. ["portfolio"] or ["portfolio", "promptforge"] — or a single external URL, e.g. ["https://github.com/…"].',
     }),
+    defineField({
+      name: 'file',
+      title: 'Download file (e.g. CV / résumé PDF)',
+      type: 'file',
+      description:
+        'Optional. Upload a file (such as your CV as a PDF). When set, this button downloads the file and the Route/Sub-caption link is ignored.',
+      options: {
+        accept: 'application/pdf',
+      },
+    }),
   ],
   preview: {
-    select: {cmd: 'cmd', flag: 'flag', sub: 'sub'},
-    prepare({cmd, flag, sub}) {
+    select: {cmd: 'cmd', flag: 'flag', sub: 'sub', file: 'file.asset'},
+    prepare({cmd, flag, sub, file}) {
       return {
         title: [cmd, flag].filter(Boolean).join(' '),
-        subtitle: sub,
+        subtitle: [sub, file ? '↓ file attached' : null].filter(Boolean).join(' · '),
       }
     },
   },

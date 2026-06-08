@@ -119,6 +119,7 @@ export default async function Page() {
     <>
       {settings?.name && (
         <PersonJsonLd
+          key="person-jsonld"
           name={settings.name}
           url={SITE_URL + '/'}
           jobTitle={settings.headline || ''}
@@ -126,7 +127,7 @@ export default async function Page() {
           linkedin={settings.linkedin}
         />
       )}
-      <CachedHomePage {...fetchOptions} />
+      <CachedHomePage key="home-body" {...fetchOptions} />
     </>
   )
 }

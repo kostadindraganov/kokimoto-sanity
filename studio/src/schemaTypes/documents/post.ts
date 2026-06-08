@@ -144,11 +144,21 @@ export const post = defineType({
     },
   ],
   preview: {
-    select: {title: 'title', date: 'date', category: 'category.title', media: 'coverImage'},
-    prepare({title, date, category, media}) {
+    select: {
+      title: 'title',
+      date: 'date',
+      category: 'category.title',
+      media: 'coverImage',
+      featured: 'featured',
+    },
+    prepare({title, date, category, media, featured}) {
       return {
-        title,
-        subtitle: [category, date && format(parseISO(date), 'LLL d, yyyy')]
+        title: featured ? `⭐ ${title}` : title,
+        subtitle: [
+          featured && 'Featured',
+          category,
+          date && format(parseISO(date), 'LLL d, yyyy'),
+        ]
           .filter(Boolean)
           .join(' · '),
         media,

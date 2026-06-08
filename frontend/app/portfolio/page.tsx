@@ -81,11 +81,12 @@ export default async function PortfolioPage() {
   return (
     <>
       <CollectionPageJsonLd
+        key="collection-jsonld"
         name={page?.heading || 'Portfolio'}
         url={SITE_URL + '/portfolio'}
         description={page?.intro || undefined}
       />
-      <CachedPortfolioPage perspective={perspective} stega={stega} />
+      <CachedPortfolioPage key="portfolio-body" perspective={perspective} stega={stega} />
     </>
   )
 }

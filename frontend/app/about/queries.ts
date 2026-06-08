@@ -34,7 +34,9 @@ export const ABOUT_PAGE_QUERY = defineQuery(`
       flag,
       sub,
       primary,
-      "route": select(defined(route) => array::join(route, "/"))
+      "route": select(defined(route) => array::join(route, "/")),
+      "fileUrl": file.asset->url,
+      "fileName": file.asset->originalFilename
     },
     "settings": *[_id == "siteSettings"][0]{
       handle,

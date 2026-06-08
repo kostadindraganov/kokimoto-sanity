@@ -6,7 +6,7 @@ import {JetBrains_Mono, Space_Grotesk} from 'next/font/google'
 import {draftMode} from 'next/headers'
 import {defineQuery, stegaClean} from 'next-sanity'
 import {VisualEditing} from 'next-sanity/visual-editing'
-import type {ReactNode} from 'react'
+import {Suspense, type ReactNode} from 'react'
 
 import DraftModeToast from '@/app/components/DraftModeToast'
 import ShellChrome from '@/app/components/portfolio/shell/ShellChrome'
@@ -106,12 +106,61 @@ function stripProtocol(url?: string | null): string | undefined {
   return stegaClean(url).replace(/^https?:\/\//, '')
 }
 
-export default async function RootLayout({children}: {children: ReactNode}) {
-  const {isEnabled: isDraftMode} = await draftMode()
+/* ── Dynamic shell islands ──────────────────────────────────────────────────
+   Each island reads request-scoped dynamic data (draftMode/cookies) so it must
+   sit inside its own <Suspense>. Under Cache Components, reading dynamic data
+   in the layout body with no boundary makes the whole route "blocking" and
+   throws at render — which also tears down <VisualEditing/>, breaking the
+   Presentation tool's click-to-edit overlays. getShellData is 'use cache' and
+   draftMode()/cookies() are request-memoized, so resolving the options in both
+   the header and footer islands is effectively free. */
+
+async function ShellHeader() {
   const fetchOptions = await getDynamicFetchOptions()
   const {nav, settings} = await getShellData(fetchOptions)
   const navItems = toNavItems(nav)
+  return (
+    <ShellChrome
+      handle={settings?.handle ?? ''}
+      navItems={navItems}
+      availabilityStatus={settings?.availabilityStatus ?? false}
+      availabilityTitle={settings?.availabilityTitle ?? undefined}
+      email={settings?.email ?? undefined}
+      github={stripProtocol(settings?.github)}
+      linkedin={stripProtocol(settings?.linkedin)}
+    />
+  )
+}
 
+async function ShellFooter() {
+  const fetchOptions = await getDynamicFetchOptions()
+  const {settings} = await getShellData(fetchOptions)
+  return (
+    <StatusBar
+      branchLabel={settings?.branchLabel ?? ''}
+      statusText={settings?.statusText ?? ''}
+      location={settings?.location ?? ''}
+    />
+  )
+}
+
+/* Draft-mode overlays + live updates. draftMode() is dynamic → own boundary. */
+async function LiveLayer() {
+  const {isEnabled: isDraftMode} = await draftMode()
+  return (
+    <>
+      {isDraftMode && (
+        <>
+          <DraftModeToast />
+          <VisualEditing />
+        </>
+      )}
+      <SanityLive includeDrafts={isDraftMode} onError={handleError} />
+    </>
+  )
+}
+
+export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}>
       <body>
@@ -119,34 +168,22 @@ export default async function RootLayout({children}: {children: ReactNode}) {
         <div className="fx-vignette" aria-hidden="true" />
 
         <div className="shell">
-          <ShellChrome
-            handle={settings?.handle ?? ''}
-            navItems={navItems}
-            availabilityStatus={settings?.availabilityStatus ?? false}
-            availabilityTitle={settings?.availabilityTitle ?? undefined}
-            email={settings?.email ?? undefined}
-            github={stripProtocol(settings?.github)}
-            linkedin={stripProtocol(settings?.linkedin)}
-          />
+          <Suspense fallback={<header className="topbar" aria-hidden="true" />}>
+            <ShellHeader />
+          </Suspense>
 
           <main className="main">
             <div className="shell-inner">
-              {isDraftMode && (
-                <>
-                  <DraftModeToast />
-                  <VisualEditing />
-                </>
-              )}
-              <SanityLive includeDrafts={isDraftMode} onError={handleError} />
+              <Suspense fallback={null}>
+                <LiveLayer />
+              </Suspense>
               {children}
             </div>
           </main>
 
-          <StatusBar
-            branchLabel={settings?.branchLabel ?? ''}
-            statusText={settings?.statusText ?? ''}
-            location={settings?.location ?? ''}
-          />
+          <Suspense fallback={<footer className="statusbar" aria-hidden="true" />}>
+            <ShellFooter />
+          </Suspense>
         </div>
 
         <SpeedInsights />

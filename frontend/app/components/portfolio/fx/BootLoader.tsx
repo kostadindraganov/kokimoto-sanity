@@ -7,6 +7,7 @@
 
 import {useEffect, useMemo, useRef, useState} from 'react'
 
+import {clearBootShown} from '../home/fx/session'
 import {prefersReduced} from './motion'
 import {Spinner} from './Spinner'
 
@@ -22,9 +23,11 @@ export function bootSeen(key: string): boolean {
 export function markBoot(key: string): void {
   _bootSeen.add(key)
 }
-/** "New session" action — clears all seen pages so streams replay. */
+/** "New session" action — clears all seen pages so streams replay, and clears
+    the persisted boot flag so the boot screen plays again on the next load. */
 export function clearAllBoots(): void {
   _bootSeen.clear()
+  clearBootShown()
 }
 
 export function BootLoader({

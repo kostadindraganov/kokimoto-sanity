@@ -4,6 +4,7 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useRouter} from 'next/navigation'
 import {stegaClean} from 'next-sanity'
 import {type QaEntry, matchQA} from './kwMatch'
+import {NEW_SESSION_EVENT} from '../shell/CommandPalette'
 
 export type {QaEntry}
 
@@ -320,6 +321,19 @@ export default function AskConsole({entries, settings, handle, navItems = []}: A
     },
     [entries, fallback, navItems, push, router],
   )
+
+  // "New session" (command palette / mobile console) resets the ask console:
+  // clears the previous answers and the input back to the empty listening state.
+  useEffect(() => {
+    const reset = () => {
+      setHistory([])
+      setInput('')
+      setHist([])
+      setHistIdx(-1)
+    }
+    window.addEventListener(NEW_SESSION_EVENT, reset)
+    return () => window.removeEventListener(NEW_SESSION_EVENT, reset)
+  }, [])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'ArrowUp') {

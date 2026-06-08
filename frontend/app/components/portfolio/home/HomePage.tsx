@@ -11,7 +11,7 @@
    AskConsole reveal. All copy arrives via CMS props.
    ============================================================ */
 
-import {type ReactNode, useEffect, useMemo, useState} from 'react'
+import {type ReactNode, useEffect, useLayoutEffect, useMemo, useState} from 'react'
 import {stegaClean} from 'next-sanity'
 
 import {dataAttr} from '@/sanity/lib/utils'
@@ -20,13 +20,17 @@ import AskConsole, {type QaEntry} from '../ask/AskConsole'
 import AsciiReveal from './fx/AsciiReveal'
 import BootLoader from './fx/BootLoader'
 import HeroAscii from './fx/HeroAscii'
-import {bootSeen, markBoot, prefersReduced} from './fx/session'
+import {bootSeen, bootShown, markBoot, markBootShown, prefersReduced} from './fx/session'
 import {shellPrompt, Stream, type StreamStep} from './fx/Streaming'
 import type {HomePageQueryResult, HomeSettings} from './queries'
 import {FeaturedGrid, MetricsGrid, NextSteps, SystemCard} from './sections'
 import {SecHead} from './ui'
 
 const PAGE_ID = 'home'
+
+// resolve the boot decision before the browser paints (so a persisted/seen
+// boot never flashes); useLayoutEffect warns during SSR, fall back to useEffect.
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 /* ---------- helpers ---------- */
 
@@ -90,15 +94,17 @@ function HomeSession({
   settings: HomeSettings
   qaEntries: QaEntry[]
 }) {
-  // 'boot' is deterministic for SSR/hydration; the effect resolves
-  // reduced-motion and "already seen" before the next paint cycle.
-  const [phase, setPhase] = useState<'boot' | 'stream' | 'static'>('boot')
+  // 'static' (settled content) is the deterministic SSR/first-render state, so
+  // the home content is server-rendered (SEO / no-JS) and a persisted boot never
+  // flashes on refresh — the boot is a client-only, once-ever intro overlay.
+  const [phase, setPhase] = useState<'boot' | 'stream' | 'static'>('static')
 
-  useEffect(() => {
-    // one-shot resolution of reduced-motion / already-seen straight after
-    // hydration — deliberate sync state seed, mirrors the template's app.jsx
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (prefersReduced() || bootSeen(PAGE_ID)) setPhase('static')
+  useIsomorphicLayoutEffect(() => {
+    // before first paint: play the boot only on a genuine first visit — it hasn't
+    // been shown before (bootShown() is persisted in localStorage), this page
+    // hasn't streamed yet this session, and reduced-motion is off. So the boot
+    // never replays on refresh or when navigating back to Home from the menu.
+    if (!prefersReduced() && !bootShown() && !bootSeen(PAGE_ID)) setPhase('boot')
   }, [])
 
   const chrome = home.chrome
@@ -119,7 +125,11 @@ function HomeSession({
         versionLabel={chrome.bootVersionLabel}
         bootingLabel={chrome.bootingLabel}
         readyLabel={chrome.bootReadyLabel}
-        onDone={() => setPhase('stream')}
+        onDone={() => {
+          // persist that the boot has played — it won't show again next time
+          markBootShown()
+          setPhase('stream')
+        }}
       />
     )
   }
