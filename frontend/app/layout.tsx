@@ -2,6 +2,7 @@ import './globals.css'
 import './portfolio.css'
 
 import {SpeedInsights} from '@vercel/speed-insights/next'
+import {Toaster} from 'sonner'
 import {JetBrains_Mono, Space_Grotesk} from 'next/font/google'
 import {draftMode} from 'next/headers'
 import {defineQuery, stegaClean} from 'next-sanity'
@@ -186,6 +187,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
           </Suspense>
         </div>
 
+        <Toaster position="bottom-right" theme="dark" />
         <SpeedInsights />
       </body>
     </html>
