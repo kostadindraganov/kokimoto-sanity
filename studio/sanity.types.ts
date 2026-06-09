@@ -81,6 +81,13 @@ export type QaAction = {
   route?: Array<string>
 }
 
+export type SanityFileAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+}
+
 export type CtaCommand = {
   _type: 'ctaCommand'
   cmd: string
@@ -88,6 +95,11 @@ export type CtaCommand = {
   sub?: string
   primary?: boolean
   route?: Array<string>
+  file?: {
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
 }
 
 export type StackRow = {
@@ -470,13 +482,6 @@ export type Navigation = {
   }>
 }
 
-export type SanityFileAssetReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
-}
-
 export type SiteSettings = {
   _id: string
   _type: 'siteSettings'
@@ -824,6 +829,7 @@ export type AllSanitySchemaTypes =
   | BlockContent
   | Seo
   | QaAction
+  | SanityFileAssetReference
   | CtaCommand
   | StackRow
   | ValueItem
@@ -846,7 +852,6 @@ export type AllSanitySchemaTypes =
   | ProjectReference
   | HomePage
   | Navigation
-  | SanityFileAssetReference
   | SiteSettings
   | Color
   | SanityAssistInstructionTask

@@ -201,7 +201,7 @@ export function ArticleMainStream({
         <div>
           <div className="chips" style={{marginBottom: 28}}>
             {(post.tags ?? []).map((t) => (
-              <span key={t._id} className="chip">
+              <span key={t._key} className="chip">
                 #{t.title}
               </span>
             ))}

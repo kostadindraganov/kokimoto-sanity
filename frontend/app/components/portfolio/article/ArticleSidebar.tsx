@@ -124,7 +124,7 @@ export function ArticleSidebar({
         <div className="aside-tags" style={{marginTop: 7}}>
           {(post.tags ?? []).map((t) => (
             <Link
-              key={t._id}
+              key={t._key}
               href={`/blog?search=${encodeURIComponent(t.title)}`}
               className="aside-tag on"
             >
