@@ -4,6 +4,7 @@
  *   2. "inbox"    — dataset: inbox        — contactSubmission only, read-only
  */
 
+import React from 'react'
 import {createAuthStore, defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
@@ -48,7 +49,6 @@ function vercelDeployWidget(options?: VercelDeployWidgetOptions) {
     component: function VercelDeployWidget() {
       // Inline React component — no JSX needed; use createElement via React global.
       // Sanity Studio ships React so we can import it.
-      const React = require('react') as typeof import('react')
       const [status, setStatus] = React.useState<'idle' | 'deploying' | 'done' | 'error'>('idle')
 
       async function triggerDeploy() {
