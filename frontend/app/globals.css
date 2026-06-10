@@ -457,6 +457,78 @@ button { font-family: inherit; cursor: pointer; }
 .cols-3 { grid-template-columns: repeat(3, 1fr); }
 .cols-4 { grid-template-columns: repeat(4, 1fr); }
 
+/* ---------- "03 interface" — horizontal parallax gallery ---------- */
+.pgal { position: relative; }
+.pgal-pin {
+  position: sticky;
+  top: var(--bar-h, 52px);
+  height: clamp(340px, 62vh, 560px);
+  width: 100%; /* same width as the surrounding section — not full-bleed */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg, 7px);
+}
+.pgal-row {
+  display: flex;
+  gap: 2rem;
+  height: 86%;
+  padding: 0 16px; /* inset first/last frame from the panel edge */
+  will-change: transform;
+}
+.pgal-media {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(280px, 46vw, 560px);
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg, 7px);
+  background: var(--bg-2);
+}
+.pgal-layer {
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 160%; /* over-scale gives the parallax counter-shift room */
+  height: 100%;
+  will-change: transform;
+}
+.pgal-cap {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-2);
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  backdrop-filter: blur(6px);
+}
+/* fallback — native horizontal swipe strip (reduced-motion / touch / narrow) */
+.pgal-strip {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+.pgal-strip .pgal-media {
+  width: min(86vw, 560px);
+  height: clamp(220px, 56vw, 460px);
+  scroll-snap-align: center;
+}
+.pgal-strip .pgal-layer { left: 0; width: 100%; }
+
 /* dividers */
 .hr    { height: 1px; background: var(--line); border: 0; margin: 40px 0; }
 .gap-sec { height: 52px; }

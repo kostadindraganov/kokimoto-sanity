@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import {stegaClean} from 'next-sanity'
 import {type ReactNode, useMemo} from 'react'
@@ -11,6 +10,7 @@ import AsciiImageReveal from '../fx/AsciiImageReveal'
 import {useStreamReveal} from '../fx/useStreamReveal'
 import {shellPrompt, Stream, type StreamStep} from '../home/fx/Streaming'
 import {displayUrl, hrefUrl, interpolate, shortHash} from './interpolate'
+import {ParallaxGallery} from './ParallaxGallery'
 import {CmdBtn, Pill, SecHead} from './primitives'
 import {ProjectHeaderTags} from './ProjectHeaderTags'
 import type {PortfolioPageData, ProjectDetailData} from './types'
@@ -126,7 +126,7 @@ export function ProjectDetail({
 
   const repoHref = project.repo ? hrefUrl(stegaClean(project.repo)) : null
   const liveHref = project.live ? hrefUrl(stegaClean(project.live)) : null
-  const gallery = (project.gallery ?? []).filter((img) => img.asset).slice(0, 2)
+  const gallery = (project.gallery ?? []).filter((img) => img.asset)
   // NOTE: covers are uploaded as SVG. Sanity only rasterizes an SVG when a
   // format is set explicitly (fm=png); width/height/crop alone keep it SVG,
   // which loads with naturalWidth 0 and can't be sampled for the ASCII decode.
@@ -351,26 +351,7 @@ export function ProjectDetail({
       s.push({
         kind: 'node',
         delay: 240,
-        node: (
-          <div className="grid cols-2" data-sanity={projAttr('gallery')}>
-            {gallery.map((img, i) => (
-              <div
-                key={img._key ?? i}
-                className="ph"
-                style={{aspectRatio: '16 / 10', position: 'relative', overflow: 'hidden'}}
-                data-sanity={projAttr(img._key ? `gallery[_key=="${img._key}"]` : 'gallery')}
-              >
-                <Image
-                  src={urlForImage(img).width(1280).height(800).fit('crop').url()}
-                  alt={stegaClean(img.alt) || ''}
-                  fill
-                  style={{objectFit: 'cover'}}
-                  sizes="(max-width: 880px) 100vw, 50vw"
-                />
-              </div>
-            ))}
-          </div>
-        ),
+        node: <ParallaxGallery images={gallery} projAttr={projAttr} />,
       })
     }
 
