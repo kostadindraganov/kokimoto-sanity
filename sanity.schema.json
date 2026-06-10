@@ -306,8 +306,46 @@
                 }
               }
             }
+          },
+          {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "youTube"
+            }
           }
         ]
+      }
+    }
+  },
+  {
+    "name": "youTube",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "youTube"
+          }
+        },
+        "url": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": false
+        }
       }
     }
   },
@@ -1374,31 +1412,15 @@
         },
         "optional": true
       },
-      "problem": {
+      "description": {
         "type": "objectAttribute",
         "value": {
-          "type": "string"
-        },
-        "optional": false
-      },
-      "solution": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": false
-      },
-      "stack": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "array",
-          "of": {
-            "type": "string"
-          }
+          "type": "inline",
+          "name": "blockContent"
         },
         "optional": true
       },
-      "impact": {
+      "stack": {
         "type": "objectAttribute",
         "value": {
           "type": "array",
@@ -2162,14 +2184,7 @@
               },
               "optional": true
             },
-            "problemLabel": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "string"
-              },
-              "optional": true
-            },
-            "solutionLabel": {
+            "descriptionLabel": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"
@@ -2184,13 +2199,6 @@
               "optional": true
             },
             "roleLabel": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "string"
-              },
-              "optional": true
-            },
-            "impactHeading": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"

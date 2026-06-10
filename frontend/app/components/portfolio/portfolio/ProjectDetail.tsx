@@ -1,10 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import {stegaClean} from 'next-sanity'
+import {
+  PortableText,
+  type PortableTextBlock,
+  type PortableTextComponents,
+  stegaClean,
+} from 'next-sanity'
 import {type ReactNode, useMemo} from 'react'
 
 import {dataAttr, urlForImage} from '@/sanity/lib/utils'
+import YouTubeEmbed from '@/app/components/YouTubeEmbed'
 
 import AsciiImageReveal from '../fx/AsciiImageReveal'
 import {useStreamReveal} from '../fx/useStreamReveal'
@@ -107,6 +113,49 @@ function Field({k, children, dataSanity}: {k: ReactNode; children: ReactNode; da
       <span className="fv" data-sanity={dataSanity}>
         {children}
       </span>
+    </div>
+  )
+}
+
+/** Compact Portable Text renderer for the brief description (no prose chrome). */
+const briefComponents: PortableTextComponents = {
+  types: {
+    youTube: ({value}: {value: {url?: string}}) => <YouTubeEmbed url={value?.url} />,
+  },
+  marks: {
+    link: ({children, value}) => {
+      const internal = value?.linkType === 'internal'
+      const href = internal ? `/${(value?.route ?? '').replace(/^\//, '')}` : (value?.href ?? '#')
+      return (
+        <a
+          href={href}
+          target={value?.newTab ? '_blank' : undefined}
+          rel={value?.newTab ? 'noreferrer' : undefined}
+          style={{color: 'var(--blue)'}}
+        >
+          {children}
+        </a>
+      )
+    },
+  },
+}
+
+/** Brief description row: label left, rendered rich text right (block-level). */
+function DescriptionField({
+  label,
+  value,
+  dataSanity,
+}: {
+  label: ReactNode
+  value: PortableTextBlock[]
+  dataSanity?: string
+}) {
+  return (
+    <div className="field" style={{gridTemplateColumns: '104px 1fr'}}>
+      <span className="fk">{label}</span>
+      <div className="fv brief-desc" data-sanity={dataSanity}>
+        <PortableText value={value} components={briefComponents} />
+      </div>
     </div>
   )
 }
@@ -267,18 +316,17 @@ export function ProjectDetail({
       node: (
         <div className="panel" style={{background: 'var(--bg-1)'}}>
           <div className="panel-body" style={{paddingTop: 6, paddingBottom: 6}}>
-            <Field
-              k={<span data-sanity={pageAttr('detailLabels.problemLabel')}>{labels?.problemLabel}</span>}
-              dataSanity={projAttr('problem')}
-            >
-              {project.problem}
-            </Field>
-            <Field
-              k={<span data-sanity={pageAttr('detailLabels.solutionLabel')}>{labels?.solutionLabel}</span>}
-              dataSanity={projAttr('solution')}
-            >
-              {project.solution}
-            </Field>
+            {(project.description?.length ?? 0) > 0 && (
+              <DescriptionField
+                label={
+                  <span data-sanity={pageAttr('detailLabels.descriptionLabel')}>
+                    {labels?.descriptionLabel || '# description'}
+                  </span>
+                }
+                value={project.description ?? []}
+                dataSanity={projAttr('description')}
+              />
+            )}
             <Field
               k={<span data-sanity={pageAttr('detailLabels.stackLabel')}>{labels?.stackLabel}</span>}
               dataSanity={projAttr('stack')}
@@ -302,39 +350,7 @@ export function ProjectDetail({
       ),
     })
 
-    // 9. impact section heading
-    s.push({
-      kind: 'node',
-      gap: 40,
-      delay: 160,
-      node: (
-        <SecHead
-          idx="02"
-          title={labels?.impactHeading ?? ''}
-          dataSanity={pageAttr('detailLabels.impactHeading')}
-        />
-      ),
-    })
-
-    // 10. impact grid
-    s.push({
-      kind: 'node',
-      delay: 240,
-      node: (
-        <div className="grid cols-3" data-sanity={projAttr('impact')}>
-          {(project.impact ?? []).slice(0, 3).map((im, i) => (
-            <div key={i} className="metric">
-              <div className="diff" style={{fontSize: 14}}>
-                <span className="add">+ </span>
-                <span style={{color: 'var(--ink)'}}>{im}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      ),
-    })
-
-    // 11. gallery (conditional)
+    // 9. gallery (conditional)
     if (gallery.length > 0) {
       s.push({
         kind: 'node',
@@ -342,7 +358,7 @@ export function ProjectDetail({
         delay: 160,
         node: (
           <SecHead
-            idx="03"
+            idx="02"
             title={labels?.interfaceHeading ?? ''}
             dataSanity={pageAttr('detailLabels.interfaceHeading')}
           />
@@ -355,7 +371,7 @@ export function ProjectDetail({
       })
     }
 
-    // 12. repo/live links (conditional)
+    // 10. repo/live links (conditional)
     if (repoHref || liveHref) {
       s.push({
         kind: 'node',

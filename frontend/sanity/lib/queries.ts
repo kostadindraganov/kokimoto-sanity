@@ -336,10 +336,8 @@ export const portfolioPageQuery = defineQuery(`
     filterLabel,
     "detailLabels": detailLabels{
       role,
-      problem,
-      solution,
-      stack,
-      impact
+      description,
+      stack
     }
   }
 `)
@@ -387,10 +385,8 @@ export const projectQuery = defineQuery(`
     status,
     tags,
     role,
-    "problem": problem[],
-    "solution": solution[],
+    description,
     "stack": stack[],
-    "impact": impact[],
     "coverImage": coverImage{asset, alt, crop, hotspot},
     "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},
     repo,
@@ -409,7 +405,7 @@ export const allProjectsQuery = defineQuery(`
     status,
     tags,
     role,
-    "problem": problem[],
+    "summary": pt::text(description),
     "coverImage": coverImage{asset, alt, crop, hotspot},
     repo,
     live,

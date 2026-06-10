@@ -139,5 +139,8 @@ export const blockContent = defineType({
         }),
       ],
     }),
+    defineArrayMember({
+      type: 'youTube',
+    }),
   ],
 })

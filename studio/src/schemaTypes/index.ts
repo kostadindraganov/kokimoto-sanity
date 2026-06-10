@@ -12,6 +12,7 @@ import {seo} from './objects/seo'
 import {stackRow} from './objects/stackRow'
 import {timelineEntry} from './objects/timelineEntry'
 import {valueItem} from './objects/valueItem'
+import {youTube} from './objects/youTube'
 import {aboutPage} from './singletons/aboutPage'
 import {blogPage} from './singletons/blogPage'
 import {contactPage} from './singletons/contactPage'
@@ -47,6 +48,7 @@ export const schemaTypes = [
   ctaCommand,
   qaAction,
   seo,
+  youTube,
   blockContent,
 ]
 

@@ -125,9 +125,9 @@ export function BentoCard({p, size, idx}: {p: ProjectListItem; size: BentoSize; 
           <p
             className="bento-problem"
             data-r="3"
-            data-sanity={dataAttr({id: p._id, type: p._type, path: 'problem'}).toString()}
+            data-sanity={dataAttr({id: p._id, type: p._type, path: 'description'}).toString()}
           >
-            {p.problem}
+            {p.summary}
           </p>
         )}
 

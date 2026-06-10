@@ -1,6 +1,7 @@
 import {PortableText, type PortableTextComponents, type PortableTextBlock} from 'next-sanity'
 import {slugify} from '@/app/components/portfolio/blog/utils'
 import SanityImage from '@/app/components/SanityImage'
+import YouTubeEmbed from '@/app/components/YouTubeEmbed'
 
 interface ArticlePortableTextProps {
   value: PortableTextBlock[] | null | undefined
@@ -73,6 +74,7 @@ export function ArticlePortableText({
           </div>
         )
       },
+      youTube: ({value: ytValue}: {value: {url?: string}}) => <YouTubeEmbed url={ytValue?.url} />,
     },
     block: {
       h2: ({children}) => {

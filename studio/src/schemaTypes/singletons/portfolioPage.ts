@@ -77,16 +77,10 @@ export const portfolioPage = defineType({
           description: 'E.g. "brief".',
         }),
         defineField({
-          name: 'problemLabel',
-          title: 'Problem Label',
+          name: 'descriptionLabel',
+          title: 'Description Label',
           type: 'string',
-          description: 'E.g. "# problem".',
-        }),
-        defineField({
-          name: 'solutionLabel',
-          title: 'Solution Label',
-          type: 'string',
-          description: 'E.g. "+ solution".',
+          description: 'E.g. "# description".',
         }),
         defineField({
           name: 'stackLabel',
@@ -99,12 +93,6 @@ export const portfolioPage = defineType({
           title: 'Role Label',
           type: 'string',
           description: 'E.g. "@ role".',
-        }),
-        defineField({
-          name: 'impactHeading',
-          title: 'Impact Heading',
-          type: 'string',
-          description: 'E.g. "impact".',
         }),
         defineField({
           name: 'interfaceHeading',

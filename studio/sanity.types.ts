@@ -57,7 +57,15 @@ export type BlockContent = Array<
       _type: 'image'
       _key: string
     }
+  | ({
+      _key: string
+    } & YouTube)
 >
+
+export type YouTube = {
+  _type: 'youTube'
+  url: string
+}
 
 export type Seo = {
   _type: 'seo'
@@ -247,10 +255,8 @@ export type Project = {
     } & TagReference
   >
   role?: string
-  problem: string
-  solution: string
+  description?: BlockContent
   stack?: Array<string>
-  impact?: Array<string>
   coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
@@ -369,11 +375,9 @@ export type PortfolioPage = {
     deployLogTitle?: string
     deployLogLines?: Array<string>
     briefHeading?: string
-    problemLabel?: string
-    solutionLabel?: string
+    descriptionLabel?: string
     stackLabel?: string
     roleLabel?: string
-    impactHeading?: string
     interfaceHeading?: string
     cloneLabel?: string
     openLiveLabel?: string
@@ -827,6 +831,7 @@ export type Geopoint = {
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | BlockContent
+  | YouTube
   | Seo
   | QaAction
   | SanityFileAssetReference

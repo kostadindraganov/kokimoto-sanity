@@ -37,7 +37,7 @@ export const HOME_PAGE_QUERY = defineQuery(`
         "slug": slug.current,
         commit,
         status,
-        problem,
+        "summary": pt::text(description),
         "tags": tags[]->slug.current
       }
     },
@@ -140,7 +140,7 @@ export interface HomeFeaturedProject {
   slug: string | null
   commit: string | null
   status: string | null
-  problem: string | null
+  summary: string | null
   tags: string[] | null
 }
 

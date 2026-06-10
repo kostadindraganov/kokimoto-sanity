@@ -57,7 +57,15 @@ export type BlockContent = Array<
       _type: 'image'
       _key: string
     }
+  | ({
+      _key: string
+    } & YouTube)
 >
+
+export type YouTube = {
+  _type: 'youTube'
+  url: string
+}
 
 export type Seo = {
   _type: 'seo'
@@ -247,10 +255,8 @@ export type Project = {
     } & TagReference
   >
   role?: string
-  problem: string
-  solution: string
+  description?: BlockContent
   stack?: Array<string>
-  impact?: Array<string>
   coverImage: {
     asset?: SanityImageAssetReference
     media?: unknown
@@ -369,11 +375,9 @@ export type PortfolioPage = {
     deployLogTitle?: string
     deployLogLines?: Array<string>
     briefHeading?: string
-    problemLabel?: string
-    solutionLabel?: string
+    descriptionLabel?: string
     stackLabel?: string
     roleLabel?: string
-    impactHeading?: string
     interfaceHeading?: string
     cloneLabel?: string
     openLiveLabel?: string
@@ -827,6 +831,7 @@ export type Geopoint = {
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | BlockContent
+  | YouTube
   | Seo
   | QaAction
   | SanityFileAssetReference
@@ -1435,7 +1440,7 @@ export type AboutPageQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: portfolioPageQuery
-// Query: *[_type == "portfolioPage"][0]{    _id,    eyebrow,    heading,    intro,    filterLabel,    "detailLabels": detailLabels{      role,      problem,      solution,      stack,      impact    }  }
+// Query: *[_type == "portfolioPage"][0]{    _id,    eyebrow,    heading,    intro,    filterLabel,    "detailLabels": detailLabels{      role,      description,      stack    }  }
 export type PortfolioPageQueryResult = {
   _id: string
   eyebrow: string | null
@@ -1444,10 +1449,8 @@ export type PortfolioPageQueryResult = {
   filterLabel: string | null
   detailLabels: {
     role: null
-    problem: null
-    solution: null
+    description: null
     stack: null
-    impact: null
   } | null
 } | null
 
@@ -1484,7 +1487,7 @@ export type ContactPageQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: projectQuery
-// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    "problem": problem[],    "solution": solution[],    "stack": stack[],    "impact": impact[],    "coverImage": coverImage{asset, alt, crop, hotspot},    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},    repo,    live,    order,    "seo": seo{title, description, ogImage}  }
+// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    description,    "stack": stack[],    "coverImage": coverImage{asset, alt, crop, hotspot},    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},    repo,    live,    order,    "seo": seo{title, description, ogImage}  }
 export type ProjectQueryResult = {
   _id: string
   title: string
@@ -1497,10 +1500,8 @@ export type ProjectQueryResult = {
     } & TagReference
   >
   role: string | null
-  problem: null
-  solution: null
+  description: BlockContent | null
   stack: Array<string> | null
-  impact: Array<string> | null
   coverImage: {
     asset: SanityImageAssetReference | null
     alt: string | null
@@ -1531,7 +1532,7 @@ export type ProjectQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: allProjectsQuery
-// Query: *[_type == "project"] | order(order asc, _createdAt desc){    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    "problem": problem[],    "coverImage": coverImage{asset, alt, crop, hotspot},    repo,    live,    order  }
+// Query: *[_type == "project"] | order(order asc, _createdAt desc){    _id,    title,    "slug": slug.current,    commit,    status,    tags,    role,    "summary": pt::text(description),    "coverImage": coverImage{asset, alt, crop, hotspot},    repo,    live,    order  }
 export type AllProjectsQueryResult = Array<{
   _id: string
   title: string
@@ -1544,7 +1545,7 @@ export type AllProjectsQueryResult = Array<{
     } & TagReference
   >
   role: string | null
-  problem: null
+  summary: string
   coverImage: {
     asset: SanityImageAssetReference | null
     alt: string | null
@@ -1691,11 +1692,11 @@ declare module '@sanity/client' {
     '\n  *[_type == "navigation"][0]{\n    "items": items[]{_key, label, command, route}\n  }\n': NavigationQueryResult
     '\n  *[_type == "homePage"][0]{\n    _id,\n    heroHeading,\n    heroSub,\n    heroBio,\n    "metrics": metrics[]{_key, number, unit, label},\n    "nextSteps": nextSteps[]{_key, cmd, flag, description},\n    "featuredProjects": featuredProjects[]->{_id, title, "slug": slug.current, commit, status, tags},\n    "systemCard": systemCard{\n      "kvRows": kvRows[]{_key, key, value}\n    }\n  }\n': HomePageQueryResult
     '\n  *[_type == "aboutPage"][0]{\n    _id,\n    "bioParagraphs": bioParagraphs[],\n    "timeline": timeline[]{_key, year, title, company, description, lit},\n    "values": values[]{_key, title, description},\n    "stackRows": stackRows[]{_key, category, tools[]},\n    "ctas": ctas[]{_key, label, href, primary}\n  }\n': AboutPageQueryResult
-    '\n  *[_type == "portfolioPage"][0]{\n    _id,\n    eyebrow,\n    heading,\n    intro,\n    filterLabel,\n    "detailLabels": detailLabels{\n      role,\n      problem,\n      solution,\n      stack,\n      impact\n    }\n  }\n': PortfolioPageQueryResult
+    '\n  *[_type == "portfolioPage"][0]{\n    _id,\n    eyebrow,\n    heading,\n    intro,\n    filterLabel,\n    "detailLabels": detailLabels{\n      role,\n      description,\n      stack\n    }\n  }\n': PortfolioPageQueryResult
     '\n  *[_type == "blogPage"][0]{\n    _id,\n    heading,\n    intro,\n    "articleLabels": articleLabels{\n      recentHeading,\n      featuredLabel,\n      readMore,\n      minRead\n    }\n  }\n': BlogPageQueryResult
     '\n  *[_type == "contactPage"][0]{\n    _id,\n    heading,\n    intro,\n    "formFields": formFields{\n      namePlaceholder,\n      emailPlaceholder,\n      messagePlaceholder,\n      submitLabel\n    },\n    "validationMessages": validationMessages{\n      nameRequired,\n      emailInvalid,\n      messageRequired\n    },\n    "successLines": successLines[]\n  }\n': ContactPageQueryResult
-    '\n  *[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "solution": solution[],\n    "stack": stack[],\n    "impact": impact[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},\n    repo,\n    live,\n    order,\n    "seo": seo{title, description, ogImage}\n  }\n': ProjectQueryResult
-    '\n  *[_type == "project"] | order(order asc, _createdAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    repo,\n    live,\n    order\n  }\n': AllProjectsQueryResult
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    description,\n    "stack": stack[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},\n    repo,\n    live,\n    order,\n    "seo": seo{title, description, ogImage}\n  }\n': ProjectQueryResult
+    '\n  *[_type == "project"] | order(order asc, _createdAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "summary": pt::text(description),\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    repo,\n    live,\n    order\n  }\n': AllProjectsQueryResult
     '\n  *[_type == "post" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    category,\n    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    body,\n    "seo": seo{title, description, ogImage}\n  }\n': PortfolioPostQueryResult
     '\n  *[_type == "qaEntry" && enabled != false] | order(_createdAt asc){\n    _id,\n    title,\n    "keywords": keywords[],\n    "answer": answer[],\n    "action": action{cmd, flag, route},\n    enabled\n  }\n': QaEntryQueryResult
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    "category": category->{_id, title, "slug": slug.current},\n    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot}\n  }\n': BLOG_POSTS_QUERY_RESULT

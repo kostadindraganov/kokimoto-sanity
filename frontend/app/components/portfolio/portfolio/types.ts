@@ -3,6 +3,8 @@
    schema types are not yet part of the generated typegen map)
    ============================================================ */
 
+import type {PortableTextBlock} from 'next-sanity'
+
 export interface ProjectTag {
   _key: string
   _id: string
@@ -35,11 +37,9 @@ export interface PortfolioDetailLabels {
   deployLogTitle?: string | null
   deployLogLines?: string[] | null
   briefHeading?: string | null
-  problemLabel?: string | null
-  solutionLabel?: string | null
+  descriptionLabel?: string | null
   stackLabel?: string | null
   roleLabel?: string | null
-  impactHeading?: string | null
   interfaceHeading?: string | null
   cloneLabel?: string | null
   openLiveLabel?: string | null
@@ -69,7 +69,8 @@ export interface ProjectListItem {
   slug: string
   commit?: string | null
   status?: string | null
-  problem?: string | null
+  /** Plain-text excerpt of `description` (GROQ `pt::text`) used for card previews. */
+  summary?: string | null
   coverImage?: SanityImageValue | null
   tags?: ProjectTag[] | null
   order?: number | null
@@ -82,9 +83,9 @@ export interface ProjectPagerEntry {
 
 export interface ProjectDetailData extends ProjectListItem {
   role?: string | null
-  solution?: string | null
+  /** Full Portable Text brief shown in the 01 brief panel. */
+  description?: PortableTextBlock[] | null
   stack?: string[] | null
-  impact?: string[] | null
   repo?: string | null
   live?: string | null
   gallery?: SanityImageValue[] | null

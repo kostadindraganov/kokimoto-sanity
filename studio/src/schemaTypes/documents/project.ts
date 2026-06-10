@@ -66,18 +66,11 @@ export const project = defineType({
       description: 'Your role on the project, e.g. "lead engineer".',
     }),
     defineField({
-      name: 'problem',
-      title: 'Problem',
-      type: 'text',
-      rows: 3,
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'solution',
-      title: 'Solution',
-      type: 'text',
-      rows: 3,
-      validation: (rule) => rule.required(),
+      name: 'description',
+      title: 'Description',
+      type: 'blockContent',
+      description:
+        'Project brief — rich text shown in the 01 brief panel, summarised as the grid/home card preview.',
     }),
     defineField({
       name: 'stack',
@@ -85,14 +78,6 @@ export const project = defineType({
       type: 'array',
       of: [defineArrayMember({type: 'string'})],
       description: 'Rendered as chips.',
-    }),
-    defineField({
-      name: 'impact',
-      title: 'Impact',
-      type: 'array',
-      of: [defineArrayMember({type: 'string'})],
-      description: 'Up to 3 impact statements (3-column metric grid).',
-      validation: (rule) => rule.max(3),
     }),
     defineField({
       name: 'coverImage',

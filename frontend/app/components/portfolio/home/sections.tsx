@@ -76,7 +76,7 @@ export function MiniWork({p, dataSanity}: {p: HomeFeaturedProject; dataSanity?: 
           </span>
         </div>
         <p className="muted" style={{fontSize: 13, margin: '8px 0 0', lineHeight: 1.55}}>
-          {p.problem}
+          {p.summary}
         </p>
       </div>
     </Link>
