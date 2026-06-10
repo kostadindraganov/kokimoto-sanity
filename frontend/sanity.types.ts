@@ -1558,7 +1558,7 @@ export type AllProjectsQueryResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: portfolioPostQuery
-// Query: *[_type == "post" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    category,    tags,    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot},    body,    "seo": seo{title, description, ogImage}  }
+// Query: *[_type == "post" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    category,    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot},    body,    "seo": seo{title, description, ogImage}  }
 export type PortfolioPostQueryResult = {
   _id: string
   title: string
@@ -1566,11 +1566,12 @@ export type PortfolioPostQueryResult = {
   summary: string
   date: string
   category: CategoryReference
-  tags: Array<
-    {
-      _key: string
-    } & TagReference
-  > | null
+  tags: Array<{
+    _key: string
+    _id: string
+    title: string
+    slug: string
+  }> | null
   readTime: number | null
   featured: boolean | null
   coverImage: {
@@ -1613,7 +1614,7 @@ export type QaEntryQueryResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: BLOG_POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){    _id,    _type,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    "category": category->{_id, title, "slug": slug.current},    "tags": tags[]->{_id, title, "slug": slug.current},    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot}  }
+// Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){    _id,    _type,    title,    "slug": slug.current,    summary,    "date": coalesce(date, _updatedAt),    "category": category->{_id, title, "slug": slug.current},    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},    readTime,    featured,    "coverImage": coverImage{asset, alt, crop, hotspot}  }
 export type BLOG_POSTS_QUERY_RESULT = Array<{
   _id: string
   _type: 'post'
@@ -1627,6 +1628,7 @@ export type BLOG_POSTS_QUERY_RESULT = Array<{
     slug: string
   }
   tags: Array<{
+    _key: string
     _id: string
     title: string
     slug: string
@@ -1694,9 +1696,9 @@ declare module '@sanity/client' {
     '\n  *[_type == "contactPage"][0]{\n    _id,\n    heading,\n    intro,\n    "formFields": formFields{\n      namePlaceholder,\n      emailPlaceholder,\n      messagePlaceholder,\n      submitLabel\n    },\n    "validationMessages": validationMessages{\n      nameRequired,\n      emailInvalid,\n      messageRequired\n    },\n    "successLines": successLines[]\n  }\n': ContactPageQueryResult
     '\n  *[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "solution": solution[],\n    "stack": stack[],\n    "impact": impact[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    "gallery": gallery[]{_key, "image": image{asset, alt, crop, hotspot}},\n    repo,\n    live,\n    order,\n    "seo": seo{title, description, ogImage}\n  }\n': ProjectQueryResult
     '\n  *[_type == "project"] | order(order asc, _createdAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    commit,\n    status,\n    tags,\n    role,\n    "problem": problem[],\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    repo,\n    live,\n    order\n  }\n': AllProjectsQueryResult
-    '\n  *[_type == "post" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    category,\n    tags,\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    body,\n    "seo": seo{title, description, ogImage}\n  }\n': PortfolioPostQueryResult
+    '\n  *[_type == "post" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    category,\n    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot},\n    body,\n    "seo": seo{title, description, ogImage}\n  }\n': PortfolioPostQueryResult
     '\n  *[_type == "qaEntry" && enabled != false] | order(_createdAt asc){\n    _id,\n    title,\n    "keywords": keywords[],\n    "answer": answer[],\n    "action": action{cmd, flag, route},\n    enabled\n  }\n': QaEntryQueryResult
-    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    "category": category->{_id, title, "slug": slug.current},\n    "tags": tags[]->{_id, title, "slug": slug.current},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot}\n  }\n': BLOG_POSTS_QUERY_RESULT
+    '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc){\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    summary,\n    "date": coalesce(date, _updatedAt),\n    "category": category->{_id, title, "slug": slug.current},\n    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},\n    readTime,\n    featured,\n    "coverImage": coverImage{asset, alt, crop, hotspot}\n  }\n': BLOG_POSTS_QUERY_RESULT
     '\n  *[_type == "category"] | order(title asc){\n    _id,\n    title,\n    "slug": slug.current\n  }\n': ALL_CATEGORIES_QUERY_RESULT
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...5]{\n    _id,\n    title,\n    "slug": slug.current,\n    "date": coalesce(date, _updatedAt),\n    summary,\n    readTime\n  }\n': RECENT_POSTS_QUERY_RESULT
   }

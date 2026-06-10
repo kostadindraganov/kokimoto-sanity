@@ -10,6 +10,7 @@ export interface BlogCategory {
 }
 
 export interface BlogTag {
+  _key: string
   _id: string
   title: string
   slug: string

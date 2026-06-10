@@ -771,6 +771,10 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    Bento grid — portfolio
    ============================================================ */
+.portfolio-filter {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

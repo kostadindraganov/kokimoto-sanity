@@ -425,7 +425,7 @@ export const portfolioPostQuery = defineQuery(`
     summary,
     "date": coalesce(date, _updatedAt),
     category,
-    tags,
+    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},
     readTime,
     featured,
     "coverImage": coverImage{asset, alt, crop, hotspot},
@@ -458,7 +458,7 @@ export const BLOG_POSTS_QUERY = defineQuery(`
     summary,
     "date": coalesce(date, _updatedAt),
     "category": category->{_id, title, "slug": slug.current},
-    "tags": tags[]->{_id, title, "slug": slug.current},
+    "tags": tags[]{_key, ...@->{_id, title, "slug": slug.current}},
     readTime,
     featured,
     "coverImage": coverImage{asset, alt, crop, hotspot}
