@@ -24,23 +24,31 @@ function useScrollReveal<T extends HTMLElement>() {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    const reveal = () => el.classList.add('in')
     if (typeof IntersectionObserver === 'undefined') {
-      el.classList.add('in')
+      reveal()
       return
     }
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            e.target.classList.add('in')
+            reveal()
             io.unobserve(e.target)
           }
         }
       },
-      {threshold: 0.18, rootMargin: '0px 0px -8% 0px'},
+      // reveal cards as they approach (positive bottom margin) so the grid
+      // isn't a wall of blank shells just below the fold
+      {threshold: 0.18, rootMargin: '0px 0px 20% 0px'},
     )
     io.observe(el)
-    return () => io.disconnect()
+    // safety net: never leave a card blank even if it's never scrolled into view
+    const fallback = window.setTimeout(reveal, 1200)
+    return () => {
+      io.disconnect()
+      window.clearTimeout(fallback)
+    }
   }, [])
   return ref
 }
@@ -121,7 +129,7 @@ export function BentoCard({p, size, idx}: {p: ProjectListItem; size: BentoSize; 
           </span>
         </div>
 
-        {(size === 'xl' || size === 'tall') && (
+        {p.summary && (
           <p
             className="bento-problem"
             data-r="3"

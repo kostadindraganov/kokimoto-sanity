@@ -259,11 +259,7 @@ function HomeBody({
         kind: 'node',
         delay: 2000,
         node: (
-          <FeaturedGrid
-            docId={home._id}
-            docType={home._type}
-            projects={home.featuredProjects ?? []}
-          />
+          <FeaturedGrid projects={home.featuredProjects ?? []} />
         ),
       },
       {

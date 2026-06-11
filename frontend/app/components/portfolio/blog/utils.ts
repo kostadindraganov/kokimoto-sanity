@@ -1,5 +1,9 @@
 export function fmtDate(d: string): string {
-  const dt = new Date(d + 'T00:00:00')
+  if (!d) return ''
+  // `date` field is a plain "YYYY-MM-DD"; the coalesce fallback (_updatedAt)
+  // is a full ISO datetime — only date-only strings need the time appended.
+  const dt = d.includes('T') ? new Date(d) : new Date(d + 'T00:00:00')
+  if (Number.isNaN(dt.getTime())) return ''
   return dt.toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: '2-digit'})
 }
 

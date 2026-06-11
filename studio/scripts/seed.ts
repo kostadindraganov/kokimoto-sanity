@@ -593,6 +593,7 @@ async function seedProjects(tagIdMap: Map<string, string>): Promise<Map<string, 
       stack: proj.stack,
       impact: proj.impact,
       order: proj.order,
+      featured: proj.featured ?? false,
       ...(proj.repo ? {repo: proj.repo} : {}),
       ...(proj.live ? {live: proj.live} : {}),
       ...(cover
@@ -724,19 +725,11 @@ async function seedNavigation(): Promise<void> {
   await upsertSingleton(navigationData)
 }
 
-async function seedHomePage(projIdMap: Map<string, string>): Promise<void> {
+async function seedHomePage(): Promise<void> {
   log('\n── Seeding homePage singleton ───────────────────────────────────')
 
-  // Featured projects: first 3 from projectsData
-  const featuredProjectIds = ['ledger-core', 'atlas-console', 'promptforge']
-    .map((id) => projIdMap.get(id))
-    .filter(Boolean)
-
-  const featuredProjects = featuredProjectIds.map((id) => ({
-    _type: 'reference',
-    _ref: id,
-    _key: id,
-  }))
+  // Featured work is now driven by each project's `featured` flag (set in
+  // seedProjects), not a curated reference array on the homePage.
 
   const metricsWithKeys = homePageData.metrics.map((m, i) => ({
     ...m,
@@ -757,7 +750,6 @@ async function seedHomePage(projIdMap: Map<string, string>): Promise<void> {
 
   const doc = {
     ...homePageData,
-    featuredProjects,
     metrics: metricsWithKeys,
     nextSteps: nextStepsWithKeys,
     systemCard: {
@@ -966,7 +958,7 @@ async function main(): Promise<void> {
   const catIdMap = await seedCategories()
 
   // c. projects (refs tags)
-  const projIdMap = await seedProjects(tagIdMap)
+  await seedProjects(tagIdMap)
 
   // d. posts (refs category + tags)
   await seedPosts(tagIdMap, catIdMap)
@@ -980,8 +972,8 @@ async function main(): Promise<void> {
   // g. navigation
   await seedNavigation()
 
-  // h. homePage (refs featuredProjects)
-  await seedHomePage(projIdMap)
+  // h. homePage
+  await seedHomePage()
 
   // i. aboutPage, portfolioPage, blogPage, contactPage
   await seedAboutPage()

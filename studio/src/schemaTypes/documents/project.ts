@@ -52,6 +52,32 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description:
+        'Pins this project to the "selected work" section on the home page (up to 3 shown, ordered by Order).',
+      initialValue: false,
+      validation: (rule) =>
+        rule
+          .custom(async (featured, context) => {
+            if (!featured) return true
+
+            const client = context.getClient({apiVersion: '2026-02-01'})
+            const id = context.document?._id.replace(/^drafts\./, '') ?? ''
+
+            const others = await client.fetch<number>(
+              `count(*[_type == "project" && featured == true && !(_id in [$draft, $published])])`,
+              {draft: `drafts.${id}`, published: id},
+            )
+
+            return others < 3
+              ? true
+              : 'Three projects are already featured — only the first 3 (by Order) appear in selected work'
+          })
+          .warning(),
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -184,11 +210,17 @@ export const project = defineType({
     },
   ],
   preview: {
-    select: {title: 'title', commit: 'commit', status: 'status', media: 'coverImage'},
-    prepare({title, commit, status, media}) {
+    select: {
+      title: 'title',
+      commit: 'commit',
+      status: 'status',
+      media: 'coverImage',
+      featured: 'featured',
+    },
+    prepare({title, commit, status, media, featured}) {
       return {
-        title,
-        subtitle: [status, commit].filter(Boolean).join(' · '),
+        title: featured ? `⭐ ${title}` : title,
+        subtitle: [featured && 'Featured', status, commit].filter(Boolean).join(' · '),
         media,
       }
     },

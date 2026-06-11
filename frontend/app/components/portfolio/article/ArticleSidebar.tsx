@@ -37,10 +37,8 @@ interface ArticleSidebarProps {
 export function ArticleSidebar({
   post,
   tocItems,
-  categories,
   allTags,
   recentPosts,
-  archiveEntries,
   labels,
 }: ArticleSidebarProps) {
   const [q, setQ] = useState('')
@@ -93,12 +91,9 @@ export function ArticleSidebar({
 
   const tocHeading = labels?.tocHeading ?? 'on this page'
   const searchHeading = labels?.searchHeading ?? 'search'
-  const categoriesHeading = labels?.categoriesHeading ?? 'categories'
   const tagsHeading = labels?.tagsHeading ?? 'tags'
   const recentHeading = labels?.recentHeading ?? 'recent posts'
-  const archivesHeading = labels?.archivesHeading ?? 'archives'
   const readingTimeLabel = labels?.readingTimeHeading ?? 'reading time'
-  const categoryHeading = labels?.categoryHeading ?? 'category'
 
   const readTimeDisplay = post.readTime
     ? formatReadTime(post.readTime)
@@ -108,29 +103,9 @@ export function ArticleSidebar({
     <div className="aside-stack">
       {/* Post meta */}
       <div className="aside-card">
-        <div className="aside-grid2">
-          <div>
-            <div className="aside-k">{readingTimeLabel}</div>
-            <div className="aside-v acc">{readTimeDisplay}</div>
-          </div>
-          <div>
-            <div className="aside-k">{categoryHeading}</div>
-            <div className="aside-v">{post.category?.title}</div>
-          </div>
-        </div>
-        <div className="aside-k" style={{marginTop: 14}}>
-          tags
-        </div>
-        <div className="aside-tags" style={{marginTop: 7}}>
-          {(post.tags ?? []).map((t) => (
-            <Link
-              key={t._key}
-              href={`/blog?search=${encodeURIComponent(t.title)}`}
-              className="aside-tag on"
-            >
-              #{t.title}
-            </Link>
-          ))}
+        <div>
+          <div className="aside-k">{readingTimeLabel}</div>
+          <div className="aside-v acc">{readTimeDisplay}</div>
         </div>
       </div>
 
@@ -176,23 +151,6 @@ export function ArticleSidebar({
         </form>
       </div>
 
-      {/* Categories */}
-      {categories.length > 0 && (
-        <div className="aside-card">
-          <div className="aside-head">{categoriesHeading}</div>
-          <ul className="aside-list">
-            {categories.map((c) => (
-              <li key={c.slug}>
-                <Link href={`/blog?category=${encodeURIComponent(c.title)}`}>
-                  <span>{c.title}</span>
-                  <span className="ct">{c.count}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       {/* Tags */}
       {allTags.length > 0 && (
         <div className="aside-card">
@@ -228,22 +186,6 @@ export function ArticleSidebar({
         </div>
       )}
 
-      {/* Archives */}
-      {archiveEntries.length > 0 && (
-        <div className="aside-card">
-          <div className="aside-head">{archivesHeading}</div>
-          <ul className="aside-list">
-            {archiveEntries.map(([month, n]) => (
-              <li key={month}>
-                <Link href="/blog">
-                  <span>{month}</span>
-                  <span className="ct">{n}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   )
 }

@@ -267,7 +267,7 @@ button { font-family: inherit; cursor: pointer; }
 .prompt .path { color: var(--blue); }
 .prompt .pct  { color: var(--ink-4); }
 .prompt .cmd  { color: var(--ink); white-space: nowrap; }
-.prompt .flag { white-space: nowrap; }
+.prompt .flag { white-space: nowrap; margin: 0 6px; }
 .prompt .who, .prompt .path { white-space: nowrap; }
 .prompt .cmd .flag { color: var(--accent-2); }
 
@@ -378,6 +378,8 @@ button { font-family: inherit; cursor: pointer; }
 .anim-settled .mcon-scrim,
 .anim-settled .mcon { opacity: 1 !important; transform: none !important; animation: none !important; }
 .anim-settled .bento { opacity: 1 !important; transform: none !important; filter: none !important; }
+.anim-settled .bento-ch,
+.anim-settled .bento [data-r] { opacity: 1 !important; transform: none !important; }
 
 /* ============================================================
    Chips / flags / pills
@@ -834,6 +836,20 @@ button { font-family: inherit; cursor: pointer; }
 .proj-foot a:hover { color: var(--accent); }
 .proj-foot .spacer  { flex: 1; }
 
+/* home "selected work" card — cover image left, content right */
+.mini-work { display: flex; align-items: stretch; text-decoration: none; color: inherit; }
+.mini-cover { position: relative; flex: 0 0 34%; max-width: 240px; min-height: 132px; overflow: hidden; background: var(--bg-2); border-right: 1px solid var(--line-soft); }
+.mini-cover .mini-img { object-fit: cover; }
+.mini-cover .ph { position: absolute; inset: 0; }
+.mini-main { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; }
+.mini-main .proj-body { flex: 1 1 auto; }
+/* keep the card preview short — ~two sentences */
+.mini-summary { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 560px) {
+  .mini-work { flex-direction: column; }
+  .mini-cover { flex-basis: auto; max-width: none; aspect-ratio: 16 / 9; border-right: none; border-bottom: 1px solid var(--line-soft); }
+}
+
 /* ============================================================
    Statline / KV
    ============================================================ */
@@ -1094,6 +1110,47 @@ button { font-family: inherit; cursor: pointer; }
 .bento-xl .bento-art, .bento-tall .bento-art { flex: 1 1 auto; }
 .bento-xl .bento-meta, .bento-tall .bento-meta { border-top: 1px solid var(--line-soft); }
 
+/* ------------------------------------------------------------
+   Single-row cards (wide / s / m) are too short to stack a fixed
+   image above the meta panel, so the title + description get
+   clipped. Instead the image fills the card and the title + a
+   small description overlay the bottom, over the art glow.
+   ------------------------------------------------------------ */
+.bento-wide .bento-art,
+.bento-s .bento-art,
+.bento-m .bento-art {
+  position: absolute;
+  inset: 0;
+  flex: none;
+  height: auto;
+}
+.bento-wide .bento-meta,
+.bento-s .bento-meta,
+.bento-m .bento-meta {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3;
+  flex: none;
+  gap: 4px;
+  padding: 12px 14px 13px;
+  border-top: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(7,6,4,0.62) 38%, rgba(7,6,4,0.94) 100%);
+  backdrop-filter: blur(2px);
+}
+/* drop the commit-message line on the compact overlay — title + description carry the card */
+.bento-wide .bento-commit,
+.bento-s .bento-commit,
+.bento-m .bento-commit { display: none; }
+/* keep the overlay description to two lines so it never swallows the image */
+.bento-wide .bento-problem,
+.bento-s .bento-problem,
+.bento-m .bento-problem {
+  -webkit-line-clamp: 2;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+
 /* ============================================================
    About timeline
    ============================================================ */
@@ -1158,13 +1215,41 @@ button { font-family: inherit; cursor: pointer; }
 }
 .post-row:hover { background: var(--bg-1); padding-left: 14px; padding-right: 14px; border-radius: var(--r); }
 .post-row:hover::before { top: 18%; bottom: 18%; }
-.post-row .pdate { font-size: 12px; color: var(--ink-4); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.post-row .pthumb {
+  position: relative; display: block; flex: none;
+  width: 92px; height: 66px;
+  border: 1px solid var(--line-strong); border-radius: var(--r);
+  background: linear-gradient(160deg, var(--bg-3), #050403);
+  overflow: hidden; isolation: isolate;
+}
+.post-row .pthumb img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.7;
+  transition: transform 0.5s var(--ease), opacity 0.3s var(--ease);
+}
+.post-row:hover .pthumb img { transform: scale(1.06); opacity: 0.82; }
+.post-row .pthumb-grad {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.34) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.55) 100%);
+}
+.post-row .pthumb-scan {
+  position: absolute; left: 0; right: 0; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5; animation: bento-scan 3.2s var(--ease-out) infinite;
+}
+.post-row .pthumb-date {
+  position: absolute; top: 6px; left: 7px; right: 7px; pointer-events: none;
+  font-size: 12.5px; font-weight: 500; line-height: 1.22; color: #fff; letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums; text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.9);
+}
 .post-row h4   { font-family: var(--display); font-weight: 600; font-size: 16.5px; margin: 0 0 4px; color: var(--ink); letter-spacing: -0.01em; }
 .post-row .psum { font-size: 13px; color: var(--ink-3); margin: 0; }
 .post-row .pmeta { display: flex; gap: 10px; align-items: center; font-size: 11.5px; color: var(--ink-4); flex-wrap: wrap; }
 .post-row .pmeta > * { white-space: nowrap; }
 .post-row .cat  { color: var(--accent); }
-.post-row .read { color: var(--ink-3); font-size: 12px; white-space: nowrap; }
+.post-row .read { color: var(--ink-3); font-size: 12px; white-space: nowrap; justify-self: end; text-align: right; }
 .post-row:hover .read { color: var(--accent); }
 
 /* cursor-following post preview */
@@ -1521,7 +1606,7 @@ textarea.tinput { resize: vertical; min-height: 120px; line-height: 1.6; }
   .kv { grid-template-columns: 120px 1fr; }
   .proj .field { grid-template-columns: 84px 1fr; }
   .post-row { grid-template-columns: 1fr; gap: 8px; }
-  .post-row .pdate { order: -1; }
+  .post-row .pthumb { order: -1; }
   .post-row .read  { display: none; }
   .statusbar .hide-sm { display: none; }
   .sec-head h2 { font-size: 19px; }
@@ -1562,6 +1647,20 @@ textarea.tinput { resize: vertical; min-height: 120px; line-height: 1.6; }
   .bento-xl, .bento-wide, .bento-tall, .bento-s, .bento-m {
     grid-column: span 1; grid-row: span 1;
   }
+  /* every card is single-row here — xl/tall also overlay the title + description */
+  .bento-xl .bento-art, .bento-tall .bento-art {
+    position: absolute; inset: 0; flex: none; height: auto;
+  }
+  .bento-xl .bento-meta, .bento-tall .bento-meta {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; flex: none;
+    border-top: none; gap: 4px; padding: 12px 14px 13px;
+    background: linear-gradient(180deg, transparent 0%, rgba(7,6,4,0.62) 38%, rgba(7,6,4,0.94) 100%);
+    backdrop-filter: blur(2px);
+  }
+  .bento-xl .bento-commit, .bento-tall .bento-commit { display: none; }
+  .bento-xl .bento-problem, .bento-tall .bento-problem {
+    -webkit-line-clamp: 2; font-size: 12.5px; color: var(--ink-2); margin-top: 2px;
+  }
 }
 @media (max-width: 980px) {
   .article-layout { grid-template-columns: 1fr; gap: 36px; }
@@ -1575,6 +1674,7 @@ textarea.tinput { resize: vertical; min-height: 120px; line-height: 1.6; }
   .cursor, .dot::after, .nav-item.active::after { animation: none !important; }
   .cursor { opacity: 0.7; }
   .bento  { opacity: 1; transform: none; filter: none; transition: none; }
+  .bento-ch, .bento [data-r] { opacity: 1; transform: none; }
   .bento-art-scan { animation: none; opacity: 0; }
   .post-preview { animation: post-preview-pop 0.18s ease-out both; }
   .post-preview img { animation: none; }

@@ -249,6 +249,7 @@ export type Project = {
   slug: Slug
   commit: string
   status: 'live' | 'shipped' | 'active' | 'archived'
+  featured?: boolean
   tags: Array<
     {
       _key: string
@@ -424,13 +425,6 @@ export type AboutPage = {
   seo?: Seo
 }
 
-export type ProjectReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'project'
-}
-
 export type HomePage = {
   _id: string
   _type: 'homePage'
@@ -443,11 +437,6 @@ export type HomePage = {
   successLines?: Array<string>
   portraitCaption?: string
   featuredHeading?: string
-  featuredProjects?: Array<
-    {
-      _key: string
-    } & ProjectReference
-  >
   metricsHeading?: string
   metrics?: Array<
     {
@@ -854,7 +843,6 @@ export type AllSanitySchemaTypes =
   | BlogPage
   | PortfolioPage
   | AboutPage
-  | ProjectReference
   | HomePage
   | Navigation
   | SiteSettings
@@ -1385,18 +1373,7 @@ export type HomePageQueryResult = {
     flag: string | null
     description: null
   }> | null
-  featuredProjects: Array<{
-    _id: string
-    title: string
-    slug: string
-    commit: string
-    status: 'active' | 'archived' | 'live' | 'shipped'
-    tags: Array<
-      {
-        _key: string
-      } & TagReference
-    >
-  }> | null
+  featuredProjects: null
   systemCard: {
     kvRows: Array<{
       _key: string

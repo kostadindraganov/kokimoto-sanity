@@ -53,13 +53,6 @@ export const homePage = defineType({
       description: 'E.g. "selected work".',
     }),
     defineField({
-      name: 'featuredProjects',
-      title: 'Featured Projects',
-      type: 'array',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'project'}]})],
-      validation: (rule) => rule.max(3).unique(),
-    }),
-    defineField({
       name: 'metricsHeading',
       title: 'Metrics Heading',
       type: 'string',

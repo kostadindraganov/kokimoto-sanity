@@ -1,5 +1,7 @@
 import {defineQuery} from 'next-sanity'
 
+import type {SanityImageValue} from '../portfolio/types'
+
 /* ============================================================
    Home route queries + result types.
    CONTRACT: these are the HOME_PAGE_QUERY / QA_ENTRIES_QUERY the
@@ -29,18 +31,17 @@ export const HOME_PAGE_QUERY = defineQuery(`
     metrics[]{_key, value, unit, label},
     nextStepsHeading,
     nextSteps[]{_key, cmd, flag, sub, primary, route},
-    featuredProjects[]{
-      _key,
-      ...@->{
+    "featuredProjects": *[_type == "project" && featured == true && defined(slug.current)]
+      | order(order asc, _createdAt desc)[0..2]{
         _id,
         title,
         "slug": slug.current,
         commit,
         status,
         "summary": pt::text(description),
+        coverImage{asset, hotspot, crop, alt},
         "tags": tags[]->slug.current
-      }
-    },
+      },
     "systemCard": {
       "panelTitle": coalesce(systemCard.panelTitle, "~/system.card"),
       "panelMeta": coalesce(systemCard.panelMeta, "json"),
@@ -134,13 +135,13 @@ export interface HomeCta {
 }
 
 export interface HomeFeaturedProject {
-  _key: string
   _id: string
   title: string | null
   slug: string | null
   commit: string | null
   status: string | null
   summary: string | null
+  coverImage: SanityImageValue | null
   tags: string[] | null
 }
 

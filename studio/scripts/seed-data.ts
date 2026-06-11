@@ -55,6 +55,7 @@ export interface ProjectData {
   repo?: string
   live?: string
   order: number
+  featured?: boolean
 }
 
 export interface PostData {
@@ -156,6 +157,7 @@ export const projectsData: ProjectData[] = [
     repo: 'https://github.com/kdraganov/ledger-core',
     live: 'https://ledger.example.com',
     order: 1,
+    featured: true,
   },
   {
     id: 'atlas-console',
@@ -173,6 +175,7 @@ export const projectsData: ProjectData[] = [
     impact: ['task time −54%', '5 tools → 1', 'full audit replay'],
     repo: 'https://github.com/kdraganov/atlas-console',
     order: 2,
+    featured: true,
   },
   {
     id: 'promptforge',
@@ -191,6 +194,7 @@ export const projectsData: ProjectData[] = [
     repo: 'https://github.com/kdraganov/promptforge',
     live: 'https://promptforge.example.com',
     order: 3,
+    featured: true,
   },
   {
     id: 'northwind-edge',

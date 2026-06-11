@@ -186,7 +186,6 @@ export function BlogBoard({
             className="post-row reveal"
             style={{
               animationDelay: i % BLOG_INITIAL * 45 + 'ms',
-              display: 'flex',
               borderBottom: '1px solid var(--line-soft)',
               textDecoration: 'none',
             }}
@@ -207,7 +206,7 @@ export function BlogBoard({
             }
             onMouseLeave={() => setPreview(null)}
           >
-            <span className="pdate">{fmtDate(p.date)}</span>
+            <PostThumb post={p} />
             <span>
               <h4>{p.title}</h4>
               <p className="psum">{p.summary}</p>
@@ -344,6 +343,36 @@ function FeaturedPost({
         )}
       </div>
     </div>
+  )
+}
+
+/** Build a cropped Sanity CDN URL from an asset ref, or null if unavailable. */
+function sanityImageUrl(
+  assetRef: string | null | undefined,
+  w: number,
+  h: number,
+): string | null {
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  if (!projectId || !dataset || !assetRef) return null
+  const [, hash, dims, ext] = assetRef.match(/^image-([a-z0-9]+)-(\d+x\d+)-(\w+)$/) ?? []
+  if (!hash) return null
+  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${hash}-${dims}.${ext}?w=${w}&h=${h}&fit=crop&auto=format`
+}
+
+// Log-stream row thumbnail: cover image, black gradient, white date, CLI scan line.
+function PostThumb({post}: {post: BlogPost}) {
+  const src = sanityImageUrl(post.coverImage?.asset?._ref, 200, 150)
+  return (
+    <span className="pthumb" aria-hidden="true">
+      {src && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt="" loading="lazy" />
+      )}
+      <span className="pthumb-grad" />
+      <span className="pthumb-scan" />
+      <span className="pthumb-date tnum">{fmtDate(post.date)}</span>
+    </span>
   )
 }
 

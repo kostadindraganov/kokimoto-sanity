@@ -9,11 +9,12 @@
    per-item `dataAttr`, per PRD §5.4.
    ============================================================ */
 
+import Image from 'next/image'
 import Link from 'next/link'
 import {type SanityDocument, stegaClean} from 'next-sanity'
 import {useOptimistic} from 'next-sanity/hooks'
 
-import {dataAttr} from '@/sanity/lib/utils'
+import {dataAttr, urlForImage} from '@/sanity/lib/utils'
 
 import AsciiReveal from './fx/AsciiReveal'
 import type {
@@ -31,7 +32,6 @@ type HomeDocLike = {
   _type: string
   metrics?: HomeMetric[]
   nextSteps?: HomeCta[]
-  featuredProjects?: {_key: string; _ref?: string}[]
   systemCard?: {kvRows?: HomeKvRow[]}
 }
 
@@ -46,72 +46,63 @@ const attr = (docId: string, docType: string, path: string) =>
 /* ---------- featured work ("selected work" mini deployment cards) ---------- */
 
 export function MiniWork({p, dataSanity}: {p: HomeFeaturedProject; dataSanity?: string}) {
+  const cleanTitle = stegaClean(p.title ?? '')
+  const coverUrl = p.coverImage?.asset
+    ? urlForImage(p.coverImage).width(640).height(480).fit('crop').url()
+    : null
   return (
     <Link
-      className="proj"
+      className="proj mini-work"
       href={`/portfolio/${stegaClean(p.slug ?? '')}`}
       data-sanity={dataSanity}
-      style={{
-        display: 'block',
-        textAlign: 'left',
-        width: '100%',
-        cursor: 'pointer',
-        background: 'var(--bg-1)',
-        textDecoration: 'none',
-        color: 'inherit',
-      }}
     >
-      <div className="proj-head">
-        <span className="commit">◇</span>
-        <span className="commit commit-msg">{p.commit}</span>
-        <span style={{marginLeft: 'auto'}}>
-          {p.status && <Pill status={stegaClean(p.status)} />}
-        </span>
+      <div className="mini-cover">
+        {coverUrl ? (
+          <Image
+            className="mini-img"
+            src={coverUrl}
+            alt={stegaClean(p.coverImage?.alt ?? '') || `${cleanTitle} cover`}
+            fill
+            sizes="(max-width: 560px) 100vw, 240px"
+          />
+        ) : (
+          <div className="ph" aria-hidden="true" />
+        )}
       </div>
-      <div className="proj-body" style={{padding: '14px 16px'}}>
-        <div className="row" style={{justifyContent: 'space-between', alignItems: 'baseline', gap: 12}}>
-          <h3 style={{fontSize: 17, margin: 0}}>{p.title}</h3>
-          <span className="faint" style={{fontSize: 12}}>
-            {(p.tags ?? []).map((t) => '#' + stegaClean(t)).join(' ')}
+      <div className="mini-main">
+        <div className="proj-head">
+          <span className="commit">◇</span>
+          <span className="commit commit-msg">{p.commit}</span>
+          <span style={{marginLeft: 'auto'}}>
+            {p.status && <Pill status={stegaClean(p.status)} />}
           </span>
         </div>
-        <p className="muted" style={{fontSize: 13, margin: '8px 0 0', lineHeight: 1.55}}>
-          {p.summary}
-        </p>
+        <div className="proj-body" style={{padding: '14px 16px'}}>
+          <div className="row" style={{justifyContent: 'space-between', alignItems: 'baseline', gap: 12}}>
+            <h3 style={{fontSize: 17, margin: 0}}>{p.title}</h3>
+            <span className="faint" style={{fontSize: 12}}>
+              {(p.tags ?? []).map((t) => '#' + stegaClean(t)).join(' ')}
+            </span>
+          </div>
+          <p className="muted mini-summary" style={{fontSize: 13, margin: '8px 0 0', lineHeight: 1.55}}>
+            {p.summary}
+          </p>
+        </div>
       </div>
     </Link>
   )
 }
 
-export function FeaturedGrid({
-  docId,
-  docType,
-  projects,
-}: DocRef & {projects: HomeFeaturedProject[]}) {
-  const items = useOptimistic<HomeFeaturedProject[], SanityDocument<HomeDocLike>>(
-    projects,
-    (current, action) => {
-      if (action.id !== docId) return current
-      if (action.document.featuredProjects) {
-        // reference array — reconcile against the already-expanded items by _key
-        return action.document.featuredProjects
-          .map((ref) => current.find((p) => p._key === ref._key))
-          .filter((p): p is HomeFeaturedProject => Boolean(p))
-      }
-      return current
-    },
-  )
+export function FeaturedGrid({projects}: {projects: HomeFeaturedProject[]}) {
+  // Featured set is derived from each project's `featured` flag (query-driven),
+  // so cards map back to their own project document for editing in Presentation.
   return (
-    <div
-      className="grid"
-      style={{marginTop: 4}}
-      data-sanity={attr(docId, docType, 'featuredProjects')}
-    >
-      {items.map((p) => (
+    <div className="grid" style={{marginTop: 4}}>
+      {projects.map((p) => (
         <MiniWork
-          key={p._key}
+          key={p._id}
           p={p}
-          dataSanity={attr(docId, docType, `featuredProjects[_key=="${p._key}"]`)}
+          dataSanity={attr(p._id, 'project', 'featured')}
         />
       ))}
     </div>
