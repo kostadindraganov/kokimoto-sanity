@@ -1,0 +1,50 @@
+# Dependencies — installed fresh inside the container
+node_modules
+**/node_modules
+
+# Build outputs — rebuilt inside the container
+frontend/.next
+studio/dist
+studio/.sanity
+
+# Version control
+.git
+.gitignore
+
+# IDE / editor
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+
+# Environment files — injected via Coolify, never baked into the image
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+studio/.env
+studio/.env.*
+!studio/.env.example
+
+# Documentation and config not needed at runtime
+README.md
+AGENTS.md
+CLAUDE.md
+DESIGN.md
+COOLIFY.md
+docs/
+.agents/
+.claude/
+.sanity/
+*.md
+!frontend/README.md
+
+# Misc
+*.tsbuildinfo
+sanity-next-preview.png
+vercel-installation-instructions.md
+frontend/vercel.json
+skills-lock.json

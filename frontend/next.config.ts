@@ -3,6 +3,7 @@ import type {NextConfig} from 'next'
 import {sanity} from 'next-sanity/live/cache-life'
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   cacheComponents: true,
   cacheLife: {default: sanity},
   images: {
