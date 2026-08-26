@@ -29,9 +29,9 @@ RUN npm ci --no-audit --no-fund
 FROM base AS builder
 
 # Copy installed node_modules from deps stage
+# npm workspaces hoists all deps to root node_modules
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/frontend/node_modules ./frontend/node_modules
-COPY --from=deps /app/studio/node_modules ./studio/node_modules
 
 # Copy full source code
 COPY . .
